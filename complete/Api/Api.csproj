@@ -12,4 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\zones.json" />
+  </ItemGroup>
 </Project>
