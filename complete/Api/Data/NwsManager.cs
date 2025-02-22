@@ -3,15 +3,21 @@ using System.Web;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Caching.Memory;
 using Api.Data;
+using System.Diagnostics.Metrics;
+using System.Diagnostics;
 
 namespace Api
 {
     public class NwsManager(HttpClient httpClient, IMemoryCache cache, IWebHostEnvironment webHostEnvironment)
     {
         private static readonly JsonSerializerOptions options = new(JsonSerializerDefaults.Web);
+        private static readonly Meter meter = new Meter("NwsManagerMetrics", "1.0");
+        private static readonly Counter<int> forecastRequestCounter = meter.CreateCounter<int>("forecast_requests_total", "Total number of forecast requests");
+        private static readonly Histogram<double> forecastRequestDuration = meter.CreateHistogram<double>("forecast_request_duration_seconds", "Histogram of forecast request durations");
 
         public async Task<Zone[]?> GetZonesAsync()
         {
+            using var activity = new ActivitySource("NwsManager").StartActivity("GetZonesAsync");
             return await cache.GetOrCreateAsync("zones", async entry =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
@@ -47,9 +53,13 @@ namespace Api
 
         public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
         {
+            forecastRequestCounter.Add(1);
+            var stopwatch = Stopwatch.StartNew();
+
+            using var activity = new ActivitySource("NwsManager").StartActivity("GetForecastByZoneAsync");
+
             // Create an exception every 5 calls to simulate an error for testing
             forecastCount++;
-
             if (forecastCount % 5 == 0)
             {
                 throw new Exception("Random exception thrown by NwsManager.GetForecastAsync");
@@ -58,6 +68,10 @@ namespace Api
             var zoneIdSegment = HttpUtility.UrlEncode(zoneId);
             var zoneUrl = $"https://api.weather.gov/zones/forecast/{zoneIdSegment}/forecast";
             var forecasts = await httpClient.GetFromJsonAsync<ForecastResponse>(zoneUrl, options);
+
+            stopwatch.Stop();
+            forecastRequestDuration.Record(stopwatch.Elapsed.TotalSeconds);
+
             return forecasts
                    ?.Properties
                    ?.Periods

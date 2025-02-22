@@ -67,6 +67,17 @@ public static class Extensions
 
         builder.AddOpenTelemetryExporters();
 
+        // Add browser telemetry support using OpenTelemetry Protocol (OTLP) over HTTP and CORS
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
+        });
+
         return builder;
     }
 
