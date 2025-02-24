@@ -1,12 +1,13 @@
 ﻿using System.Text.Json;
 using System.Web;
+using System.Reflection;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Caching.Memory;
 using Api.Data;
 
 namespace Api
 {
-    public class NwsManager(HttpClient httpClient, IMemoryCache cache, IWebHostEnvironment webHostEnvironment)
+    public class NwsManager(HttpClient httpClient, IMemoryCache cache)
     {
         private static readonly JsonSerializerOptions options = new(JsonSerializerDefaults.Web);
 
@@ -25,15 +26,16 @@ namespace Api
                 //            .Distinct()
                 //            .ToArray() ?? [];
 
-                // Deserialize the zones.json file from the wwwroot folder
-                var zonesFilePath = Path.Combine(webHostEnvironment.WebRootPath, "zones.json");
-                if (!File.Exists(zonesFilePath))
+                // Deserialize the zones.json file from the embedded resource
+                var assembly = Assembly.GetExecutingAssembly();
+                var resourceName = "Api.wwwroot.zones.json";
+                using var stream = assembly.GetManifestResourceStream(resourceName);
+                if (stream == null)
                 {
                     return [];
                 }
 
-                using var zonesJson = File.OpenRead(zonesFilePath);
-                var zones = await JsonSerializer.DeserializeAsync<ZonesResponse>(zonesJson, options);
+                var zones = await JsonSerializer.DeserializeAsync<ZonesResponse>(stream, options);
 
                 return zones?.Features
                             ?.Where(f => f.Properties?.ObservationStations?.Count > 0)
