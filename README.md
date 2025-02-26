@@ -44,7 +44,7 @@ You can also watch the Let's Learn .NET Aspire live stream events for the follow
 
 ## Workshop
 
-This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letslearndotnet) series.  This workshop is designed to help you learn about .NET Aspire and how to use it to build cloud ready applications.  This workshop is broken down into 8 modules:
+This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letslearndotnet) series.  This workshop is designed to help you learn about .NET Aspire and how to use it to build cloud ready applications.  This workshop is broken down into 9 modules:
 
 1. [Setup & Installation](./workshop/1-setup.md)
 1. [Service Defaults](./workshop/2-servicedefaults.md)
@@ -54,6 +54,7 @@ This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letsl
 1. [Deployment](./workshop/6-deployment.md)
 1. [Telemetry Module](./workshop/7-telemetry.md)
 1. [Database Module](./workshop/8-database.md)
+1. [Integration Testing](./workshop/9-integration-testing.md)
 
 A full slide deck is available for this workshop [here](./workshop/AspireWorkshop.pptx).
 

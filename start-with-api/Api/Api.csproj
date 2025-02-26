@@ -8,4 +8,7 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tests\IntegrationTests.csproj" />
+  </ItemGroup>
 </Project>
