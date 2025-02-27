@@ -1,8 +1,4 @@
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Trace;
-using Api.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,11 +18,10 @@ builder.Services.AddNwsManager();
 builder.Services.AddOpenTelemetry()
     .WithMetrics(m => m.AddMeter("NwsManagerMetrics"));
 
-// Add health check services for database, redis cache, and external service
+// Add health check services for redis cache and external service
 builder.Services.AddHealthChecks()
-    .AddNpgSql(builder.Configuration.GetConnectionString("DefaultConnection"), name: "postgresql")
     .AddRedis("localhost:6379", name: "redis")
-    .AddUrlGroup(new Uri("https://api.weather.gov/"), name: "weatherapi");
+    .AddUrlGroup(new Uri("https://api.weather.gov/"), name: "weatherApi");
 
 var app = builder.Build();
 
