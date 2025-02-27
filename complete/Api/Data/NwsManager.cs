@@ -5,7 +5,6 @@ using Microsoft.Extensions.Caching.Memory;
 using Api.Data;
 using Api.Diagnostics;
 using System.Diagnostics;
-using Microsoft.EntityFrameworkCore;
 
 namespace Api
 {
