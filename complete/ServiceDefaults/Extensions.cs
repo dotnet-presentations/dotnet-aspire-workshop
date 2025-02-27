@@ -124,6 +124,51 @@ public static class Extensions
                 Predicate = r => r.Tags.Contains("live")
             });
         }
+        else
+        {
+            // Considerations for non-development environments
+            app.MapHealthChecks("/health", new HealthCheckOptions
+            {
+                Predicate = _ => true,
+                ResponseWriter = async (context, report) =>
+                {
+                    context.Response.ContentType = "application/json";
+                    var result = JsonSerializer.Serialize(new
+                    {
+                        status = report.Status.ToString(),
+                        checks = report.Entries.Select(e => new
+                        {
+                            name = e.Key,
+                            status = e.Value.Status.ToString(),
+                            exception = e.Value.Exception?.Message,
+                            duration = e.Value.Duration.ToString()
+                        })
+                    });
+                    await context.Response.WriteAsync(result);
+                }
+            });
+
+            app.MapHealthChecks("/alive", new HealthCheckOptions
+            {
+                Predicate = r => r.Tags.Contains("live"),
+                ResponseWriter = async (context, report) =>
+                {
+                    context.Response.ContentType = "application/json";
+                    var result = JsonSerializer.Serialize(new
+                    {
+                        status = report.Status.ToString(),
+                        checks = report.Entries.Select(e => new
+                        {
+                            name = e.Key,
+                            status = e.Value.Status.ToString(),
+                            exception = e.Value.Exception?.Message,
+                            duration = e.Value.Duration.ToString()
+                        })
+                    });
+                    await context.Response.WriteAsync(result);
+                }
+            });
+        }
 
         return app;
     }
