@@ -21,7 +21,10 @@ builder.AddNpgsqlDbContext<MyWeatherContext>(connectionName: "weatherdb");
 
 // Add health check services for database
 builder.Services.AddHealthChecks()
-    .AddNpgSql(builder.Configuration.GetConnectionString("weatherdb"), name: "postgresql");
+    .AddNpgSql(
+        builder.Configuration.GetConnectionString("weatherdb"),
+        name: "database"
+    );
 
 var app = builder.Build();
 
