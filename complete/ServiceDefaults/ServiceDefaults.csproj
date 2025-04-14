@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="9.2.0" />
     <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="9.1.0" />
 	<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.11.1" />
