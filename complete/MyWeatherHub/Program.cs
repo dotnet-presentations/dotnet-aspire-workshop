@@ -6,12 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 builder.Services.AddHttpClient<NwsManager>(client =>
 {
-    client.BaseAddress = new("https+http://api");
+	client.BaseAddress = new("https+http://api");
 });
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+		.AddInteractiveServerComponents();
 
 builder.Services.AddMemoryCache();
 
@@ -24,17 +24,15 @@ app.MapDefaultEndpoints();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseExceptionHandler("/Error", createScopeForErrors: true);
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
-else 
+else
 {
-    using (var scope = app.Services.CreateScope())
-    {
-        var context = scope.ServiceProvider.GetRequiredService<MyWeatherContext>();
-        await context.Database.EnsureCreatedAsync();
-    }
+	using var scope = app.Services.CreateScope();
+	var context = scope.ServiceProvider.GetRequiredService<MyWeatherContext>();
+	await context.Database.EnsureCreatedAsync();
 }
 
 app.UseHttpsRedirection();
@@ -43,6 +41,6 @@ app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
+		.AddInteractiveServerRenderMode();
 
 app.Run();

@@ -1,8 +1,3 @@
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Trace;
-using Api.Data;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddRedisOutputCache("cache");
@@ -19,8 +14,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddNwsManager();
 
 builder.Services.AddOpenTelemetry()
-    .WithMetrics(m => m.AddMeter("NwsManagerMetrics"))
-    .WithTracing(m => m.AddSource("NwsManager"));
+		.WithMetrics(m => m.AddMeter("NwsManagerMetrics"))
+		.WithTracing(m => m.AddSource("NwsManager"));
 
 var app = builder.Build();
 
@@ -28,7 +23,7 @@ app.MapDefaultEndpoints();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+	app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();

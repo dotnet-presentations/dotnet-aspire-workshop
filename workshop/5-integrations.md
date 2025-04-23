@@ -88,9 +88,9 @@ We will add the _Output caching_ Redis client integration to our `Api` project. 
 
     ![Output caching in action](./media/output-caching.png)
 
-1. You can also see the cached response in Redis Commander. Open Redis Commander by clicking on the `cache-commander` endpoint in the dashboard. Under stats you will see connections and commands processed.
+1. You can also see the cached response in Redis Insight. Open Redis Insight by clicking on the `cache-insight` endpoint in the dashboard. Under stats you will see connections and commands processed.
 
-    ![Redis Commander](./media/redis-commander.png)
+    ![Redis Insight](./media/redis-insight.png)
 
 1. In addition, you can see logs for the Redis cache and Redis Insight in the `Console` tab.
 

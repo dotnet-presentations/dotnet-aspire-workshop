@@ -99,4 +99,12 @@ Before continuing, consider some common terminology used in .NET Aspire:
 
 1. Click on the `Trace` or the `Details` to see the error message and stack trace.
 
+## The Dashboard Resource Graph
+
+We saw the table of resources in the .NET Aspire dashboard and that's a nice list of our resources, and we'll see that grow as our application system starts to utilize more resources.  Additionally, there is a **Graph** view of resources available by clicking the **Graph** text just above the table.
+
+![.NET Aspire Dashboard Resource Graph](./media/dashboard-graph.png)
+
+This graph is generated based on the references and relationships you configure for your application.
+
 **Next**: [Module #4: Service Discovery](./4-servicediscovery.md)
