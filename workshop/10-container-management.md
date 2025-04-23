@@ -38,14 +38,14 @@ Ready to make your Redis container stick around? Let's update our App Host:
 
    ```csharp
    var cache = builder.AddRedis("cache")
-       .WithRedisCommander();
+       .WithRedisInsight();
    ```
 
 3. Add the magical `.WithLifetime` method:
 
    ```csharp
    var cache = builder.AddRedis("cache")
-       .WithRedisCommander()
+       .WithRedisInsight()
        .WithLifetime(ContainerLifetime.Persistent);
    ```
 
@@ -81,7 +81,7 @@ Named volumes are the simplest way to persist data. They're managed by Docker bu
 
 ```csharp
 var cache = builder.AddRedis("cache")
-    .WithRedisCommander()
+    .WithRedisInsight()
     .WithLifetime(ContainerLifetime.Persistent)
     .WithDataVolume("my-redis-data");
 ```
@@ -94,7 +94,7 @@ Sometimes you want to see and modify your container's files directly. That's whe
 
 ```csharp
 var cache = builder.AddRedis("cache")
-    .WithRedisCommander()
+    .WithRedisInsight()
     .WithLifetime(ContainerLifetime.Persistent)
     .WithDataBindMount(@"C:\Redis\Data");
 ```
@@ -107,7 +107,7 @@ Redis has its own data persistence mechanisms. We can configure Redis to save sn
 
 ```csharp
 var cache = builder.AddRedis("cache")
-    .WithRedisCommander()
+    .WithRedisInsight()
     .WithLifetime(ContainerLifetime.Persistent)
     .WithDataVolume("my-redis-data")
     .WithPersistence(interval: TimeSpan.FromMinutes(5), keysChangedThreshold: 100);
@@ -137,10 +137,10 @@ This is an amazing way to test resilience without restarting your entire debug s
 Time to see all this in action:
 
 1. Start the App Host project
-2. When the dashboard opens, open Redis Commander and create a test key
+2. When the dashboard opens, open Redis Insight and create a test key
 3. Stop the App Host completely
 4. Start the App Host again - notice how much faster Redis starts up?
-5. Check Redis Commander - your test key should still be there!
+5. Check Redis Insight - your test key should still be there!
 6. Try stopping just the Redis container using the dashboard controls
 7. Watch how your application handles the Redis outage
 8. Start Redis again and see your application recover

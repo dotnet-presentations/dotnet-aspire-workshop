@@ -29,11 +29,11 @@ With the NuGet package installed, we can add Redis to our App Host:
                      .WithReference(cache);
     ```
 
-1. Additionally, we could configure [Redis Commander](https://joeferner.github.io/redis-commander/), a Redis management tool. As part of the `Aspire.Hosting.Redis` package,  Redis Commander is available in the same integration. To add Redis Commander, update the code adding the Redis resource to call the `WithRedisCommander()` method on the returned builder:
+1. Additionally, we could configure [Redis Insight](https://github.com/RedisInsight/RedisInsight), a Redis management tool from the Redis team. As part of the `Aspire.Hosting.Redis` package,  Redis Insight is available in the same integration. To add Redis Insight, update the code adding the Redis resource to call the `WithRedisInsight()` method on the returned builder:
 
     ```csharp
     var cache = builder.AddRedis("cache")
-                       .WithRedisCommander();
+                       .WithRedisInsight();
     ```
 
 ## Run the application
@@ -92,7 +92,7 @@ We will add the _Output caching_ Redis client integration to our `Api` project. 
 
     ![Redis Commander](./media/redis-commander.png)
 
-1. In addition, you can see logs for the Redis cache and Redis Commander in the `Console` tab.
+1. In addition, you can see logs for the Redis cache and Redis Insight in the `Console` tab.
 
     ![Redis logs](./media/redis-logs.png)
 
@@ -119,7 +119,7 @@ var cache = builder.AddRedis("cache")
 
 ## Summary
 
-In this section, we added a Redis hosting integration to the App Host and Redis output caching client integration in the API. We saw how the response was cached in the Redis cache and how the second and subsequent requests were much faster than the first one. We also saw how to use Redis Commander to manage the Redis cache.
+In this section, we added a Redis hosting integration to the App Host and Redis output caching client integration in the API. We saw how the response was cached in the Redis cache and how the second and subsequent requests were much faster than the first one. We also saw how to use Redis Insight to manage the Redis cache.
 
 There are many more Aspire integrations available that you can use to integrate with your services. You can find the list of available integrations [in the .NET Aspire documentation](https://learn.microsoft.com/dotnet/aspire/fundamentals/integrations-overview?tabs=dotnet-cli#available-integrations).
 
