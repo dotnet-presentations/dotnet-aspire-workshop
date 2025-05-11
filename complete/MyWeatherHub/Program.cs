@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MyWeatherHub;
 using MyWeatherHub.Components;
 
@@ -17,6 +18,11 @@ builder.Services.AddMemoryCache();
 
 builder.AddNpgsqlDbContext<MyWeatherContext>(connectionName: "weatherdb");
 
+builder.Services.AddHealthChecks()
+	.AddUrlGroup(new Uri(builder.Configuration["services:api:http:0"] + "/openapi/v1.json"),
+		"Weather Microservice", HealthStatus.Unhealthy);
+
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
@@ -35,7 +41,9 @@ else
 	await context.Database.EnsureCreatedAsync();
 }
 
-app.UseHttpsRedirection();
+// force the SSL redirect
+app.UseWhen(context => !context.Request.Path.StartsWithSegments("/health"),
+													 builder => builder.UseHttpsRedirection());
 
 app.UseStaticFiles();
 app.UseAntiforgery();
