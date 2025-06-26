@@ -24,7 +24,7 @@ For the best experience, we recommend using Visual Studio 2022 with the .NET Asp
 
 ## Install Latest .NET Aspire Templates
 
-Run the following command to intall .NET Aspire 9.3 templates.
+Run the following command to install .NET Aspire 9.3 templates.
 
 ```cli
 dotnet new install Aspire.ProjectTemplates::9.3.0 --force
