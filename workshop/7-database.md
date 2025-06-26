@@ -11,7 +11,7 @@ In this module, we will integrate a PostgreSQL database with our application. We
 1. Install the required NuGet package in your AppHost project:
 
 ```xml
-<PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.1.0" />
+<PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.3.0" />
 ```
 
 1. Update the AppHost's Program.cs to add PostgreSQL:
@@ -39,7 +39,7 @@ var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub")
 1. Install the required NuGet packages in your web application:
 
 ```xml
-<PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.1.0" />
+<PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.3.0" />
 ```
 
 1. Create your DbContext class:
