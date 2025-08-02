@@ -6,8 +6,11 @@ var cache = builder.AddRedis("cache")
 	.WithClearCommand()
 	.WithRedisInsight();
 
+var weatherApi = builder.AddExternalService("weather-api", "https://api.weather.gov");
+
 var api = builder.AddProject<Projects.Api>("api")
 	.WithApiCacheInvalidation(invalidationKey)
+	.WithReference(weatherApi)
 	.WithReference(cache);
 
 var postgres = builder.AddPostgres("postgres")

@@ -107,4 +107,28 @@ We saw the table of resources in the .NET Aspire dashboard and that's a nice lis
 
 This graph is generated based on the references and relationships you configure for your application.
 
+## New Dashboard Features in .NET Aspire 9.4
+
+### Automatic Update Notifications
+The dashboard now automatically checks for newer versions of .NET Aspire and shows friendly notifications when updates are available. This helps you stay current with the latest improvements and security updates.
+
+### Enhanced Parameter and Connection String Visibility
+Parameters and connection strings are now visible in the dashboard, providing better visibility into your application's configuration during development:
+
+- Connection strings appear in resource details with secure toggle visibility
+- Parameters show their current state and values
+- This makes debugging configuration issues much easier during development
+
+### Console Log Text Wrapping Control
+The dashboard includes a new toggle for controlling text wrapping in console logs, making it easier to view long log lines. You can find the toggle in the console logs view to switch between wrapped and unwrapped text display.
+
+### Hidden Resource Visibility Toggle
+You can now show/hide hidden resources in the dashboard to see internal infrastructure components when needed. This gives you complete visibility into your application's infrastructure components that are normally hidden from view.
+
+### Enhanced Peer Visualization
+The dashboard can now visualize connections between resources even when they aren't instrumented with telemetry. This includes:
+- Connection string parsing for various database types
+- Parameter visualization for URLs and connection strings
+- External service mapping between your services and external dependencies
+
 **Next**: [Module #4: Service Discovery](./4-servicediscovery.md)

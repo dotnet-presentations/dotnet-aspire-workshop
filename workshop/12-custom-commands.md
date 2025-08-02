@@ -358,6 +358,75 @@ Description = "This command will clear all cached data in the Redis database."
 
 ## Advanced Command Patterns
 
+### New in .NET Aspire 9.4: Resource Command Service
+
+.NET Aspire 9.4 introduces the `ResourceCommandService` API for executing commands programmatically. This enables scenarios like composite commands that coordinate multiple operations or unit testing of commands.
+
+```csharp
+// Add a composite command that coordinates multiple operations
+var api = builder.AddProject<Projects.Api>("api")
+    .WithReference(database)
+    .WithReference(cache)
+    .WithCommand("reset-all", "Reset Everything", async (context, ct) =>
+    {
+        var logger = context.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        var commandService = context.ServiceProvider.GetRequiredService<ResourceCommandService>();
+        
+        logger.LogInformation("Starting full system reset...");
+        
+        try
+        {
+            // Execute other resource commands programmatically
+            var flushResult = await commandService.ExecuteCommandAsync(cache.Resource, "clear", ct);
+            var restartResult = await commandService.ExecuteCommandAsync(database.Resource, "restart", ct);
+
+            if (!restartResult.Success || !flushResult.Success)
+            {
+                return CommandResults.Failure("System reset failed");
+            }
+            
+            logger.LogInformation("System reset completed successfully");
+            return CommandResults.Success();
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "System reset failed");
+            return CommandResults.Failure(ex);
+        }
+    },
+    displayDescription: "Reset cache and restart database in coordinated sequence",
+    iconName: "ArrowClockwise");
+```
+
+#### Testing Commands with ResourceCommandService
+
+You can also use `ResourceCommandService` in unit tests:
+
+```csharp
+[Fact]
+public async Task Should_ResetCache_WhenTestStarts()
+{
+    var builder = DistributedApplication.CreateBuilder();
+    
+    var cache = builder.AddRedis("test-cache")
+        .WithClearCommand();
+
+    var api = builder.AddProject<Projects.TestApi>("test-api")
+        .WithReference(cache);
+
+    await using var app = builder.Build();
+    await app.StartAsync();
+    
+    // Reset cache before running test using ResourceCommandService
+    var result = await app.ResourceCommands.ExecuteCommandAsync(
+        cache.Resource, 
+        "clear", 
+        CancellationToken.None);
+        
+    Assert.True(result.Success, $"Failed to reset cache: {result.ErrorMessage}");
+}
+```
+
 ### Conditional Command Availability
 
 Commands can be enabled or disabled based on resource state:

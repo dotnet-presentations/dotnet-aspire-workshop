@@ -7,7 +7,7 @@
   <ItemGroup>
 
     <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="9.0.0" />
-    <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="9.3.1" />
+    <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="9.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.7" />
 
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />

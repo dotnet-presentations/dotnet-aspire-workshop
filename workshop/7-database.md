@@ -11,7 +11,7 @@ In this module, we will integrate a PostgreSQL database with our application. We
 1. Install the required NuGet package in your AppHost project:
 
 ```xml
-<PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.3.0" />
+<PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.4.0" />
 ```
 
 1. Update the AppHost's Program.cs to add PostgreSQL:
@@ -25,6 +25,18 @@ var weatherDb = postgres.AddDatabase("weatherdb");
 
 The `WithDataVolume(isReadOnly: false)` configuration ensures that your data persists between container restarts. The data is stored in a Docker volume that exists outside the container, making it survive container restarts.
 
+### New in .NET Aspire 9.4: Enhanced Database Initialization
+
+.NET Aspire 9.4 introduces the improved `WithInitFiles()` method for all database providers, replacing the more complex `WithInitBindMount()` method:
+
+```csharp
+var postgres = builder.AddPostgres("postgres")
+    .WithDataVolume(isReadOnly: false)
+    .WithInitFiles("./database-init");  // Simplified initialization from files
+```
+
+This method works consistently across all database providers (PostgreSQL, MySQL, MongoDB, Oracle) and provides better error handling and simplified configuration.
+
 To ensure proper application startup, we'll configure the web application to wait for the database:
 
 ```csharp
@@ -34,12 +46,34 @@ var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub")
     .WithExternalHttpEndpoints();
 ```
 
+### Adding Container Persistence to Your Database
+
+For development scenarios where you want your database container and data to persist across multiple application runs, you can configure the container lifetime:
+
+```csharp
+var postgres = builder.AddPostgres("postgres")
+    .WithDataVolume(isReadOnly: false)
+    .WithLifetime(ContainerLifetime.Persistent);  // Container persists across app restarts
+
+var weatherDb = postgres.AddDatabase("weatherdb");
+```
+
+With `ContainerLifetime.Persistent`, the PostgreSQL container will continue running even when you stop your Aspire application. This means:
+
+- **Faster startup times**: No need to wait for PostgreSQL to initialize on subsequent runs
+- **Data persistence**: Your database data remains intact between application sessions
+- **Consistent development**: The database stays in the same state you left it
+
+> **Note**: Persistent containers are primarily useful for development scenarios. In production deployments, you'll typically use managed database services that handle persistence automatically.
+
+> **Advanced Container Features**: .NET Aspire also supports advanced container configuration like `WithExplicitStart()` for better startup coordination, and `WithContainerFiles()` for mounting initialization scripts. These features provide fine-grained control over container behavior when needed for complex development scenarios. To learn more about these advanced features, see [Persist data using volumes](https://learn.microsoft.com/dotnet/aspire/fundamentals/persist-data-volumes) and [Container resource lifecycle](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview#container-resource-lifecycle) in the official documentation.
+
 ## Integrating EF Core with PostgreSQL
 
 1. Install the required NuGet packages in your web application:
 
 ```xml
-<PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.3.0" />
+<PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.4.0" />
 ```
 
 1. Create your DbContext class:

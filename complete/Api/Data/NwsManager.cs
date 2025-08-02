@@ -99,7 +99,7 @@ namespace Api
 			try
 			{
 				var zoneIdSegment = HttpUtility.UrlEncode(zoneId);
-				var zoneUrl = $"https://api.weather.gov/zones/forecast/{zoneIdSegment}/forecast";
+				var zoneUrl = $"/zones/forecast/{zoneIdSegment}/forecast";
 
 				logger.LogDebug(
 						"🔍 Requesting forecast from {Url}",
@@ -150,7 +150,7 @@ namespace Microsoft.Extensions.DependencyInjection
 		{
 			services.AddHttpClient<Api.NwsManager>(client =>
 			{
-				client.BaseAddress = new Uri("https://api.weather.gov/");
+				client.BaseAddress = new Uri("https://weather-api");
 				client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - .NET Aspire Demo");
 			});
 

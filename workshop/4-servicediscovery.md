@@ -77,6 +77,37 @@ Alternatively, we can update the url to not use the `WeatherEndpoint` configurat
 
     ![Service discovery settings in the dashboard](media/dashboard-servicediscovery.png)
 
+## New in .NET Aspire 9.4: External Service Modeling
+
+.NET Aspire 9.4 introduces first-class support for modeling external services in your application graph. Modern applications frequently need to integrate with external APIs, third-party services, or existing infrastructure that isn't managed by Aspire.
+
+### Adding External Services
+
+External services can be added to your AppHost just like internal services, and they appear in the Aspire dashboard with health status monitoring.  Let's add an external service reference for the National Weather Service's endpoint:
+
+```csharp
+var builder = DistributedApplication.CreateBuilder(args);
+
+// Reference an external API service
+var weatherApi = builder.AddExternalService("weather-api", "https://api.weather.gov");
+
+// Your services can reference external services just like internal ones
+var api = builder.AddProject<Projects.Api>("api")
+    .WithReference(sharedDatabase);
+```
+
+![Dashboard with the additional external resource](media/external-service-resource.png)
+
+### Benefits of External Service Modeling
+
+- **Unified View**: All services (internal and external) appear in the Aspire dashboard
+- **Health Monitoring**: External services can include health checks
+- **Service Discovery**: External services work with the same service discovery patterns
+- **Configuration Management**: Centralized configuration for external dependencies
+- **Deployment Awareness**: External services are included in deployment manifests
+
+This feature bridges the gap between your Aspire-managed services and the broader ecosystem of services your application depends on.
+
 ## Conclusion
 
 This was just the start of what we can do with service discovery and .NET Aspire. As our application grows and we add more services, we can continue to use service discovery to connect services at runtime. This will allow us to easily scale our application and make it more resilient to changes in the environment.
