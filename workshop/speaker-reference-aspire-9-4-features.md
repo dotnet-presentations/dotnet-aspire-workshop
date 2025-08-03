@@ -1,8 +1,10 @@
-# Exploring .NET Aspire 9.4 Features
+# Speaker Reference: .NET Aspire 9.4 Features
+
+*This document is intended as a speaker reference for advanced .NET Aspire 9.4 features that may be covered in extended sessions or as bonus material.*
 
 ## Introduction
 
-.NET Aspire 9.4 brings exciting new capabilities that enhance the developer experience and expand deployment options. In this module, we'll explore the key new features that make building and managing cloud-native applications even easier.
+.NET Aspire 9.4 brings exciting new capabilities that enhance the developer experience and expand deployment options. This reference covers the key new features that make building and managing cloud-native applications even easier.
 
 ## 🛠️ Aspire CLI Generally Available
 
@@ -147,52 +149,7 @@ var adminApi = builder.AddProject<Projects.AdminApi>("admin")
     });
 ```
 
-##  Azure Enhancements
-
-### Azure Key Vault Secret Management
-
-New strongly-typed secret APIs:
-
-```csharp
-var secrets = builder.AddAzureKeyVault("secrets");
-
-// Add secrets from parameters
-var apiKey = builder.AddParameter("api-key", secret: true);
-var secretRef = secrets.AddSecret("api-key", apiKey);
-
-// Reference existing secrets
-var existingSecret = secrets.GetSecret("ExistingSecretName");
-
-// Use in services
-var api = builder.AddProject<Projects.Api>("api")
-    .WithEnvironment("API_KEY", secretRef)
-    .WithEnvironment("EXISTING_SECRET", existingSecret);
-```
-
-### Azure Cosmos DB Enhancements
-
-Support for hierarchical partition keys and serverless mode:
-
-```csharp
-var cosmos = builder.AddAzureCosmosDB("cosmos"); // Defaults to serverless in 9.4
-
-var database = cosmos.AddCosmosDatabase("ecommerce");
-
-// Hierarchical partition keys (up to 3 levels)
-var productsContainer = database.AddContainer("products", 
-    ["/category", "/subcategory", "/brand"]);
-```
-
 ## 🤖 New AI Integrations
-
-### GitHub Models Integration
-
-```csharp
-var model = builder.AddGitHubModel("chat-model", "gpt-4o-mini");
-
-var chatService = builder.AddProject<Projects.ChatService>("chat")
-    .WithReference(model);
-```
 
 ### Azure AI Foundry Integration
 
@@ -222,13 +179,18 @@ var postgres = builder.AddPostgres("postgres")
     .WithInitFiles("./postgres-init");
 ```
 
-## Next Steps
+## Speaker Notes
 
-These new features in .NET Aspire 9.4 provide powerful tools for building more sophisticated cloud-native applications. Consider how you might use:
+These features are excellent for demonstrating the evolution of .NET Aspire and can be used as:
+
+- **Bonus content** for extended workshops
+- **Q&A material** when participants ask about latest features
+- **Future roadmap discussion** to show where Aspire is heading
+- **Advanced topics** for experienced developers
+
+Consider how you might use:
 
 - Interactive parameters for better developer onboarding
 - Resource lifecycle events for complex initialization
 - Enhanced Azure integrations for cloud deployments
 - New AI integrations for intelligent applications
-
-**Previous**: [Module #13 - Health Checks](13-healthchecks.md)

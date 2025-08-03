@@ -59,7 +59,7 @@ This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letsl
 1. [Azure Integrations](./workshop/11-azure-integrations.md)
 1. [Custom Commands](./workshop/12-custom-commands.md)
 1. [Health Checks](./workshop/13-healthchecks.md)
-1. [Exploring .NET Aspire 9.4 Features](./workshop/14-aspire-9-4-features.md) **NEW!**
+1. [GitHub Models Integration](./workshop/14-aspire-9-4-features.md) **NEW!**
 
 A full slide deck is available for this workshop [here](./workshop/AspireWorkshop.pptx).
 
