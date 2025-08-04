@@ -1,7 +1,4 @@
-﻿using System.ClientModel;
-using Azure.AI.OpenAI;
-using Microsoft.Extensions.AI;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.AI;
 
 namespace MyWeatherHub;
 
@@ -13,7 +10,7 @@ public class ForecastSummarizer(IChatClient chatClient)
 		var prompt = $"""
 			You are a weather assistant. Summarize the following forecast 
 			as one of the following conditions: Sunny, Cloudy, Rainy, Snowy.  
-			Only those four values are allowed.  Be as concise as possible.  
+			Only those four values are allowed. Be as concise as possible.  
 			I want a 1-word response with one of these options: Sunny, Cloudy, Rainy, Snowy.
 
 			The forecast is: {forecasts}
@@ -21,25 +18,22 @@ public class ForecastSummarizer(IChatClient chatClient)
 
 		var response = await chatClient.GetResponseAsync(prompt);
 
-		// look for one of the four values in the response
-		if (!response?.Messages.Any() ?? true)
+		// Look for one of the four values in the response
+		if (string.IsNullOrEmpty(response.Text))
 		{
-			return "unknown";
+			return "Cloudy"; // Default fallback
 		}
 
-		var condition = response.Messages.First().Text switch
+		var condition = response.Text switch
 		{
 			string s when s.Contains("Snowy", StringComparison.OrdinalIgnoreCase) => "Snowy",
-			string s when s.Contains("Rainy", StringComparison.OrdinalIgnoreCase) => "Rainy",
+			string s when s.Contains("Rainy", StringComparison.OrdinalIgnoreCase) => "Rainy", 
 			string s when s.Contains("Cloudy", StringComparison.OrdinalIgnoreCase) => "Cloudy",
 			string s when s.Contains("Sunny", StringComparison.OrdinalIgnoreCase) => "Sunny",
-			string s when s.Contains("Clear", StringComparison.OrdinalIgnoreCase) => "Clear",
-			_ => null
+			string s when s.Contains("Clear", StringComparison.OrdinalIgnoreCase) => "Sunny",
+			_ => "Cloudy" // Default fallback
 		};
 
-		if (condition is null) Console.WriteLine($"Condition reported is {response.Messages.First().Text}");
-
-		return condition ?? "unknown";
-
+		return condition;
 	}
 }

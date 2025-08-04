@@ -78,8 +78,9 @@ Add the necessary NuGet packages to your MyWeatherHub project:
 2. Add the following package references:
 
 ```xml
-<PackageReference Include="Microsoft.Extensions.AI" Version="9.0.1-preview.1.24570.5" />
-<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.0.1-preview.1.24570.5" />
+<PackageReference Include="Aspire.Azure.AI.Inference" Version="9.4.0-preview.1.25378.8" />
+<PackageReference Include="Microsoft.Extensions.AI" Version="9.7.0" />
+<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.7.1-preview.1.25365.4" />
 ```
 
 ### Step 4: Configure AI Services in MyWeatherHub
@@ -99,7 +100,8 @@ builder.Services.AddHttpClient<NwsManager>(client =>
 });
 
 // Add GitHub Models chat client
-builder.AddChatClient("chat-model");
+builder.AddAzureChatCompletionsClient("chat-model")
+       .AddChatClient();
 
 // Register the ForecastSummarizer service
 builder.Services.AddScoped<ForecastSummarizer>();
@@ -139,15 +141,15 @@ public class ForecastSummarizer(IChatClient chatClient)
             The forecast is: {forecasts}
             """;
 
-        var response = await chatClient.CompleteAsync(prompt);
+        var response = await chatClient.GetResponseAsync(prompt);
 
         // Look for one of the four values in the response
-        if (string.IsNullOrEmpty(response.Message.Text))
+        if (string.IsNullOrEmpty(response.Text))
         {
             return "Cloudy"; // Default fallback
         }
 
-        var condition = response.Message.Text switch
+        var condition = response.Text switch
         {
             string s when s.Contains("Snowy", StringComparison.OrdinalIgnoreCase) => "Snowy",
             string s when s.Contains("Rainy", StringComparison.OrdinalIgnoreCase) => "Rainy", 
@@ -178,7 +180,7 @@ Update your `Components/Pages/Home.razor` to use the AI-powered forecast summari
 @code {
     // ... existing properties ...
     
-    string AiSummary { get; set; } = "Cloudy"; // Default background
+    string Summary { get; set; } = string.Empty;
     int randomBackground = new Random().Next(1, 4);
     
     // ... rest of existing code ...
@@ -200,13 +202,6 @@ private async Task SelectZone(Zone zone)
         IsLoading = false;
         Forecast = await NwsManager.GetForecastByZoneAsync(zone.Key);
         Error = string.Empty;
-        
-        // Use AI to summarize the forecast for background selection
-        if (Forecast?.Any() == true)
-        {
-            AiSummary = await Summarizer.SummarizeForecastAsync(
-                Forecast.FirstOrDefault()?.DetailedForecast ?? "");
-        }
     }
     catch (Exception ex)
     {
@@ -214,8 +209,12 @@ private async Task SelectZone(Zone zone)
         Logger.LogError(ex, "Error getting forecast for {0}({1})", zone.Name, zone.Key);
         Forecast = null!;
         Error = $"Unable to locate weather for {SelectedZone.Name}({SelectedZone.Key})";
-        AiSummary = "Cloudy"; // Default on error
     }
+
+    if (string.IsNullOrEmpty(Error))
+    {
+        Summary = await Summarizer.SummarizeForecastAsync(Forecast.FirstOrDefault().DetailedForecast);
+    } 
 }
 ```
 
@@ -225,10 +224,9 @@ private async Task SelectZone(Zone zone)
 @if (SelectedZone != null && Forecast != null)
 {
     <div class="forecast-background-container" 
-         style="background-image: url('img/@(AiSummary.ToLowerInvariant())/@(randomBackground).jpg');">
+         style="background-image: url('img/@(Summary.ToLowerInvariant())/@(randomBackground).jpg');">
         <h3 class="weather-headline">
-            Weather for @SelectedZone.Name, @SelectedZone.State (@SelectedZone.Key)
-            <small class="text-muted">- AI suggests: @AiSummary background</small>
+            Weather for @SelectedZone.Name<text>, </text> @SelectedZone.State (@SelectedZone.Key)
         </h3>
         <div class="row row-cols-1 row-cols-md-4 g-4">
             @foreach (var forecast in Forecast.Take(8))
@@ -330,7 +328,9 @@ Now that you have GitHub Models integrated:
 
 ## Congratulations! 🎉
 
-You've completed the .NET Aspire Workshop! Throughout these modules, you've learned how to build, configure, and manage cloud-native applications using .NET Aspire. You now have the skills to create resilient, observable, and scalable distributed applications.
+You've successfully integrated GitHub Models with your .NET Aspire application! You now have AI-powered weather background selection that enhances the user experience with intelligent, dynamic visuals.
 
-**Previous**: [Module #13 - Healthchecks](13-healthchecks.md)
+Throughout this workshop, you've learned how to build, configure, and enhance cloud-native applications using .NET Aspire. You now have the skills to create resilient, observable, and scalable distributed applications with AI capabilities.
+
+**Previous**: [Module #13 - Healthchecks](13-healthchecks.md) | **Next**: [Module #15 - Docker Integration](15-docker-integration.md)
 
