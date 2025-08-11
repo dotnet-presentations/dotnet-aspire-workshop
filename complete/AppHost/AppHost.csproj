@@ -8,7 +8,7 @@
     <UserSecretsId>23eb7bf1-476d-4f58-9d5c-f8369a94f289</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.3.1" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.4.0" />
     <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.3.1" />
     <PackageReference Include="Aspire.Hosting.Redis" Version="9.3.1" />
   </ItemGroup>
