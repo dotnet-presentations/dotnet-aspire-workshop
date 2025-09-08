@@ -15,29 +15,58 @@ namespace Api
 
         public async Task<Zone[]?> GetZonesAsync()
         {
+            using var activity = NwsManagerDiagnostics.activitySource.StartActivity("GetZonesAsync");
+
+            logger.LogInformation("🚀 Starting zones retrieval with {CacheExpiration} cache expiration", TimeSpan.FromHours(1));
+
+            // Check if data exists in cache first
+            if (cache.TryGetValue("zones", out Zone[]? cachedZones))
+            {
+                // Record cache hit
+                NwsManagerDiagnostics.cacheHitCounter.Add(1);
+                activity?.SetTag("cache.hit", true);
+                
+                logger.LogInformation("📈 Retrieved {ZoneCount} zones from cache (cache hit)", cachedZones?.Length ?? 0);
+                return cachedZones;
+            }
+
             return await cache.GetOrCreateAsync("zones", async entry =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+                
+                // Record cache miss when we need to load from file
                 NwsManagerDiagnostics.cacheMissCounter.Add(1);
+                activity?.SetTag("cache.hit", false);
 
                 var zonesFilePath = Path.Combine(webHostEnvironment.WebRootPath, "zones.json");
                 if (!File.Exists(zonesFilePath))
                 {
-                    logger.LogWarning("Zones file not found at {Path}", zonesFilePath);
+                    logger.LogWarning("⚠️ Zones file not found at {ZonesFilePath}", zonesFilePath);
                     return [];
                 }
 
                 using var zonesJson = File.OpenRead(zonesFilePath);
                 var zones = await JsonSerializer.DeserializeAsync<ZonesResponse>(zonesJson, options);
 
-                var result = zones?.Features
-                                ?.Where(f => f.Properties?.ObservationStations?.Count > 0)
-                                .Select(f => (Zone)f)
-                                .Distinct()
-                                .ToArray() ?? [];
+                if (zones?.Features == null)
+                {
+                    logger.LogWarning("⚠️ Failed to deserialize zones from file");
+                    return [];
+                }
 
-                logger.LogInformation("Loaded {ZoneCount} zones from zones.json (cache miss)", result.Length);
-                return result;
+                var filteredZones = zones.Features
+                    .Where(f => f.Properties?.ObservationStations?.Count > 0)
+                    .Select(f => (Zone)f)
+                    .Distinct()
+                    .ToArray();
+
+                logger.LogInformation(
+                    "📊 Retrieved {TotalZones} zones, {FilteredZones} after filtering (cache miss)",
+                    zones.Features.Count,
+                    filteredZones.Length
+                );
+
+                return filteredZones;
             });
         }
 
