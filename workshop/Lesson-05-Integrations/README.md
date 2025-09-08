@@ -69,8 +69,9 @@ We will add the _Output caching_ Redis client integration to our `Api` project. 
     > Note that we are using the "cache" name to reference the Redis cache that we configured in the App Host.
 1. The `NwsManager` has already been configured to use Output caching, but with a memory cache. We will update it to use the Redis cache. Open the `NwsManager.cs` file in the `Data` folder.
 1. In the `NwsManagerExtensions` class you will find a `AddNwsManager` method.
-1. **DELETE** the following code:
+1. **UPDATE** the existing `AddOutputCache` configuration to add cache tagging for better cache management:
 
+    Find this code:
     ```csharp
     // Add default output caching
     services.AddOutputCache(options =>
@@ -79,9 +80,19 @@ We will add the _Output caching_ Redis client integration to our `Api` project. 
     });
     ```
 
-    Because we configured the application to use Redis cache in the `Program.cs` file, we no longer need to add the default output caching policy.
+    And **modify** it to:
+    ```csharp
+    // Add default output caching
+    services.AddOutputCache(options =>
+    {
+        options.AddBasePolicy(builder => builder.Tag("AllCache")
+                                .Cache());
+    });
+    ```
 
-    > Note: We removed the default in-memory AddOutputCache block, but caching continues to work using Redis via `builder.AddRedisOutputCache("cache")`; keep your `AddOutputCache` policies/tags in place so they operate against Redis instead of the in-memory store.
+    This adds a cache tag that will be useful for cache invalidation. Because we configured the application to use Redis cache in the `Program.cs` file, this output cache configuration will now operate against Redis instead of the in-memory store.
+
+    > Note: We kept the `AddOutputCache` configuration but added tagging. The Redis output cache integration works alongside the existing output cache policies, directing them to use Redis instead of the in-memory store.
 
 ## Run the updated application
 
