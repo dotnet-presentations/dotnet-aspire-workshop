@@ -11,7 +11,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="9.0.7" />
     <PackageReference Include="Microsoft.Extensions.AI" Version="9.7.0" />
     <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.7.1-preview.1.25365.4" />
-    <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="9.0.7">
+    <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="9.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
