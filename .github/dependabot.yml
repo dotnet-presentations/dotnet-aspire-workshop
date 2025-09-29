@@ -8,3 +8,31 @@ updates:
     directory: "/complete"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/workshop/Lesson-02-ServiceDefaults/code"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/workshop/Lesson-03-Dashboard-AppHost/code"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/workshop/Lesson-04-ServiceDiscovery/code"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/workshop/Lesson-05-Integrations/code"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/workshop/Lesson-06-Telemetry/code"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/workshop/Lesson-07-Database/code"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/workshop/Lesson-08-Integration-Testing/code"
+    schedule:
+      interval: "weekly"
