@@ -8,7 +8,7 @@ This workshop will be using the following tools:
 
 For the best experience, we recommend using Visual Studio 2022 with the .NET Aspire workload. However, you can use Visual Studio Code with the C# Dev Kit and .NET Aspire workload. Below are setup guides for each platform.
 
-> **New in .NET Aspire 9.4**: Full support for .NET 10 Preview! You can now create Aspire projects targeting .NET 10 using `dotnet new aspire --framework net10.0`
+> **New in .NET Aspire 9.5**: Full support for .NET 10 Preview! You can now create Aspire projects targeting .NET 10 using `dotnet new aspire --framework net10.0`
 
 ## Windows with Visual Studio
 
@@ -34,7 +34,7 @@ dotnet new install Aspire.ProjectTemplates --force
 
 ## Install the .NET Aspire CLI (Optional)
 
-.NET Aspire 9.4 introduces the generally available Aspire CLI, providing a streamlined developer experience. You can install it using one of these methods:
+.NET Aspire 9.5 introduces the generally available Aspire CLI, providing a streamlined developer experience. You can install it using one of these methods:
 
 ### Quick Install (Recommended)
 
