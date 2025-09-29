@@ -20,7 +20,7 @@ var weatherDb = postgres.AddDatabase("weatherdb");
 
 // Add IT-Tools Docker container
 var itTools = builder.AddContainer("it-tools", "corentinth/it-tools")
-	.WithHttpEndpoint(targetPort: 80)
+	.WithHttpEndpoint(8090, 80)
 	.WithExternalHttpEndpoints();
 
 // Add GitHub Models integration
@@ -30,7 +30,6 @@ var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub")
 								 .WithReference(api)
 								 .WithReference(weatherDb)
 								 .WithReference(githubModel)
-								//  .WithReference(itTools)
 								 .WaitFor(postgres)
 								 .WithExternalHttpEndpoints();
 
