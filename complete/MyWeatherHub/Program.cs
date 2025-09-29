@@ -14,7 +14,7 @@ builder.Services.AddHttpClient<NwsManager>(client =>
 builder.AddAzureChatCompletionsClient("chat-model")
        .AddChatClient();
 
-// Register the ForecastSummarizer service
+// Register the ForecastSummarizer service  
 builder.Services.AddScoped<ForecastSummarizer>();
 
 // Add services to the container.
