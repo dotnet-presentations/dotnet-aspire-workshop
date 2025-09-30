@@ -8,7 +8,7 @@
     <PackageReference Include="Aspire.Azure.AI.Inference" Version="9.4.0-preview.1.25378.8" />
     <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.4.2" />
     <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="9.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="9.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="9.0.9" />
     <PackageReference Include="Microsoft.Extensions.AI" Version="9.7.0" />
     <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.7.1-preview.1.25365.4" />
     <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="9.0.7">
