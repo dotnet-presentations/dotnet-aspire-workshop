@@ -372,9 +372,9 @@ Description = "This command will clear all cached data in the Redis database."
 
 ## Advanced Command Patterns
 
-### New in .NET Aspire 9.4: Resource Command Service
+### Resource Command Service
 
-.NET Aspire 9.4 introduces the `ResourceCommandService` API for executing commands programmatically. This enables scenarios like composite commands that coordinate multiple operations or unit testing of commands.
+Aspire provides the `ResourceCommandService` API for executing commands programmatically. This enables scenarios like composite commands that coordinate multiple operations or unit testing of commands.
 
 ```csharp
 // Add a composite command that coordinates multiple operations

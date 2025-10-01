@@ -25,9 +25,9 @@ var weatherDb = postgres.AddDatabase("weatherdb");
 
 The `WithDataVolume(isReadOnly: false)` configuration ensures that your data persists between container restarts. The data is stored in a Docker volume that exists outside the container, making it survive container restarts. This is optional for the workshop—if you omit it, the sample still runs; you just won't keep data between runs.
 
-### New in .NET Aspire 9.4: Enhanced Database Initialization
+### Enhanced Database Initialization
 
-[.NET Aspire 9.4 introduces](https://learn.microsoft.com/dotnet/aspire/whats-new/dotnet-aspire-9.4#-database-hosting-improvements) the improved `WithInitFiles()` method for all database providers, replacing the more complex `WithInitBindMount()` method:
+Aspire provides the method `WithInitFiles()` for all database providers, replacing the more complex `WithInitBindMount()` method:
 
 ```csharp
 var postgres = builder.AddPostgres("postgres")

@@ -12,7 +12,7 @@ Always reference these instructions first and fallback to search or bash command
 - Set PATH: `export PATH="/home/runner/.dotnet:$PATH"`
 - Install Docker Desktop or Podman for container resources
 - Install .NET Aspire CLI: `dotnet tool install -g Aspire.Cli`
-- Install .NET Aspire templates: `dotnet new install Aspire.ProjectTemplates::9.4.0 --force`
+- Install .NET Aspire templates: `dotnet new install Aspire.ProjectTemplates::9.5.0 --force`
 
 ### Build Commands
 
@@ -118,7 +118,7 @@ The `workshop/` folder contains 15 modules covering:
 - **Blazor Server** for web frontend
 - **ASP.NET Core** for API
 - **National Weather Service API** for weather data
-- **.NET Aspire 9.4** for orchestration and observability
+- **.NET Aspire 9.5** for orchestration and observability
 - **Redis** for caching (complete solution)
 - **PostgreSQL** for database (complete solution)
 - **GitHub Models** for AI integration (complete solution)

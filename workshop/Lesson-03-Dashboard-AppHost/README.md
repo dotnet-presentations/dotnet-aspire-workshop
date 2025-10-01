@@ -11,6 +11,11 @@ Before continuing, consider some common terminology used in .NET Aspire:
 
 ## Create App Host Project
 
+> [!NOTE]
+> **Experimental Feature with .NET 10**
+>
+> There is a new feature with Aspire 9.5 that allows you to use a single-file AppHost to define and launch your application system.  We'll describe how to use that technique at the end of this module.
+
 ### Visual Studio & Visual Studio Code
 
 1. Add a new project to the solution called `AppHost`:
@@ -145,5 +150,58 @@ The dashboard can now visualize connections between resources even when they are
 - Connection string parsing for various database types
 - Parameter visualization for URLs and connection strings
 - External service mapping between your services and external dependencies
+
+## Experimental Single-File AppHost with .NET 10
+
+> [!CAUTION]
+>
+> This section contains experimental features released as part of Aspire 9.5 and .NET 10.  This feature may change in future releases
+
+Starting with .NET 10 and Aspire 9.5, you can use the Aspire command-line to create a single-file AppHost.cs file that you can use to orchestrate your application instead of another .NET class library project.  For more information about the single-file capabilities of .NET 10, check out Damian Edwards [blog post introducing the feature](https://devblogs.microsoft.com/dotnet/announcing-dotnet-run-app/). 
+
+At the command-line in the same folder as your solution file (MyWeatherHub.sln) you can run this command:
+
+```bash
+aspire new -n Weather -o . aspire-apphost-singlefile -v 9.5.0
+```
+
+This will create an `apphost.cs` along with several supporting configuration files.  This C# file contains some new features introduced in .NET 10:
+
+```csharp
+#:sdk Aspire.AppHost.Sdk@9.5.0
+
+var builder = DistributedApplication.CreateBuilder(args);
+
+builder.Build().Run();
+```
+
+The `#:sdk` line directs the .NET runtime to use the Aspire SDK to manage this application.  We can add references to the projects in this solution with the `#:project ` directive and finish our AppHost with this content:
+
+```csharp
+#:sdk Aspire.AppHost.Sdk@9.5.0
+#:project Api
+#:project MyWeatherHub
+
+var builder = DistributedApplication.CreateBuilder(args);
+
+var api = builder.AddProject<Projects.Api>("api");
+var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub");
+
+builder.Build().Run();
+```
+
+This has the same effect as the project structure and AppHost.cs file in that project.  It just makes it very concise and easily readable.  To run the Aspire system, we now need to use the command-line:
+
+```bash
+aspire run
+```
+
+You're welcome to continue using this experimental structure instead, and we'll touch on some of the differences in the modules ahead.
+
+If you want to convert your `apphost.cs` file to a full-project you can use the .NET 10 command-line:
+
+```bash
+dotnet project convert apphost.cs
+```
 
 **Next**: [Module #4: Service Discovery](../Lesson-04-ServiceDiscovery/README.md)

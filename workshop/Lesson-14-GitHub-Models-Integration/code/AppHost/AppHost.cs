@@ -1,3 +1,5 @@
+using Aspire.Hosting.GitHub;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 var invalidationKey = builder.AddParameter("ApiCacheInvalidationKey");	
@@ -24,7 +26,7 @@ var itTools = builder.AddContainer("it-tools", "corentinth/it-tools")
 	.WithExternalHttpEndpoints();
 
 // Add GitHub Models integration
-var githubModel = builder.AddGitHubModel("chat-model", "gpt-4o-mini");
+var githubModel = builder.AddGitHubModel("chat-model", GitHubModel.OpenAI.OpenAIGPT4oMini);
 
 var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub")
 								 .WithReference(api)
