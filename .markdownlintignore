@@ -1,0 +1,7 @@
+node_modules/
+complete/**/bin/
+complete/**/obj/
+start/**/bin/
+start/**/obj/
+workshop/**/code/**/bin/
+workshop/**/code/**/obj/

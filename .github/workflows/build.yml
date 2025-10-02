@@ -27,9 +27,25 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        project:
-        - start
-        - complete
+        include:
+        - project-name: "start"
+          project-path: "start/MyWeatherHub.sln"
+        - project-name: "complete"
+          project-path: "complete/MyWeatherHub.sln"
+        - project-name: "lesson-02-servicedefaults"
+          project-path: "workshop/Lesson-02-ServiceDefaults/code/MyWeatherHub.sln"
+        - project-name: "lesson-03-dashboard-apphost"
+          project-path: "workshop/Lesson-03-Dashboard-AppHost/code/MyWeatherHub.sln"
+        - project-name: "lesson-04-servicediscovery"
+          project-path: "workshop/Lesson-04-ServiceDiscovery/code/MyWeatherHub.sln"
+        - project-name: "lesson-05-integrations"
+          project-path: "workshop/Lesson-05-Integrations/code/MyWeatherHub.sln"
+        - project-name: "lesson-06-telemetry"
+          project-path: "workshop/Lesson-06-Telemetry/code/MyWeatherHub.sln"
+        - project-name: "lesson-07-database"
+          project-path: "workshop/Lesson-07-Database/code/MyWeatherHub.sln"
+        - project-name: "lesson-08-integration-testing"
+          project-path: "workshop/Lesson-08-Integration-Testing/code/MyWeatherHub.sln"
 
     steps:
     - uses: actions/checkout@v4
@@ -37,5 +53,5 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
-    - name: Build ${{ matrix.project }}
-      run: dotnet build "${{ matrix.project }}/MyWeatherHub.sln"
+    - name: Build ${{ matrix.project-name }}
+      run: dotnet build "${{ matrix.project-path }}"

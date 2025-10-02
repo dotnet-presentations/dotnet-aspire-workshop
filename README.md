@@ -1,6 +1,8 @@
 ﻿# .NET Aspire Workshop
 
-Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), a new cloud ready stack for building observable, production ready, distributed applications.​ .NET Aspire can be added to any application regardless of the size and scale to help you build better applications faster.​
+Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), a cloud ready stack for building observable, production ready, distributed applications.​ .NET Aspire can be added to any application regardless of the size and scale to help you build better applications faster.​
+
+This workshop uses **.NET Aspire 9.4** and is designed for **.NET 9** (**.NET 8** is also supported).
 
 .NET Aspire streamlines app development with:
 
@@ -44,23 +46,47 @@ You can also watch the Let's Learn .NET Aspire live stream events for the follow
 
 ## Workshop
 
-This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letslearndotnet) series.  This workshop is designed to help you learn about .NET Aspire and how to use it to build cloud ready applications.  This workshop is broken down into 9 modules:
+This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letslearndotnet) series. This workshop is designed to help you learn about .NET Aspire and how to use it to build cloud ready applications.
 
-1. [Setup & Installation](./workshop/1-setup.md)
-1. [Service Defaults](./workshop/2-servicedefaults.md)
-1. [Developer Dashboard & Orchestration](./workshop/3-dashboard-apphost.md)
-1. [Service Discovery](./workshop/4-servicediscovery.md)
-1. [Integrations](./workshop/5-integrations.md)
-1. [Telemetry Module](./workshop/6-telemetry.md)
-1. [Database Module](./workshop/7-database.md)
-1. [Integration Testing](./workshop/8-integration-testing.md)
-1. [Deployment](./workshop/9-deployment.md)
+### Prerequisites
 
-A full slide deck is available for this workshop [here](./workshop/AspireWorkshop.pptx).
+Before starting this workshop, ensure you have:
 
-The starting project for this workshop is located in the `start` folder.  This project is a simple weather API that uses the National Weather Service API to get weather data and a web frontend to display the weather data powered by Blazor.
+- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) (recommended) or [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/) with the C# extension
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for containerized resources)
 
-This workshop is designed to be done in a 2 hour time frame.
+### Workshop Modules
+
+This workshop is broken down into 15 modules (estimated completion time: 4-6 hours):
+
+1. [Setup & Installation](./workshop/Lesson-01-Setup/README.md)
+1. [Service Defaults](./workshop/Lesson-02-ServiceDefaults/README.md)
+1. [Developer Dashboard & Orchestration](./workshop/Lesson-03-Dashboard-AppHost/README.md)
+1. [Service Discovery](./workshop/Lesson-04-ServiceDiscovery/README.md)
+1. [Integrations](./workshop/Lesson-05-Integrations/README.md)
+1. [Telemetry Module](./workshop/Lesson-06-Telemetry/README.md)
+1. [Database Module](./workshop/Lesson-07-Database/README.md)
+1. [Integration Testing](./workshop/Lesson-08-Integration-Testing/README.md)
+1. [Deployment](./workshop/Lesson-09-Deployment/README.md)
+1. [Container Management](./workshop/Lesson-10-Container-Management/README.md)
+1. [Azure Integrations](./workshop/Lesson-11-Azure-Integrations/README.md)
+1. [Custom Commands](./workshop/Lesson-12-Custom-Commands/README.md)
+1. [Health Checks](./workshop/Lesson-13-HealthChecks/README.md)
+1. [GitHub Models Integration](./workshop/Lesson-14-GitHub-Models-Integration/README.md)
+1. [Docker Integration](./workshop/Lesson-15-Docker-Integration/README.md)
+
+A full [slide deck](./workshop/AspireWorkshop.pptx) is available for this workshop.
+
+### Getting Started
+
+The starting project for this workshop is located in the `start` folder. This project is a simple weather API that uses the National Weather Service API to get weather data and a web frontend to display the weather data powered by Blazor.
+
+To begin the workshop:
+
+1. Navigate to the `start` folder
+2. Open the solution file `MyWeatherHub.sln`
+3. Follow the instructions in [Module 1: Setup & Installation](./workshop/1-setup.md)
 
 ## Demo data
 

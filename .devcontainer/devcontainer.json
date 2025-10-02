@@ -1,32 +1,32 @@
 {
-    "name": ".NET with Aspire",
-    "image": "mcr.microsoft.com/devcontainers/dotnet:9.0-bookworm",
-    "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+	"name": ".NET with Aspire",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:9.0-bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
 		"ghcr.io/devcontainers/features/powershell:1": {},
-        "ghcr.io/devcontainers/features/github-cli:1": {},
-        "ghcr.io/azure/azure-dev/azd:latest": {}
-    },
-    "hostRequirements": {
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/azure/azure-dev/azd:latest": {}
+	},
+	"hostRequirements": {
 		"cpus": 4,
 		"memory": "16gb",
 		"storage": "32gb"
 	},
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-dotnettools.csdevkit",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csdevkit",
 				"GitHub.copilot-chat",
 				"GitHub.copilot"
-            ],
-            "codespaces": {
-                "openFiles": [
-                    "README.md"
-                ]
-            }
-        }
-    },
-    "onCreateCommand": "dotnet new install Aspire.ProjectTemplates::9.1.0 --force",
+			],
+			"codespaces": {
+				"openFiles": [
+					"README.md"
+				]
+			}
+		}
+	},
+	"onCreateCommand": "dotnet new install Aspire.ProjectTemplates::9.4.0 --force",
 	"postStartCommand": "dotnet dev-certs https --trust",
-    "postCreateCommand": "find **/*.sln -exec dotnet restore {} \\;"
+	"postCreateCommand": "find **/*.sln -exec dotnet restore {} \\;"
 }
