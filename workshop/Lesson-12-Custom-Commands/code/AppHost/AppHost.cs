@@ -4,8 +4,7 @@ var invalidationKey = builder.AddParameter("ApiCacheInvalidationKey");
 
 var cache = builder.AddRedis("cache")
 	.WithClearCommand()
-	.WithRedisInsight()
-	.WithLifetime(ContainerLifetime.Persistent);
+	.WithRedisInsight();
 
 var weatherApi = builder.AddExternalService("weather-api", "https://api.weather.gov");
 
