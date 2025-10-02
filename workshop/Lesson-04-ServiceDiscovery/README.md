@@ -71,9 +71,9 @@ Alternatively, we can update the url to not use the `WeatherEndpoint` configurat
 
     ![Service discovery settings in the dashboard](../media/dashboard-servicediscovery.png)
 
-## New in .NET Aspire 9.4: External Service Modeling
+## External Service Modeling
 
-.NET Aspire 9.4 introduces first-class support for modeling external services in your application graph. Modern applications frequently need to integrate with external APIs, third-party services, or existing infrastructure that isn't managed by Aspire.
+Aspire provides first-class support for modeling external services in your application graph. Modern applications frequently need to integrate with external APIs, third-party services, or existing infrastructure that isn't managed by Aspire.
 
 ### Adding External Services
 

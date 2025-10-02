@@ -53,6 +53,7 @@ This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letsl
 Before starting this workshop, ensure you have:
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) (recommended) or [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET 10 SDK](https://get.dot.net/10) (not required) for some feature previews you may want to try
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/) with the C# extension
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for containerized resources)
 

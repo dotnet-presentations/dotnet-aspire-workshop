@@ -5,10 +5,11 @@ This workshop will be using the following tools:
 - [.NET 9 SDK](https://get.dot.net/9) or [.NET 10 Preview](https://get.dot.net/10) (optional)
 - [Docker Desktop](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/getting-started/installation)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/) with [C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
+- Aspire CLI - this command line tool allows you to update and interact with the Aspire features of your application system without needing to directly use .NET tools
 
 For the best experience, we recommend using Visual Studio 2022 with the .NET Aspire workload. However, you can use Visual Studio Code with the C# Dev Kit and .NET Aspire workload. Below are setup guides for each platform.
 
-> **New in .NET Aspire 9.4**: Full support for .NET 10 Preview! You can now create Aspire projects targeting .NET 10 using `dotnet new aspire --framework net10.0`
+> **New in .NET Aspire 9.5**: Full support for .NET 10 Preview! You can now create Aspire projects targeting .NET 10 using `dotnet new aspire --framework net10.0`
 
 ## Windows with Visual Studio
 
@@ -32,9 +33,9 @@ Run the following command to install the latest .NET Aspire templates.
 dotnet new install Aspire.ProjectTemplates --force
 ```
 
-## Install the .NET Aspire CLI (Optional)
+## Install the .NET Aspire CLI
 
-.NET Aspire 9.4 introduces the generally available Aspire CLI, providing a streamlined developer experience. You can install it using one of these methods:
+Let's install the Aspire CLI, which provides a streamlined developer experience. You can install it using one of these methods:
 
 ### Quick Install (Recommended)
 

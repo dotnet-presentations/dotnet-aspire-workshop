@@ -50,7 +50,7 @@ This command will automatically add the `Aspire.Hosting.GitHub.Models` package r
 
 Now let's add the GitHub Models integration to our AppHost project:
 
-1. Open your `AppHost/Program.cs` file
+1. Open your `AppHost/AppHost.cs` file
 1. Add the GitHub Models integration:
 
 ```csharp
@@ -59,7 +59,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 ...
 
 // Add GitHub Models integration
-var githubModel = builder.AddGitHubModel("chat-model", "gpt-4o-mini");
+var githubModel = builder.AddGitHubModel("chat-model", GitHubModel.OpenAI.OpenAIGPT4oMini);
 
 ...
 

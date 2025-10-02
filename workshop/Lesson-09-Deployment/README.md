@@ -30,7 +30,11 @@ In this example, we'll assume you're deploying the MyWeatherHub app from the pre
 
 The process for installing `azd` varies based on your operating system, but it is widely available via `winget`, `brew`, `apt`, or directly via `curl`. To install `azd`, see [Install Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd).
 
-### New in .NET Aspire 9.4: aspire deploy Command
+### Experimental Feature: aspire deploy Command
+
+> [!CAUTION]
+>
+> This feature is under construction and is not stable.  This information is shared for informational purposes, and we recommend you keep an eye on the [.NET Blog](https://devblogs.microsoft.com/dotnet) for updates to the Aspire CLI that will include updates to this feature.
 
 .NET Aspire 9.4 introduces the `aspire deploy` command (preview/feature flag) that extends publishing capabilities to actively deploy to target environments. This command provides enhanced deployment workflows with custom pre/post-deploy logic.
 

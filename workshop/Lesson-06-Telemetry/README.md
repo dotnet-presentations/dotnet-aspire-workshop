@@ -92,6 +92,8 @@ Now we'll update the NwsManager class to use our metrics and implement structure
 Next, we'll make several additions to `GetForecastByZoneAsync` to add in several observability features. Make the following updates, being careful to keep the existing API code shown by the "... API call logic ..." comment. You can refer to the [completed code for this lesson](code/Api/Data/NwsManager.cs) if needed.
 
 ```csharp
+private static int forecastCount = 0;
+
 public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
 {
     // Create a logging scope with structured data
@@ -113,25 +115,38 @@ public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
 
     try 
     {
-        // ... API call logic ...
+        // Create an exception every 5 calls to simulate an error for testing
+        if (forecastCount % 5 == 0)
+        {
+            throw new Exception("Random exception thrown by NwsManager.GetForecastAsync");
+        }
+
+        var zoneIdSegment = Uri.EscapeDataString(zoneId);
+        var forecasts = await httpClient.GetFromJsonAsync<ForecastResponse>($"zones/forecast/{zoneIdSegment}/forecast", options);
         stopwatch.Stop();
         
         // Record the request duration
         NwsManagerDiagnostics.forecastRequestDuration.Record(stopwatch.Elapsed.TotalSeconds);
         activity?.SetTag("request.success", true);
 
+        var result = forecasts
+            ?.Properties
+            ?.Periods
+            ?.Select(p => (Forecast)p)
+            .ToArray() ?? [];
+
         logger.LogInformation(
             "📊 Retrieved forecast for zone {ZoneId} in {Duration:N0}ms with {PeriodCount} periods",
             zoneId,
-            duration.TotalMilliseconds,
-            forecasts?.Properties?.Periods?.Count ?? 0
+            stopwatch.Elapsed.TotalMilliseconds,
+            result.Length
         );
 
-        return forecasts;
+        return result;
     }
     catch (HttpRequestException ex)
     {
-        // Record failures in our metrics
+        stopwatch.Stop();
         NwsManagerDiagnostics.failedRequestCounter.Add(1);
         activity?.SetTag("request.success", false);
         
@@ -140,6 +155,20 @@ public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
             "❌ Failed to retrieve forecast for zone {ZoneId}. Status: {StatusCode}",
             zoneId,
             ex.StatusCode
+        );
+        throw;
+    }
+    catch (Exception ex)
+    {
+        stopwatch.Stop();
+        NwsManagerDiagnostics.failedRequestCounter.Add(1);
+        activity?.SetTag("request.success", false);
+        
+        logger.LogError(
+            ex,
+            "❌ Unexpected error fetching forecast for zone {ZoneId} after {ElapsedMs}ms",
+            zoneId,
+            stopwatch.Elapsed.TotalMilliseconds
         );
         throw;
     }
@@ -152,6 +181,80 @@ This implementation shows how our custom metrics work with structured logging:
 - Logging scopes group related log entries
 - Trace activities connect logs across service boundaries
 - Log messages include structured data for better analysis
+
+## Implementing Cache Metrics
+
+Now let's enhance the `GetZonesAsync` method to properly track cache hit and miss metrics. Currently, the method only tracks cache misses when data is loaded from the file. We need to add cache hit tracking when data is retrieved from memory cache.
+
+Update the `GetZonesAsync` method to include cache hit tracking:
+
+```csharp
+public async Task<Zone[]?> GetZonesAsync()
+{
+    using var activity = NwsManagerDiagnostics.activitySource.StartActivity("GetZonesAsync");
+
+    logger.LogInformation("🚀 Starting zones retrieval with {CacheExpiration} cache expiration", TimeSpan.FromHours(1));
+
+    // Check if data exists in cache first
+    if (cache.TryGetValue("zones", out Zone[]? cachedZones))
+    {
+        // Record cache hit
+        NwsManagerDiagnostics.cacheHitCounter.Add(1);
+        activity?.SetTag("cache.hit", true);
+        
+        logger.LogInformation("📈 Retrieved {ZoneCount} zones from cache (cache hit)", cachedZones?.Length ?? 0);
+        return cachedZones;
+    }
+
+    return await cache.GetOrCreateAsync("zones", async entry =>
+    {
+        entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+        
+        // Record cache miss when we need to load from file
+        NwsManagerDiagnostics.cacheMissCounter.Add(1);
+        activity?.SetTag("cache.hit", false);
+
+        var zonesFilePath = Path.Combine(webHostEnvironment.WebRootPath, "zones.json");
+        if (!File.Exists(zonesFilePath))
+        {
+            logger.LogWarning("⚠️ Zones file not found at {ZonesFilePath}", zonesFilePath);
+            return [];
+        }
+
+        using var zonesJson = File.OpenRead(zonesFilePath);
+        var zones = await JsonSerializer.DeserializeAsync<ZonesResponse>(zonesJson, options);
+
+        if (zones?.Features == null)
+        {
+            logger.LogWarning("⚠️ Failed to deserialize zones from file");
+            return [];
+        }
+
+        var filteredZones = zones.Features
+            .Where(f => f.Properties?.ObservationStations?.Count > 0)
+            .Select(f => (Zone)f)
+            .Distinct()
+            .ToArray();
+
+        logger.LogInformation(
+            "📊 Retrieved {TotalZones} zones, {FilteredZones} after filtering (cache miss)",
+            zones.Features.Count,
+            filteredZones.Length
+        );
+
+        return filteredZones;
+    });
+}
+```
+
+### Cache Metrics Explained
+
+The enhanced implementation demonstrates both cache hit and miss scenarios:
+
+- **Cache Hit**: When `cache.TryGetValue()` successfully retrieves data from memory, we increment `cacheHitCounter`
+- **Cache Miss**: When data isn't in cache and `GetOrCreateAsync` needs to load from file, we increment `cacheMissCounter`
+- **Activity Tags**: We set `cache.hit` tags for distributed tracing to track cache performance across requests
+- **Structured Logging**: Different log messages help distinguish between cache hits and misses in the dashboard
 
 ## Testing the Implementation
 
