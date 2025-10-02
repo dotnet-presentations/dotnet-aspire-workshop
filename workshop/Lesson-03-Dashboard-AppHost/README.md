@@ -155,9 +155,17 @@ The dashboard can now visualize connections between resources even when they are
 
 > [!CAUTION]
 >
-> This section contains experimental features released as part of Aspire 9.5 and .NET 10.  This feature may change in future releases
+> This section contains experimental features released as part of Aspire 9.5 and .NET 10.  This feature may change in future releases.  It will only work if you have the .NET 10 SDK or later installed.
 
 Starting with .NET 10 and Aspire 9.5, you can use the Aspire command-line to create a single-file AppHost.cs file that you can use to orchestrate your application instead of another .NET class library project.  For more information about the single-file capabilities of .NET 10, check out Damian Edwards [blog post introducing the feature](https://devblogs.microsoft.com/dotnet/announcing-dotnet-run-app/). 
+
+Before we can start using the new Single-File AppHost feature, we need to activate it with a feature flag in the Aspire command-line tool.  We also need to disable the minimum SDK check, because the current version of Aspire rejects the .NET 10 prerelease SDK version.
+
+```bash
+aspire config set features.singlefileAppHostEnabled true
+aspire config set features.minimumSdkCheckEnabled false
+```
+
 
 At the command-line in the same folder as your solution file (MyWeatherHub.sln) you can run this command:
 
