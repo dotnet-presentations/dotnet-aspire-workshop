@@ -92,6 +92,8 @@ Now we'll update the NwsManager class to use our metrics and implement structure
 Next, we'll make several additions to `GetForecastByZoneAsync` to add in several observability features. Make the following updates, being careful to keep the existing API code shown by the "... API call logic ..." comment. You can refer to the [completed code for this lesson](code/Api/Data/NwsManager.cs) if needed.
 
 ```csharp
+private static int forecastCount = 0;
+
 public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
 {
     // Create a logging scope with structured data
@@ -119,7 +121,7 @@ public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
             throw new Exception("Random exception thrown by NwsManager.GetForecastAsync");
         }
 
-        var zoneIdSegment = HttpUtility.UrlEncode(zoneId);
+        var zoneIdSegment = Uri.EscapeDataString(zoneId);
         var forecasts = await httpClient.GetFromJsonAsync<ForecastResponse>($"zones/forecast/{zoneIdSegment}/forecast", options);
         stopwatch.Stop();
         
