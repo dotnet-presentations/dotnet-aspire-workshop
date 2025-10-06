@@ -9,86 +9,512 @@
 
 <HeadContent>
 	<style>
+		.hero-section {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 3rem 0;
+			margin-bottom: 2rem;
+			border-radius: 0 0 1rem 1rem;
+		}
+
+		.hero-content {
+			text-align: center;
+		}
+
+		.hero-title {
+			font-size: 3rem;
+			font-weight: 700;
+			margin-bottom: 0.5rem;
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+		}
+
+		.hero-subtitle {
+			font-size: 1.25rem;
+			opacity: 0.9;
+			margin-bottom: 0;
+		}
+
+		.main-content {
+			margin-top: 2rem;
+		}
+
+		.zone-selector-card {
+			background: white;
+			border-radius: 1rem;
+			box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+			overflow: hidden;
+			margin-bottom: 2rem;
+		}
+
+		.card-header-custom {
+			background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+			padding: 1.5rem;
+			border-bottom: 1px solid #dee2e6;
+		}
+
+		.card-header-custom h3 {
+			margin: 0;
+			color: #495057;
+			font-weight: 600;
+		}
+
+		.instructions-card {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-radius: 1rem;
+			padding: 2rem;
+			color: white;
+			box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+			margin-bottom: 2rem;
+		}
+
+		.instructions-card h3 {
+			color: white;
+			font-weight: 600;
+			margin-bottom: 1.5rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.instructions-card .instruction-item {
+			background: rgba(255,255,255,0.2);
+			padding: 1rem;
+			border-radius: 0.5rem;
+			margin-bottom: 1rem;
+			backdrop-filter: blur(10px);
+			color: white;
+		}
+
+		.instructions-card .instruction-item:last-child {
+			margin-bottom: 0;
+		}
 
 		.quickgrid {
 			width: 100%;
+			border-radius: 0.5rem;
+			overflow: hidden;
 		}
 
 		.quickgrid td:has(span.selectedCell) {
-			background-color: yellow;
+			background-color: #e3f2fd;
+			border-left: 4px solid #2196f3;
+		}
+
+		.zone-link {
+			color: #1976d2;
+			cursor: pointer;
+			font-weight: 500;
+			transition: all 0.2s ease;
+		}
+
+		.zone-link:hover {
+			color: #0d47a1;
+			text-decoration: underline;
+		}
+
+		.search-box input {
+			border-radius: 0.5rem;
+			border: 1px solid #ced4da;
+			padding: 0.5rem 0.75rem;
+			font-size: 0.9rem;
+		}
+
+		.search-box input:focus {
+			border-color: #80bdff;
+			box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+		}
+
+		.weather-icon {
+			font-size: 1.5rem;
+		}
+
+		.recommended-zones {
+			background: rgba(255,255,255,0.15);
+			border-left: 4px solid rgba(255,255,255,0.5);
+			padding: 1rem;
+			border-radius: 0.5rem;
+			margin-top: 1rem;
+		}
+
+		.recommended-zones .zone-suggestion {
+			display: inline-block;
+			background: rgba(255,255,255,0.25);
+			color: white;
+			padding: 0.25rem 0.5rem;
+			margin: 0.25rem;
+			border-radius: 0.25rem;
+			font-size: 0.9rem;
+			border: 1px solid rgba(255,255,255,0.3);
+			backdrop-filter: blur(5px);
+		}
+
+		.instruction-note {
+			color: rgba(255,255,255,0.9) !important;
+			background: rgba(0,0,0,0.2);
+			padding: 0.75rem;
+			border-radius: 0.375rem;
+			display: block;
+			backdrop-filter: blur(5px);
+			border: 1px solid rgba(255,255,255,0.2);
 		}
 	</style>
 </HeadContent>
 
-<h1>My Weather Hub</h1>
-<h2>Live Weather reports from the US National Weather service</h2>
-
-<div class="row">
-	<div class="col-md-6">
-		<QuickGrid Items="zones" TGridItem="Zone" Pagination="pagination">
-			<TemplateColumn Title="Name" SortBy="NameSort" Sortable="true">
-				<ColumnOptions>
-					<div class="search-box">
-						<input type="search" autofocus @bind="NameFilter" @bind:event="oninput" placeholder="Name..." />
-					</div>
-				</ColumnOptions>
-				<ChildContent>
-					<span class="link-primary @(SelectedZone == context ? "selectedCell" : "")" style="cursor: pointer;" @onclick="@(() => SelectZone(context))">@context.Name</span>
-				</ChildContent>
-			</TemplateColumn>
-			<TemplateColumn Title="State">
-				<ColumnOptions>
-					<div class="search-box">
-						<input type="search" autofocus @bind="StateFilter" @bind:event="oninput" placeholder="State..." />
-					</div>
-				</ColumnOptions>
-				<ChildContent>
-					<span class="@(SelectedZone == context ? "selectedCell" : "")">@context.State</span>
-				</ChildContent>
-			</TemplateColumn>
-		</QuickGrid>
-		<Paginator State="@pagination"></Paginator>
+<!-- Hero Section -->
+<div class="hero-section">
+	<div class="container">
+		<div class="hero-content">
+			<h1 class="hero-title">
+				<span class="weather-icon">🌤️</span>
+				My Weather Hub
+			</h1>
+			<p class="hero-subtitle">Live Weather Reports from the US National Weather Service</p>
+		</div>
 	</div>
-
-	<div class="col-md-6" style="max-width:30em;">
-		<p>Click the name of a weather zone from the <a href="https://www.weather.gov/documentation/services-web-api" target="_blank">US National Weather Service</a> and the upcoming weather for that zone will appear below.</p>
-		<p>You can sort and filter the list of available weather forecast zones using the column headers of the grid.</p>
-		<p>Not all forecast zones will have a forecast available.  For reliable zones, try Philadelphia, Manhattan, District of Columbia, or Los Angeles County San Gabriel Valley</p>
-		<p>For a zone that isn't reliably reporting, try Bristol Bay, AK (Alaska)</p>
-	</div>
-
 </div>
 
-@if (IsLoading)
-{
-	<div class="spinner-border" role="status">
-		<span class="visually-hidden">Loading...</span>
-	</div>
-}
-else if (SelectedZone != null && Forecast != null)
-{
+<!-- Main Content -->
+<div class="container main-content">
+	<div class="row">
+		<!-- Weather Zone Selector -->
+		<div class="col-lg-8">
+			<div class="zone-selector-card">
+				<div class="card-header-custom">
+					<h3>📍 Select a Weather Zone</h3>
+				</div>
+				<div class="p-3">
+					<!-- Search Filters -->
+					<div class="search-filters mb-3">
+						<div class="row g-2">
+							<div class="col-md-6">
+								<div class="search-box-enhanced">
+									<label class="form-label">Search Zone Name</label>
+									<input type="search" class="form-control" @bind="NameFilter" @bind:event="oninput" placeholder="Search by name..." />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="search-box-enhanced">
+									<label class="form-label">Filter by State</label>
+									<input type="search" class="form-control" @bind="StateFilter" @bind:event="oninput" placeholder="Enter state abbreviation..." />
+								</div>
+							</div>
+						</div>
+						@if (!string.IsNullOrEmpty(NameFilter) || !string.IsNullOrEmpty(StateFilter))
+						{
+							<div class="mt-2">
+								<button class="btn btn-outline-secondary btn-sm" @onclick="ClearFilters">
+									<span>🗙</span> Clear Filters
+								</button>
+								<small class="text-muted ms-2">Showing @zones.Count() of @AllZones.Length zones</small>
+							</div>
+						}
+					</div>
 
-	<h3>Weather for @SelectedZone.Name<text>, </text> @SelectedZone.State (@SelectedZone.Key)</h3>
-
-	<div class="row row-cols-1 row-cols-md-4 g-4">
-		@foreach (var forecast in Forecast.Take(8))
-		{
-
-			<div class="col">
-				<div class="card">
-					<div class="card-header">@forecast.Name</div>
-					<div class="card-body">@forecast.DetailedForecast</div>
+					@if (zones.Any())
+					{
+						<QuickGrid Items="zones" TGridItem="Zone" Pagination="pagination">
+							<TemplateColumn Title="Zone Name" SortBy="NameSort" Sortable="true">
+								<ChildContent>
+									<span class="zone-link @(SelectedZone == context ? "selectedCell" : "")" @onclick="@(() => SelectZone(context))">@context.Name</span>
+								</ChildContent>
+							</TemplateColumn>
+							<TemplateColumn Title="State">
+								<ChildContent>
+									<span class="@(SelectedZone == context ? "selectedCell" : "")">@context.State</span>
+								</ChildContent>
+							</TemplateColumn>
+						</QuickGrid>
+						<div class="mt-3">
+							<Paginator State="@pagination"></Paginator>
+						</div>
+					}
+					else
+					{
+						<div class="no-results-container">
+							<div class="no-results-icon">🔍</div>
+							<h4>No Weather Zones Found</h4>
+							<p class="text-muted">No zones match your current search criteria.</p>
+							<div class="suggestions">
+								<strong>Try:</strong>
+								<ul class="list-unstyled mt-2">
+									<li>• Clearing your search filters</li>
+									<li>• Using fewer characters in your search</li>
+									<li>• Trying a different state abbreviation (e.g., NY, CA, TX)</li>
+								</ul>
+							</div>
+							<button class="btn btn-primary mt-3" @onclick="ClearFilters">
+								Clear All Filters
+							</button>
+						</div>
+					}
 				</div>
 			</div>
+		</div>
 
-		}
-	</div>
+		<!-- Instructions Panel -->
+		<div class="col-lg-4">
+			<div class="instructions-card">
+				<h3>
+					<span>ℹ️</span>
+					How to Use
+				</h3>
+				
+				<div class="instruction-item">
+					<strong>Step 1:</strong> Click on any weather zone name from the table to view its forecast.
+				</div>
+				
+				<div class="instruction-item">
+					<strong>Step 2:</strong> Use the search boxes to filter zones by name or state.
+				</div>
+				
+				<div class="instruction-item">
+					<strong>Step 3:</strong> Sort columns by clicking the column headers.
+				</div>
 
-}
-else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
-{
-	<div class="alert-danger border border-1 border-danger p-3" style="width: 30em">@Error<br />Choose another weather station</div>
-}
+				<div class="recommended-zones">
+					<strong>🎯 Recommended zones for testing:</strong><br>
+					<span class="zone-suggestion">Philadelphia, PA</span>
+					<span class="zone-suggestion">Manhattan, NY</span>
+					<span class="zone-suggestion">District of Columbia</span>
+					<span class="zone-suggestion">Los Angeles County</span>
+				</div>
+
+				<div class="mt-3">
+					<small class="instruction-note">
+						<em>Note: Some zones may not have current forecasts available. Try the recommended zones for reliable data.</em>
+					</small>
+				</div>
+			</div>
+		</div>
+	</div> <!-- Close row -->
+
+	<!-- Weather Forecast Display -->
+	@if (IsLoading)
+	{
+		<div class="row mt-4">
+			<div class="col-12 text-center">
+				<div class="loading-container">
+					<div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+						<span class="visually-hidden">Loading...</span>
+					</div>
+					<p class="mt-3 text-muted">Loading weather forecast...</p>
+				</div>
+			</div>
+		</div>
+	}
+	else if (SelectedZone != null && Forecast != null)
+	{
+		<div class="row mt-4">
+			<div class="col-12">
+				<div class="weather-results-card">
+					<div class="weather-header">
+						<h3 class="weather-title">
+							<span class="weather-icon">🌦️</span>
+							Weather Forecast for @SelectedZone.Name, @SelectedZone.State
+						</h3>
+						<span class="zone-code">Zone: @SelectedZone.Key</span>
+					</div>
+
+					<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mt-2">
+						@foreach (var forecast in Forecast.Take(8))
+						{
+							<div class="col">
+								<div class="forecast-card-modern">
+									<div class="forecast-header">
+										<h5 class="forecast-period">@forecast.Name</h5>
+									</div>
+									<div class="forecast-body">
+										<p class="forecast-details">@forecast.DetailedForecast</p>
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+	else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
+	{
+		<div class="row mt-4">
+			<div class="col-12">
+				<div class="error-card">
+					<div class="error-icon">⚠️</div>
+					<div class="error-content">
+						<h4>Weather Data Unavailable</h4>
+						<p>@Error</p>
+						<small class="text-muted">Please try selecting a different weather zone from the recommended list above.</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+</div> <!-- Close container main-content -->
+
+<style>
+	.loading-container {
+		padding: 3rem 0;
+	}
+
+	.weather-results-card {
+		background: white;
+		border-radius: 1rem;
+		box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+		padding: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.weather-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+		padding-bottom: 1rem;
+		border-bottom: 2px solid #e9ecef;
+	}
+
+	.weather-title {
+		margin: 0;
+		color: #2c3e50;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.zone-code {
+		background: #e3f2fd;
+		color: #1976d2;
+		padding: 0.5rem 1rem;
+		border-radius: 0.5rem;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+
+	.forecast-card-modern {
+		background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+		border-radius: 0.75rem;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		overflow: hidden;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.forecast-card-modern:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+	}
+
+	.forecast-header {
+		background: linear-gradient(90deg, #495057 0%, #6c757d 100%);
+		color: white;
+		padding: 1rem;
+		text-align: center;
+	}
+
+	.forecast-period {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 600;
+	}
+
+	.forecast-body {
+		padding: 1.25rem;
+		flex-grow: 1;
+		display: flex;
+		align-items: center;
+	}
+
+	.forecast-details {
+		margin: 0;
+		color: #495057;
+		line-height: 1.5;
+		font-size: 0.9rem;
+	}
+
+	.error-card {
+		background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+		border: 1px solid #feb2b2;
+		border-radius: 1rem;
+		padding: 2rem;
+		text-align: center;
+		color: #c53030;
+	}
+
+	.error-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.error-content h4 {
+		color: #c53030;
+		margin-bottom: 1rem;
+	}
+
+	.error-content p {
+		margin-bottom: 0.5rem;
+	}
+
+	.search-filters {
+		background: #f8f9fa;
+		border-radius: 0.5rem;
+		padding: 1.5rem;
+		margin-bottom: 1rem;
+		border: 1px solid #e9ecef;
+	}
+
+	.search-box-enhanced .form-label {
+		font-weight: 600;
+		color: #495057;
+		margin-bottom: 0.5rem;
+	}
+
+	.search-box-enhanced .form-control {
+		border-radius: 0.375rem;
+		border: 1px solid #ced4da;
+		transition: all 0.2s ease;
+	}
+
+	.search-box-enhanced .form-control:focus {
+		border-color: #80bdff;
+		box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+	}
+
+	.no-results-container {
+		text-align: center;
+		padding: 3rem 2rem;
+		background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+		border-radius: 1rem;
+		margin: 1rem 0;
+	}
+
+	.no-results-icon {
+		font-size: 4rem;
+		margin-bottom: 1rem;
+		opacity: 0.6;
+	}
+
+	.no-results-container h4 {
+		color: #495057;
+		margin-bottom: 1rem;
+	}
+
+	.no-results-container .suggestions {
+		text-align: left;
+		max-width: 300px;
+		margin: 1.5rem auto;
+		background: rgba(255,255,255,0.7);
+		padding: 1rem;
+		border-radius: 0.5rem;
+	}
+
+	.no-results-container .suggestions li {
+		margin-bottom: 0.25rem;
+		color: #6c757d;
+	}
+</style>
 
 @code {
 
@@ -160,6 +586,13 @@ else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
 			Error = $"Unable to locate weather for {SelectedZone.Name}({SelectedZone.Key})";
 		}
 
+	}
+
+	private void ClearFilters()
+	{
+		NameFilter = string.Empty;
+		StateFilter = string.Empty;
+		StateHasChanged();
 	}
 
 

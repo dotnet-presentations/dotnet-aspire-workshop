@@ -98,6 +98,14 @@ else if (SelectedZone != null && Forecast != null)
 {
 
 	<div class="forecast-background-container" style="background-image: url('img/@(Summary.ToLowerInvariant())/@(randomBackground).jpg');">
+		@if (!string.IsNullOrEmpty(Summary))
+		{
+			<div class="ai-summary-card">
+				<div class="ai-summary-content">
+					@Summary.ToUpperInvariant()
+				</div>
+			</div>
+		}
 		<h3 class="weather-headline">
 			Weather for @SelectedZone.Name<text>, </text> @SelectedZone.State (@SelectedZone.Key)
 		</h3>
