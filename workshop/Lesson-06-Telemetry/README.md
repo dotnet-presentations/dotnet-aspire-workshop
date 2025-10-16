@@ -124,9 +124,13 @@ public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
         var zoneIdSegment = Uri.EscapeDataString(zoneId);
         var forecasts = await httpClient.GetFromJsonAsync<ForecastResponse>($"zones/forecast/{zoneIdSegment}/forecast", options);
         stopwatch.Stop();
-        
+
         // Record the request duration
-        NwsManagerDiagnostics.forecastRequestDuration.Record(stopwatch.Elapsed.TotalSeconds);
+        var tags = new KeyValuePair<string, object?>[]
+        {
+          new KeyValuePair<string, object?>("zone.id", zoneId)
+        };
+        NwsManagerDiagnostics.forecastRequestDuration.Record(stopwatch.Elapsed.TotalSeconds, tags);
         activity?.SetTag("request.success", true);
 
         var result = forecasts
