@@ -129,107 +129,73 @@ For development environments, we use `EnsureCreatedAsync()` to automatically cre
 
 ## Updating the Web App
 
-Now we'll update the web application to support favoriting weather zones and filtering them. Let's make these changes step by step:
+We've provided a pre-built `WeatherZoneGrid` component that encapsulates all the database interaction functionality. This approach demonstrates best practices for component design in Blazor applications and keeps your `Home.razor` file clean and maintainable.
 
-> QuickGrid Version Note: Ensure the `MyWeatherHub` project references the latest stable 9.0.x version of `Microsoft.AspNetCore.Components.QuickGrid` (currently `9.0.7` in the complete solution) to pick up bug fixes and accessibility improvements.
+> **🎯 Workshop Approach**: Instead of manually adding extensive grid and database code to `Home.razor`, you'll use the provided `WeatherZoneGrid` component. This demonstrates how to create reusable, maintainable Blazor components with database integration.
 
-1. Make sure to add these Entity Framework using statements at the top of `Home.razor` if they're not already present:
+The `WeatherZoneGrid` component is already available in your project and includes:
+- Sortable, filterable zone grid with pagination
+- "Show only favorites" checkbox functionality  
+- Star icons for favoriting/unfavoriting zones
+- Database persistence of favorite zones using Entity Framework
+- Search functionality by zone name and state
+- Isolated CSS styling
 
-```csharp
-@using Microsoft.EntityFrameworkCore
-@inject MyWeatherContext DbContext
-```
+> QuickGrid Version Note: The project already references the latest stable 9.0.x version of `Microsoft.AspNetCore.Components.QuickGrid` with all necessary configurations.
 
-1. Add these new properties to the `@code` block to support the favorites functionality:
 
-```csharp
-bool ShowOnlyFavorites { get; set; }
-List<Zone> FavoriteZones { get; set; } = new List<Zone>();
-```
 
-1. Update the `OnInitializedAsync` method to load favorites from the database. Find the existing method and replace it with:
+### Using the WeatherZoneGrid Component
 
-```csharp
-protected override async Task OnInitializedAsync()
-{
-    AllZones = (await NwsManager.GetZonesAsync()).ToArray();
-    FavoriteZones = await DbContext.FavoriteZones.ToListAsync();
-}
-```
+To integrate database functionality into your application, you just need to make a few simple changes to `Home.razor`:
 
-1. Finally, add the `ToggleFavorite` method to handle saving favorites to the database. Add this method to the `@code` block:
+1. **Add the Entity Framework using statement** at the top with the other `@using` statements:
+   ```csharp
+   @using Microsoft.EntityFrameworkCore
+   ```
 
-```csharp
-private async Task ToggleFavorite(Zone zone)
-{
-    if (FavoriteZones.Contains(zone))
-    {
-        FavoriteZones.Remove(zone);
-        DbContext.FavoriteZones.Remove(zone);
-    }
-    else
-    {
-        FavoriteZones.Add(zone);
-        DbContext.FavoriteZones.Add(zone);
-    }
-    await DbContext.SaveChangesAsync();
-}
-```
+2. **Replace the entire existing grid section** in `Home.razor`. Find this section:
+   ```razor
+   <div class="col-md-6">
+       <QuickGrid Items="zones" TGridItem="Zone" Pagination="pagination">
+           <!-- ... existing grid content ... -->
+       </QuickGrid>
+       <Paginator State="@pagination"></Paginator>
+   </div>
+   ```
+   
+   And replace it with:
+   ```razor
+   <div class="col-md-6">
+       <WeatherZoneGrid AllZones="AllZones" 
+                        SelectedZone="SelectedZone" 
+                        OnZoneSelected="SelectZone" 
+                        DbContext="DbContext" />
+   </div>
+   ```
 
-1. In the `@code` block of `Home.razor`, locate the `zones` property and replace it with this updated version that includes the favorites filter:
+That's it! The `WeatherZoneGrid` component handles all the complex grid functionality and database interactions for you.
 
-```csharp
-IQueryable<Zone> zones
-{
-    get
-    {
-        var results = AllZones.AsQueryable();
+This approach provides several benefits:
+- **Reusable**: The grid component can be used in other parts of the application
+- **Maintainable**: All grid-related logic is contained in one component
+- **Testable**: The component can be tested independently
+- **Clean separation**: The Home page focuses on weather display, not grid management
 
-        if (ShowOnlyFavorites)
-        {
-            results = results.Where(z => FavoriteZones.Contains(z));
-        }
+### What You've Accomplished
 
-        results = string.IsNullOrEmpty(StateFilter) ? results
-                : results.Where(z => z.State == StateFilter.ToUpper());
+By using the provided `WeatherZoneGrid` component, you have:
+1. ✅ Added Entity Framework using statement to `Home.razor`
+2. ✅ Replaced the basic grid with a database-integrated component
+3. ✅ Gained favorites functionality with database persistence
+4. ✅ Maintained clean separation of concerns in your code
 
-        results = string.IsNullOrEmpty(NameFilter) ? results
-                : results.Where(z => z.Name.Contains(NameFilter, StringComparison.InvariantCultureIgnoreCase));
-
-        return results.OrderBy(z => z.Name);
-    }
-}
-```
-
-1. First, add a checkbox to filter the zones list. In `Home.razor`, add this code just before the `<QuickGrid>` element:
-
-```csharp
-<div class="form-check mb-3">
-    <input class="form-check-input" type="checkbox" @bind="ShowOnlyFavorites" id="showFavorites">
-    <label class="form-check-label" for="showFavorites">
-        Show only favorites
-    </label>
-</div>
-```
-
-1. Next, add a new column to show the favorite status. Add this column definition inside the `<QuickGrid>` element, after the existing State column:
-
-```csharp
-<TemplateColumn Title="Favorite">
-    <ChildContent>
-        <button @onclick="@(() => ToggleFavorite(context))">
-            @if (FavoriteZones.Contains(context))
-            {
-                <span>&#9733;</span> <!-- Starred -->
-            }
-            else
-            {
-                <span>&#9734;</span> <!-- Unstarred -->
-            }
-        </button>
-    </ChildContent>
-</TemplateColumn>
-```
+The new component handles:
+- Displaying zones in a sortable, filterable grid
+- "Show only favorites" checkbox functionality
+- Star icons for favoriting/unfavoriting zones
+- Database persistence of favorite zones
+- Search functionality by name and state
 
 ## Testing Your Changes
 

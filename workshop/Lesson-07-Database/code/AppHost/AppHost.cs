@@ -8,7 +8,7 @@ var cache = builder.AddRedis("cache").WithRedisInsight();
 
 // PostgreSQL (Lesson 7) with data volume for persistence (optional but shown per README)
 var postgres = builder.AddPostgres("postgres")
-	.WithDataVolume(isReadOnly: false); // persistence across restarts
+	.WithDataVolume("mydb", isReadOnly: false); // persistence across restarts
 
 var weatherDb = postgres.AddDatabase("weatherdb");
 

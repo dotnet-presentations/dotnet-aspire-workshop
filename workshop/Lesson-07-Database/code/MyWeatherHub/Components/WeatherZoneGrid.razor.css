@@ -1,0 +1,34 @@
+.quickgrid {
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.quickgrid td:has(span.selectedCell) {
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196f3;
+}
+
+.zone-link {
+    color: #1976d2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.zone-link:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+
+.search-box input {
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+}
+
+.search-box input:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
