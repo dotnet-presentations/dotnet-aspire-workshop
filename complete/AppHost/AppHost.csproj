@@ -11,7 +11,7 @@
     <PackageReference Include="Aspire.Hosting.AppHost" Version="9.5.0" />
     <PackageReference Include="Aspire.Hosting.GitHub.Models" Version="9.5.0-preview.1.25474.7" />
     <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.5.0" />
-    <PackageReference Include="Aspire.Hosting.Redis" Version="9.5.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="9.5.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Api\Api.csproj" />
