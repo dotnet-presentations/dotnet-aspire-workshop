@@ -6,7 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="9.0.0" />
-    <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="9.5.0" />
+    <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="9.5.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
   </ItemGroup>
   <ItemGroup>
