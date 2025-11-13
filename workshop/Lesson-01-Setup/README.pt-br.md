@@ -40,7 +40,7 @@ O .NET Aspire 9.4 introduz a CLI do Aspire geralmente disponível, proporcionand
 
 ```bash
 # Windows (PowerShell)
-iex "& { $(irm https://aspire.dev/install.ps1) }"
+irm https://aspire.dev/install.ps1 | iex
 
 # macOS/Linux (Bash)
 curl -sSL https://aspire.dev/install.sh | bash
