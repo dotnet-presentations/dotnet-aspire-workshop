@@ -1,4 +1,4 @@
-# GitHub Models Integration with .NET Aspire
+# GitHub Models Integration with Aspire
 
 ## Introduction
 
@@ -319,8 +319,8 @@ Now that you have GitHub Models integrated:
 
 ## Congratulations! 🎉
 
-You've successfully integrated GitHub Models with your .NET Aspire application! You now have AI-powered weather background selection that enhances the user experience with intelligent, dynamic visuals.
+You've successfully integrated GitHub Models with your Aspire application! You now have AI-powered weather background selection that enhances the user experience with intelligent, dynamic visuals.
 
-Throughout this workshop, you've learned how to build, configure, and enhance cloud-native applications using .NET Aspire. You now have the skills to create resilient, observable, and scalable distributed applications with AI capabilities.
+Throughout this workshop, you've learned how to build, configure, and enhance cloud-native applications using Aspire. You now have the skills to create resilient, observable, and scalable distributed applications with AI capabilities.
 
 **Previous**: [Module #13 - Healthchecks](../Lesson-13-HealthChecks/README.md) | **Next**: [Module #15 - Docker Integration](../Lesson-15-Docker-Integration/README.md)

@@ -18,16 +18,12 @@ internal static class HealthChecks
 			var healthChecks = app.MapGroup("");
 
 			// All health checks must pass for app to be considered ready to accept traffic after starting
-			healthChecks.MapHealthChecks("/health", new HealthCheckOptions
-			{
-				ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-			});
+			healthChecks.MapHealthChecks("/health");
 
 			// Only health checks tagged with the "live" tag must pass for app to be considered alive
 			healthChecks.MapHealthChecks("/alive", new HealthCheckOptions
 			{
-				Predicate = r => r.Tags.Contains("live"),
-				ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+				Predicate = r => r.Tags.Contains("live")
 			});
 
 			// Add the health checks endpoint for the HealthChecksUI
