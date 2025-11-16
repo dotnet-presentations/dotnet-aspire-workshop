@@ -2,7 +2,7 @@
 
 ## Introduction
 
-.NET Aspire provides a set of smart defaults for services that are commonly used in .NET applications. These defaults are designed to help you get started quickly and provide a consistent experience across different types of applications. This includes:
+Aspire provides a set of smart defaults for services that are commonly used in .NET applications. These defaults are designed to help you get started quickly and provide a consistent experience across different types of applications. This includes:
 
 - Telemetry: Metrics, Tracing, Logging
 - Resiliency
@@ -15,7 +15,7 @@
 
 1. Add a new project to the solution called `ServiceDefaults`:
    - Right-click on the solution and select `Add` > `New Project`.
-   - Select the `.NET Aspire Service Defaults` project template.
+   - Select the `Aspire Service Defaults` project template.
    - Name the project `ServiceDefaults`.
    - Click `Next` > `Create`.
 

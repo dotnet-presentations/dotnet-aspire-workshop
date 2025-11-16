@@ -10,13 +10,6 @@ builder.Services.AddHttpClient<NwsManager>(client =>
 	client.BaseAddress = new("https+http://api");
 });
 
-// Add GitHub Models chat client
-builder.AddAzureChatCompletionsClient("chat-model")
-       .AddChatClient();
-
-// Register the ForecastSummarizer service  
-builder.Services.AddScoped<ForecastSummarizer>();
-
 // Add services to the container.
 builder.Services.AddRazorComponents()
 		.AddInteractiveServerComponents();

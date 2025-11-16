@@ -18,6 +18,11 @@ builder.Services.AddMemoryCache();
 
 builder.AddNpgsqlDbContext<MyWeatherContext>(connectionName: "weatherdb");
 
+builder.Services.AddHealthChecks()
+	.AddUrlGroup(new Uri(builder.Configuration["services:api:http:0"] + "/openapi/v1.json"),
+		"Weather Microservice", HealthStatus.Unhealthy);
+
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();

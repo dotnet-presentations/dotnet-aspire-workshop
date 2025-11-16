@@ -8,7 +8,7 @@ In this optional module, we will add health checks to our application. Health ch
 
 ### Step 1: Add Health Check Packages
 
-First, we need to add the necessary packages to our projects. .NET Aspire clients managed by the .NET Aspire team automatically add support for Health Checks, and we would like to also add a health check to both the Api and MyWeatherHub projects to ensure they can reach the National Weather Service and the Api microservice respectfully.  For the API project, open the `complete/Api/Api.csproj` file and add the following package reference:
+First, we need to add the necessary packages to our projects. Aspire clients managed by the Aspire team automatically add support for Health Checks, and we would like to also add a health check to both the Api and MyWeatherHub projects to ensure they can reach the National Weather Service and the Api microservice respectfully.  For the API project, open the `complete/Api/Api.csproj` file and add the following package reference:
 
 ```xml
 <ItemGroup>
@@ -16,7 +16,7 @@ First, we need to add the necessary packages to our projects. .NET Aspire client
 </ItemGroup>
 ```
 
-For the MyWeatherHub project, open the `complete/MyWeatherHub/MyWeatherHub.csproj` file and add the following package reference:
+For the MyWeatherHub project, open the `MyWeatherHub/MyWeatherHub.csproj` file and add the following package reference:
 
 ```xml
 <ItemGroup>
@@ -36,7 +36,7 @@ builder.Services.AddHealthChecks()
   .AddUrlGroup(new Uri("https://api.weather.gov/"), "NWS Weather API", HealthStatus.Unhealthy,
     configureClient: (services, client) =>
     {
-      client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - .NET Aspire Demo");
+      client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - Aspire Demo");
     });
 ```
 
@@ -53,7 +53,7 @@ builder.Services.AddHealthChecks()
 
 Now, we need to add the health check endpoints to our applications.
 
-The ServiceDefaults project already maps default health check endpoints using the `MapDefaultEndpoints()` extension method. This method is provided as part of the .NET Aspire service defaults and maps the standard `/health` and `/alive` endpoints.
+The ServiceDefaults project already maps default health check endpoints using the `MapDefaultEndpoints()` extension method. This method is provided as part of the Aspire service defaults and maps the standard `/health` and `/alive` endpoints.
 
 To use these endpoints, simply call the method in your application's `Program.cs` file:
 
@@ -159,7 +159,7 @@ What if... you wanted more details?
 
 ## HealthChecksUI
 
-There is a great tool available that was built with ASP.NET called [HealthChecksUI that is available from Xabaril](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks).  Fortunately, its also available as a Docker container and that makes it easy to integrate with .NET Aspire.
+There is a great tool available that was built with ASP.NET called [HealthChecksUI that is available from Xabaril](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks).  Fortunately, its also available as a Docker container and that makes it easy to integrate with Aspire.
 
 ### Step 1: Add the HealthCheckUI integration and updated Service Defaults
 
@@ -197,9 +197,9 @@ app.UseWhen(context => !context.Request.Path.StartsWithSegments("/health"),
 
 ### Step 5: Add the HealthChecksUI resource
 
-The `HealthChecksUIResource.cs` file that was added to the AppHost project contains all of the information needed to start a HealthChecks container and connect our projects to it.  This may be wrapped up into a proper .NET Aspire integration in the future that can be installed with a NuGet package, but for now the logic and configuration is all wrapped up in that file.
+The `HealthChecksUIResource.cs` file that was added to the AppHost project contains all of the information needed to start a HealthChecks container and connect our projects to it.  This may be wrapped up into a proper Aspire integration in the future that can be installed with a NuGet package, but for now the logic and configuration is all wrapped up in that file.
 
-We can instruct .NET Aspire to start the HealthChecksUI and configure it to listen to the MyWeatherHub and Api projects with this code.  Add this to the end of `Program.cs` just about the `builder.Build().Run();` statement:
+We can instruct Aspire to start the HealthChecksUI and configure it to listen to the MyWeatherHub and Api projects with this code.  Add this to the end of `Program.cs` just about the `builder.Build().Run();` statement:
 
 ```csharp
 builder.AddHealthChecksUI("healthchecks")
@@ -221,15 +221,15 @@ Run your application, and visit the new HealthChecks resource from the dashboard
 
 For more information on health checks, see the following documentation:
 
-- [Health Checks in .NET Aspire](https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/health-checks)
+- [Health Checks in Aspire](https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/health-checks)
 - [Health Checks in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks)
 
 A more complete [HealthChecks UI sample](https://github.com/dotnet/aspire-samples/tree/main/samples/HealthChecksUI) is available on GitHub
 
 ### HealthChecks and Security
 
-Adding health checks endpoints to applications in non-development environments has security implications. See [Health Checks in .NET Aspire](https://aka.ms/dotnet/aspire/healthchecks) for details before enabling these endpoints in non-development environments.
+Adding health checks endpoints to applications in non-development environments has security implications. See [Health Checks in Aspire](https://aka.ms/dotnet/aspire/healthchecks) for details before enabling these endpoints in non-development environments.
 
 > NOTE: We strongly recommend adding caching, timeouts, and security to all of your healthchecks endpoints and user interfaces before publishing them to the public internet.  The sample as demonstrated here is not recommended for production use.  Consult the links above for more information about securing health check endpoints.
 
-**Next**: [Module #14 - GitHub Models Integration with .NET Aspire](../Lesson-14-GitHub-Models-Integration/README.md)
+**Next**: [Module #14 - GitHub Models Integration with Aspire](../Lesson-14-GitHub-Models-Integration/README.md)

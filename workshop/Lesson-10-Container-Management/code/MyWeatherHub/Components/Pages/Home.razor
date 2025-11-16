@@ -6,7 +6,6 @@
 @inject NwsManager NwsManager
 @inject ILogger<NwsManager> Logger
 @inject MyWeatherContext DbContext
-@inject ForecastSummarizer Summarizer
 @rendermode InteractiveServer
 
 <PageTitle>My Weather Hub</PageTitle>
@@ -198,10 +197,6 @@ else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
 			Error = $"Unable to locate weather for {SelectedZone.Name}({SelectedZone.Key})";
 		}
 
-		if (string.IsNullOrEmpty(Error))
-		{
-			Summary = await Summarizer.SummarizeForecastAsync(Forecast.FirstOrDefault().DetailedForecast);
-		} 
 	}
 
 	private async Task ToggleFavorite(Zone zone)

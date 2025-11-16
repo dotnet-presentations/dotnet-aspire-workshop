@@ -1,8 +1,8 @@
-# Azure Integrations with .NET Aspire
+# Azure Integrations with Aspire
 
 ## Introduction
 
-Ready to take your .NET Aspire apps to the cloud? You're in the right place! In this module, we'll explore how .NET Aspire makes working with Azure services a breeze - both during development and in production.
+Ready to take your Aspire apps to the cloud? You're in the right place! In this module, we'll explore how Aspire makes working with Azure services a breeze - both during development and in production.
 
 We'll cover:
 
@@ -14,20 +14,20 @@ We'll cover:
 
 The best part? All of these integrations follow the same patterns you've been learning throughout this workshop. Let's dive in!
 
-## The Azure Developer Experience in .NET Aspire
+## The Azure Developer Experience in Aspire
 
-Cloud development often involves frustrating disconnects between local development and production environments. .NET Aspire tackles these challenges head-on with:
+Cloud development often involves frustrating disconnects between local development and production environments. Aspire tackles these challenges head-on with:
 
 - **Local Emulators**: Work with containerized versions of Azure services right on your laptop
 - **Consistent Configuration**: Use the same code for local development and production
 - **Automatic Resource Provisioning**: Generate infrastructure code for your Azure resources
 - **Seamless Deployment**: Deploy easily to Azure Container Apps or other Azure services
 
-Let's see how .NET Aspire brings these benefits to life by building an application that uses Azure Functions and Cosmos DB.
+Let's see how Aspire brings these benefits to life by building an application that uses Azure Functions and Cosmos DB.
 
 ## Local Emulators - Azure Without the Cloud
 
-One of .NET Aspire's superpowers is its support for local emulators of Azure services. Here's what you can use without an internet connection:
+One of Aspire's superpowers is its support for local emulators of Azure services. Here's what you can use without an internet connection:
 
 | Azure Service | Local Development Magic |
 |---------------|--------------------------|
@@ -35,8 +35,8 @@ One of .NET Aspire's superpowers is its support for local emulators of Azure ser
 | Azure Storage | Azurite container (blob, queue, and table storage at your fingertips) |
 | Azure Service Bus | Azure Service Bus Emulator container (messaging goodness) |
 | Azure Functions | Native integration (works right with your Aspire app) |
-| Azure Key Vault | Local emulation within .NET Aspire (secrets, secrets, secrets) |
-| Azure API Management | Local emulation within .NET Aspire (API management without the cloud) |
+| Azure Key Vault | Local emulation within Aspire (secrets, secrets, secrets) |
+| Azure API Management | Local emulation within Aspire (API management without the cloud) |
 
 These emulators let you develop and test like you're in the cloud - without spending a cent on Azure resources. They're perfect for development, testing, and even running demos when the conference WiFi inevitably fails!
 
@@ -49,7 +49,7 @@ Let's build a fun little weather application that combines Azure Functions with 
 #### Using Visual Studio 2022
 
 1. Fire up Visual Studio 2022 and click **Create a new project**.
-2. In the search box, type "aspire" and pick the **.NET Aspire Starter Application** template.
+2. In the search box, type "aspire" and pick the **Aspire Starter Application** template.
 3. Click **Next**.
 4. Fill in the project details:
    - Project name: `AzureIntegrationDemo`
@@ -94,11 +94,11 @@ Now let's add some serverless capabilities with Azure Functions!
 5. Choose these settings:
    - Functions worker: `.NET Isolated`
    - Function template: `HTTP trigger`
-   - Enlist in .NET Aspire Orchestration: Checked
+   - Enlist in Aspire Orchestration: Checked
    - Authentication level: `Function`
 6. Click **Create** to add your Functions project.
 7. Add a reference from the Azure Functions project to **AzureIntegrationDemo.ServiceDefaults** project
-8. Open the Functions `Program.cs` file to set up .NET Aspire:
+8. Open the Functions `Program.cs` file to set up Aspire:
 
    ```csharp
    using Microsoft.Azure.Functions.Worker.Builder;
@@ -448,7 +448,7 @@ Isn't it amazing? You're running "Azure" services without even being connected t
 
 ## Using Existing Azure Resources
 
-While the local emulators are fantastic for development, eventually you'll want to connect to real Azure resources. .NET Aspire makes this super easy with the `RunAsExisting` mode:
+While the local emulators are fantastic for development, eventually you'll want to connect to real Azure resources. Aspire makes this super easy with the `RunAsExisting` mode:
 
 1. To use an existing Azure Cosmos DB, just update your AppHost:
 
@@ -477,7 +477,7 @@ This approach gives you the best of both worlds - you can develop locally with e
 
 ## Infrastructure as Code with Bicep
 
-When it's time to deploy, you'll need to provision Azure resources. .NET Aspire integrates with the Azure Developer CLI (`azd`) to generate Bicep templates:
+When it's time to deploy, you'll need to provision Azure resources. Aspire integrates with the Azure Developer CLI (`azd`) to generate Bicep templates:
 
 1. Install the Aspire extension for azd:
 
