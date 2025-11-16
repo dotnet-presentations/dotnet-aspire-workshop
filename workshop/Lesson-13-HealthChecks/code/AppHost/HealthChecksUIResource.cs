@@ -97,7 +97,8 @@ internal class HealthChecksUILifecycleHook(DistributedApplicationExecutionContex
 					if (context.ExecutionContext.IsRunMode)
 					{
 						// Running during dev inner-loop
-						var containerHost = healthChecksUIResource.GetEndpoint("http").ContainerHost;
+						// For container-to-container communication, use the resource name as the host
+						var containerHost = healthChecksUIResource.Name;
 						var fromContainerUriBuilder = new UriBuilder(healthChecksEndpoint.Url)
 						{
 							Host = containerHost,
