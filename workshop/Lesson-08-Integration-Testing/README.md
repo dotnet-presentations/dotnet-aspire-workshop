@@ -16,38 +16,46 @@ In the context of distributed applications with Aspire, integration testing is e
 1. Add references to the required packages in the `IntegrationTests.csproj` file:
 
 ```xml
-<Project Sdk="MSTest.Sdk/4.0.2">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <EnableAspireTesting>true</EnableAspireTesting>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <EnableMSTestRunner>true</EnableMSTestRunner>
+        <OutputType>Exe</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Aspire.Hosting.Testing" Version="13.0.0" />
+        <PackageReference Include="MSTest" Version="3.10.4" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\AppHost\AppHost.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="System.Net" />
+        <Using Include="Microsoft.Extensions.DependencyInjection" />
+        <Using Include="Aspire.Hosting.ApplicationModel" />
+        <Using Include="Aspire.Hosting.Testing" />
+        <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+    </ItemGroup>
 </Project>
 ```
 
-This project file uses the modern MSTest SDK approach for .NET 10 and Aspire 13. The key elements are:
+This project file is fairly standard for a test project. The key elements are:
 
-- The `MSTest.Sdk/4.0.2` SDK declaration, which automatically includes all necessary MSTest packages and configurations.
-- `EnableAspireTesting` property set to `true`, which brings in Aspire-specific testing dependencies and using directives automatically.
-- A `PackageReference` to the [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGet package version 13.0.0, which provides the necessary types and APIs for testing Aspire applications.
+- A `PackageReference` to the [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGet package, which provides the necessary types and APIs for testing Aspire applications.
 - A `ProjectReference` to the AppHost project, which gives the test project access to the target distributed application definition.
+- The `EnableMSTestRunner` and `OutputType` settings to configure the test project to run with the native MSTest runner.
 
-> **Performance Note**: MSTest v4 uses Microsoft.Testing.Platform by default, which provides significantly better performance (up to 30% faster) compared to the legacy VSTest platform, with AppDomains disabled by default for improved efficiency.
-
-MSTest v4 introduces several improvements and breaking changes:
-
-- **Microsoft.Testing.Platform**: Uses the new, faster testing platform by default instead of VSTest
-- **Performance**: Up to 30% faster test execution with AppDomains disabled by default
-- **Stricter Defaults**: `TreatDiscoveryWarningsAsErrors` now defaults to `true` for better error detection
-- **Enhanced TestContext**: Throws exceptions when accessed incorrectly, preventing common mistakes
-- **Modern SDK**: The MSTest SDK approach simplifies project configuration and dependency management
+> Note: Any MSTest 3.x version is fine for this workshop. If your environment provides a newer 3.x, you can use that.
 
 1. Create test classes for integration tests:
 
@@ -200,8 +208,6 @@ This test is particularly valuable because it verifies that your application's s
 dotnet test IntegrationTests/IntegrationTests.csproj
 ```
 
-> **Note**: With .NET 10 and MSTest v4, tests run using the Microsoft.Testing.Platform by default, providing faster execution and better resource management compared to legacy VSTest.
-
 ### Using Visual Studio Test Explorer
 
 1. Open the solution in Visual Studio
@@ -244,13 +250,19 @@ For more information on Playwright, refer to the [official documentation](https:
 
 ## Conclusion
 
-In this module, we covered integration testing using `Aspire.Hosting.Testing` with `MSTest v4` on .NET 10. We created a separate test project using the modern MSTest SDK approach to test both the API and the web application, following patterns similar to the `WebApplicationFactory` approach in ASP.NET Core but adapted for distributed applications.
+In this module, we covered integration testing using `Aspire.Hosting.Testing` with `MSTest`. We created a separate test project to test both the API and the web application, following patterns similar to the `WebApplicationFactory` approach in ASP.NET Core but adapted for distributed applications.
 
 Our tests verified three critical aspects of the distributed application:
 
 1. The API functionality (testing that endpoints return expected data)
 1. The web application functionality (testing that the UI renders correctly)
 1. The service discovery mechanism (testing that services can find and communicate with each other)
+
+For a deeper dive into testing with Aspire, including a video walkthrough, check out the [Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/) blog post.
+
+Now, let's learn about deployment options when using Aspire.
+
+**Next**: [Module #9: Deployment](../Lesson-09-Deployment/README.md)
 
 
 For a deeper dive into testing with Aspire, including a video walkthrough, check out the [Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/) blog post.
