@@ -41,7 +41,7 @@ Let's install the Aspire CLI, which provides a streamlined developer experience.
 
 ```bash
 # Windows (PowerShell)
-iex "& { $(irm https://aspire.dev/install.ps1) }"
+irm https://aspire.dev/install.ps1 | iex
 
 # macOS/Linux (Bash)
 curl -sSL https://aspire.dev/install.sh | bash
