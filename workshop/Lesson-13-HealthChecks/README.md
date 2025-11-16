@@ -16,7 +16,7 @@ First, we need to add the necessary packages to our projects. .NET Aspire client
 </ItemGroup>
 ```
 
-For the MyWeatherHub project, open the `complete/MyWeatherHub/MyWeatherHub.csproj` file and add the following package reference:
+For the MyWeatherHub project, open the `MyWeatherHub/MyWeatherHub.csproj` file and add the following package reference:
 
 ```xml
 <ItemGroup>

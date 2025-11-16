@@ -1,8 +1,8 @@
-# Advanced Container Management in .NET Aspire
+# Advanced Container Management in Aspire
 
 ## Introduction
 
-Let's take our .NET Aspire skills to the next level! In this module, we'll dive into the world of advanced container management - a crucial skill for making your cloud applications production-ready.
+Let's take our Aspire skills to the next level! In this module, we'll dive into the world of advanced container management - a crucial skill for making your cloud applications production-ready.
 
 We'll explore how to:
 
@@ -22,7 +22,7 @@ When you run your Aspire App Host project, here's what happens by default:
 3. Everything runs happily... until you stop debugging
 4. Then all your containers shut down and your data disappears 😢
 
-This works fine for basic development, but .NET Aspire 9 introduced something better: **persistent containers**! This means your containers can:
+This works fine for basic development, but Aspire 9 introduced something better: **persistent containers**! This means your containers can:
 
 - Stay alive even after you stop debugging (no more waiting for downloads!)
 - Keep all their data between runs (your settings, caches, everything!)
@@ -54,7 +54,7 @@ That's it! Now your Redis container will keep running even when you stop debuggi
 
 > 💡 **Pro tip**: Notice how much faster your app starts now? No more waiting for container downloads and initialization!
 
-## How .NET Aspire Knows Which Container to Use
+## How Aspire Knows Which Container to Use
 
 You might wonder: "How does Aspire know which existing container to use?" Great question! It uses several factors:
 
@@ -118,10 +118,10 @@ This tells Redis: "Take a snapshot every 5 minutes OR when 100 keys have changed
 
 ## Controlling Resources from the Dashboard
 
-One of the coolest features in .NET Aspire 9 is the ability to control your resources directly from the dashboard. Let's try it out:
+One of the coolest features in Aspire 9 is the ability to control your resources directly from the dashboard. Let's try it out:
 
 1. Start your App Host project
-2. Open the .NET Aspire Dashboard
+2. Open the Aspire Dashboard
 3. Look for the Redis resource - notice the little pin icon? That's showing it's persistent!
 
 ![Persistent Container](../media/aspire-pin.png)
@@ -148,7 +148,7 @@ Time to see all this in action:
 
 ## Summary
 
-Congratulations! You've mastered advanced container management in .NET Aspire. Let's recap what you've learned:
+Congratulations! You've mastered advanced container management in Aspire. Let's recap what you've learned:
 
 - How to make containers persist between debug sessions
 - Ways to preserve data using volumes and bind mounts
@@ -156,7 +156,7 @@ Congratulations! You've mastered advanced container management in .NET Aspire. L
 - Methods for limiting resources and isolating containers
 - Using the dashboard to control individual resources
 
-These techniques will make your development workflow smoother and your applications more robust. The best part? These same principles apply to any containerized service in .NET Aspire, not just Redis.
+These techniques will make your development workflow smoother and your applications more robust. The best part? These same principles apply to any containerized service in Aspire, not just Redis.
 
 ## Bonus Adventures for the Curious
 
