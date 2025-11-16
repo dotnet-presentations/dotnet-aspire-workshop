@@ -1,8 +1,8 @@
-# Dashboard & Orchestration with .NET Aspire App Host
+# Dashboard & Orchestration with Aspire App Host
 
-.NET Aspire provides APIs for modeling resources and dependencies within your distributed application. In addition to these APIs, there's tooling that enables some compelling scenarios. The orchestrator is intended for local development purposes.
+Aspire provides APIs for modeling resources and dependencies within your distributed application. In addition to these APIs, there's tooling that enables some compelling scenarios. The orchestrator is intended for local development purposes.
 
-Before continuing, consider some common terminology used in .NET Aspire:
+Before continuing, consider some common terminology used in Aspire:
 
 - *App model*: A collection of resources that make up your distributed application ([DistributedApplication](https://learn.microsoft.com/dotnet/api/aspire.hosting.distributedapplication)). For a more formal definition, see [Define the app model](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview?tabs=docker#define-the-app-model).
 - *App host/Orchestrator project*: The .NET project that defines and orchestrates the *app model*, named with the **.AppHost* suffix (by convention).
@@ -12,15 +12,15 @@ Before continuing, consider some common terminology used in .NET Aspire:
 ## Create App Host Project
 
 > [!NOTE]
-> **Experimental Feature with .NET 10**
+> **New Feature with .NET 10**
 >
-> There is a new feature with Aspire 9.5 that allows you to use a single-file AppHost to define and launch your application system.  We'll describe how to use that technique at the end of this module.
+> There is a new feature with Aspire 13 that allows you to use a single-file AppHost with .NET 10 to define and launch your application system.  We'll describe how to use that technique at the end of this module.
 
 ### Visual Studio & Visual Studio Code
 
 1. Add a new project to the solution called `AppHost`:
    - Right-click on the solution and select `Add` > `New Project`.
-   - Select the `.NET Aspire App Host` project template.
+   - Select the `Aspire App Host` project template.
    - Name the project `AppHost`.
    - Click `Next` > `Create`.
 
@@ -50,7 +50,7 @@ Before continuing, consider some common terminology used in .NET Aspire:
    - Right-click on the `AppHost` project and select `Add` > `Reference`.
    - Check the `Api` and `MyWeatherHub` projects and click `OK`.
 
-     > Pro Tip: In Visual Studio 2022, you can drag and drop the project onto another project to add a reference.
+     > Pro Tip: In Visual Studio 2026, you can drag and drop the project onto another project to add a reference.
 
 1. When these references are added, helper classes are automatically generated to help add them to the app model in the App Host.
 
@@ -84,20 +84,20 @@ Before continuing, consider some common terminology used in .NET Aspire:
     ```
 
 1. Run the App Host using the `Run and Debug` panel in Visual Studio Code or Visual Studio.
-1. The .NET Aspire Dashboard will open in your default browser and display the resources and dependencies of your application.
+1. The Aspire Dashboard will open in your default browser and display the resources and dependencies of your application.
 
-    ![.NET Aspire Dashboard](../media/dashboard.png)
+    ![Aspire Dashboard](../media/dashboard.png)
 
 1. Open the weather page by clicking the Endpoint for the `MyWeatherHub` project resource which will be [https://localhost:7274](https://localhost:7274).
 1. Notice that both the `Api` and `MyWeatherHub` projects are running and can communicate with each other the same way as before using configuration settings.
 1. Back on the Aspire Dashboard, click on the `View Logs` button to see the console logs from the `Api` and `MyWeatherHub` projects.
 1. Select the `Traces` tab and select `View` on a trace where the API is being called.
 
-    ![.NET Aspire Dashboard](../media/dashboard-trace.png)
+    ![Aspire Dashboard](../media/dashboard-trace.png)
 
 1. Explore the `Metrics` tab to see the metrics for the `Api` and `MyWeatherHub` projects.
 
-    ![.NET Aspire Dashboard](../media/dashboard-metrics.png)
+    ![Aspire Dashboard](../media/dashboard-metrics.png)
 
 ## Create an error
 
@@ -106,7 +106,7 @@ Before continuing, consider some common terminology used in .NET Aspire:
 1. On the `MyWeatherApp` website, click on several different cities to generate errors. Usually, clicking on 5 different cities will generate at least one error.
 1. After generating the errors, the `Structured` tab will automatically update on the dashboard and display the errors.
 
-    ![.NET Aspire Dashboard](../media/dashboard-error.png)
+    ![Aspire Dashboard](../media/dashboard-error.png)
 
 1. Click on the `Trace` or the `Details` to see the error message and stack trace.
 
@@ -115,17 +115,17 @@ Before continuing, consider some common terminology used in .NET Aspire:
 
 ## The Dashboard Resource Graph
 
-We saw the table of resources in the .NET Aspire dashboard and that's a nice list of our resources, and we'll see that grow as our application system starts to utilize more resources.  Additionally, there is a **Graph** view of resources available by clicking the **Graph** text just above the table.
+We saw the table of resources in the Aspire dashboard and that's a nice list of our resources, and we'll see that grow as our application system starts to utilize more resources.  Additionally, there is a **Graph** view of resources available by clicking the **Graph** text just above the table.
 
-![.NET Aspire Dashboard Resource Graph](../media/dashboard-graph.png)
+![Aspire Dashboard Resource Graph](../media/dashboard-graph.png)
 
 This graph is generated based on the references and relationships you configure for your application.
 
-## New Dashboard Features in .NET Aspire 9.4
+## Other Dashboard Features
 
 ### Automatic Update Notifications
 
-The dashboard now automatically checks for newer versions of .NET Aspire and shows friendly notifications when updates are available. This helps you stay current with the latest improvements and security updates.
+The dashboard automatically checks for newer versions of Aspire and shows friendly notifications when updates are available. This helps you stay current with the latest improvements and security updates.
 
 ### Enhanced Parameter and Connection String Visibility
 
@@ -151,32 +151,24 @@ The dashboard can now visualize connections between resources even when they are
 - Parameter visualization for URLs and connection strings
 - External service mapping between your services and external dependencies
 
-## Experimental Single-File AppHost with .NET 10
+## Single-File AppHost with .NET 10
 
-> [!CAUTION]
+> [!NOTE]
 >
-> This section contains experimental features released as part of Aspire 9.5 and .NET 10.  This feature may change in future releases.  It will only work if you have the .NET 10 SDK or later installed.
+> This section contains an optional feature released as part of Aspire 13 and .NET 10.
 
-Starting with .NET 10 and Aspire 9.5, you can use the Aspire command-line to create a single-file AppHost.cs file that you can use to orchestrate your application instead of another .NET class library project.  For more information about the single-file capabilities of .NET 10, check out Damian Edwards [blog post introducing the feature](https://devblogs.microsoft.com/dotnet/announcing-dotnet-run-app/). 
-
-Before we can start using the new Single-File AppHost feature, we need to activate it with a feature flag in the Aspire command-line tool.  We also need to disable the minimum SDK check, because the current version of Aspire rejects the .NET 10 prerelease SDK version.
-
-```bash
-aspire config set features.singlefileAppHostEnabled true
-aspire config set features.minimumSdkCheckEnabled false
-```
-
+Starting with .NET 10 and Aspire 13, you can use the Aspire command-line to create a single-file AppHost.cs file that you can use to orchestrate your application instead of another .NET class library project.  For more information about the single-file capabilities of .NET 10, check out Damian Edwards [blog post introducing the feature](https://devblogs.microsoft.com/dotnet/announcing-dotnet-run-app/). 
 
 At the command-line in the same folder as your solution file (MyWeatherHub.sln) you can run this command:
 
 ```bash
-aspire new -n Weather -o . aspire-apphost-singlefile -v 9.5.0
+dotnet new aspire-apphost-singlefile -n Weather -o . 
 ```
 
 This will create an `apphost.cs` along with several supporting configuration files.  This C# file contains some new features introduced in .NET 10:
 
 ```csharp
-#:sdk Aspire.AppHost.Sdk@9.5.0
+#:sdk Aspire.AppHost.Sdk@13.0.0
 
 var builder = DistributedApplication.CreateBuilder(args);
 
@@ -186,7 +178,7 @@ builder.Build().Run();
 The `#:sdk` line directs the .NET runtime to use the Aspire SDK to manage this application.  We can add references to the projects in this solution with the `#:project ` directive and finish our AppHost with this content:
 
 ```csharp
-#:sdk Aspire.AppHost.Sdk@9.5.0
+#:sdk Aspire.AppHost.Sdk@13.0.0
 #:project Api
 #:project MyWeatherHub
 
@@ -204,7 +196,7 @@ This has the same effect as the project structure and AppHost.cs file in that pr
 aspire run
 ```
 
-You're welcome to continue using this experimental structure instead, and we'll touch on some of the differences in the modules ahead.
+You're welcome to continue using this single-file structure instead, and we'll touch on some of the differences in the modules ahead.
 
 If you want to convert your `apphost.cs` file to a full-project you can use the .NET 10 command-line:
 
