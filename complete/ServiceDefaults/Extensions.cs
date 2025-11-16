@@ -111,7 +111,7 @@ public static class Extensions
 	public static WebApplication MapDefaultEndpoints(this WebApplication app)
 	{
 
-		//return ServiceDefaults.HealthChecks.MapDefaultEndpoints(app);
+		return ServiceDefaults.HealthChecks.MapDefaultEndpoints(app);
 
 
 		// Adding health checks endpoints to applications in non-development environments has security implications.
