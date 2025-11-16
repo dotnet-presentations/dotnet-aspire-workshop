@@ -2,38 +2,36 @@
 
 This workshop will be using the following tools:
 
-- [.NET 9 SDK](https://get.dot.net/9) or [.NET 10 Preview](https://get.dot.net/10) (optional)
+- [.NET 10 SDK](https://get.dot.net/10) or [.NET 9](https://get.dot.net/9)
 - [Docker Desktop](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/getting-started/installation)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/) with [C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
+- [Visual Studio 2026](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/) with [C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
 - Aspire CLI - this command line tool allows you to update and interact with the Aspire features of your application system without needing to directly use .NET tools
 
-For the best experience, we recommend using Visual Studio 2022 with the .NET Aspire workload. However, you can use Visual Studio Code with the C# Dev Kit and .NET Aspire workload. Below are setup guides for each platform.
-
-> **New in .NET Aspire 9.5**: Full support for .NET 10 Preview! You can now create Aspire projects targeting .NET 10 using `dotnet new aspire --framework net10.0`
+For the best experience, we recommend using Visual Studio 2026 with the ASP.NET Core workload. However, you can use Visual Studio Code with the C# Dev Kit and Aspire CLI. Below are setup guides for each platform.
 
 ## Windows with Visual Studio
 
-- Install [Visual Studio 2022 version 17.14 or newer](https://visualstudio.microsoft.com/vs/).
+- Install [Visual Studio 2026](https://visualstudio.microsoft.com/vs/).
   - Any edition will work including the [free to use Visual Studio Community](https://visualstudio.microsoft.com/free-developer-offers/)
   - Select the following `ASP.NET and web development` workload.
 
 ## Mac, Linux, & Windows without Visual Studio
 
-- Install the latest [.NET 9 SDK](https://get.dot.net/9?cid=eshop)
+- Install the latest [.NET 10 SDK](https://get.dot.net/10?cid=eshop)
 
 - Install [Visual Studio Code with C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
 
 > Note: When running on Mac with Apple Silicon (M series processor), Rosetta 2 for grpc-tools.
 
-## Install Latest .NET Aspire Templates
+## Install Latest Aspire Templates
 
-Run the following command to install the latest .NET Aspire templates.
+Run the following command to install the latest Aspire templates.
 
 ```cli
 dotnet new install Aspire.ProjectTemplates --force
 ```
 
-## Install the .NET Aspire CLI
+## Install the Aspire CLI
 
 Let's install the Aspire CLI, which provides a streamlined developer experience. You can install it using one of these methods:
 
@@ -63,10 +61,10 @@ The Aspire CLI provides useful commands like:
 
 ## Test Installation
 
-To test your installation, see the [Build your first .NET Aspire project](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) for more information.
+To test your installation, see the [Build your first Aspire project](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) for more information.
 
 ## Open Workshop Start Solution
 
-To start the workshop open `start/MyWeatherHub.sln` in Visual Studio 2022. If you are using Visual Studio code open the `start` folder and when prompted by the C# Dev Kit which solution to open, select **MyWeatherHub.sln**.
+To start the workshop open `start/MyWeatherHub.sln` in Visual Studio 2026. If you are using Visual Studio code open the `start` folder and when prompted by the C# Dev Kit which solution to open, select **MyWeatherHub.sln**.
 
 **Next**: [Module #2 - Service Defaults](../Lesson-02-ServiceDefaults/README.md)
