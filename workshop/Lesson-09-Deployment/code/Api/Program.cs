@@ -1,3 +1,4 @@
+
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,14 @@ builder.Services.AddNwsManager();
 builder.Services.AddOpenTelemetry()
 		.WithMetrics(m => m.AddMeter("NwsManagerMetrics"))
 		.WithTracing(m => m.AddSource("NwsManager"));
+
+builder.Services.AddHealthChecks()
+	.AddUrlGroup(new Uri("https://api.weather.gov/"), "NWS Weather API", HealthStatus.Unhealthy,
+		configureClient: (services, client) =>
+		{
+			client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - .NET Aspire Demo");
+		});
+
 
 var app = builder.Build();
 

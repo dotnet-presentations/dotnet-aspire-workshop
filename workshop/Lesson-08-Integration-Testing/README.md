@@ -1,4 +1,4 @@
-# Integration Testing with .NET Aspire
+# Integration Testing with Aspire
 
 ## Introduction
 
@@ -8,7 +8,7 @@ In this module, we will cover integration testing using `Aspire.Hosting.Testing`
 
 Unit testing focuses on testing individual components or units of code in isolation. It ensures that each unit functions correctly on its own. In contrast, integration testing verifies that different components of the application work together as expected. It tests the interactions between various parts of the system, such as APIs, databases, and web applications.
 
-In the context of distributed applications with .NET Aspire, integration testing is essential to ensure that the different services and components communicate and function correctly together.
+In the context of distributed applications with Aspire, integration testing is essential to ensure that the different services and components communicate and function correctly together.
 
 ## Creating the Integration Test Project
 
@@ -18,7 +18,7 @@ In the context of distributed applications with .NET Aspire, integration testing
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
@@ -31,7 +31,7 @@ In the context of distributed applications with .NET Aspire, integration testing
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Hosting.Testing" Version="9.4.2" />
+        <PackageReference Include="Aspire.Hosting.Testing" Version="13.0.0" />
         <PackageReference Include="MSTest" Version="3.10.4" />
     </ItemGroup>
 
@@ -51,7 +51,7 @@ In the context of distributed applications with .NET Aspire, integration testing
 
 This project file is fairly standard for a test project. The key elements are:
 
-- A `PackageReference` to the [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGet package, which provides the necessary types and APIs for testing .NET Aspire applications.
+- A `PackageReference` to the [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGet package, which provides the necessary types and APIs for testing Aspire applications.
 - A `ProjectReference` to the AppHost project, which gives the test project access to the target distributed application definition.
 - The `EnableMSTestRunner` and `OutputType` settings to configure the test project to run with the native MSTest runner.
 
@@ -193,7 +193,7 @@ This test focuses on verifying service discovery configuration:
 - It calls `GetEnvironmentVariableValuesAsync()` with the `DistributedApplicationOperation.Publish` argument to get the environment variables that would be published to the resource.
 - Finally, it asserts that the web frontend has an environment variable that resolves to the API service's URL, confirming that service discovery is properly configured.
 
-This test is particularly valuable because it verifies that your application's services are correctly wired together through environment variables, which is how .NET Aspire handles service discovery in distributed applications.
+This test is particularly valuable because it verifies that your application's services are correctly wired together through environment variables, which is how Aspire handles service discovery in distributed applications.
 
 > Note: If you see a `WeatherBackgroundTests.cs` file in the complete solution that's empty, it's a placeholder for future background job tests and can be ignored for this workshop.
 
@@ -258,8 +258,15 @@ Our tests verified three critical aspects of the distributed application:
 1. The web application functionality (testing that the UI renders correctly)
 1. The service discovery mechanism (testing that services can find and communicate with each other)
 
-For a deeper dive into testing with .NET Aspire, including a video walkthrough, check out the [Getting started with testing and .NET Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/) blog post.
+For a deeper dive into testing with Aspire, including a video walkthrough, check out the [Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/) blog post.
 
-Now, let's learn about deployment options when using .NET Aspire.
+Now, let's learn about deployment options when using Aspire.
+
+**Next**: [Module #9: Deployment](../Lesson-09-Deployment/README.md)
+
+
+For a deeper dive into testing with Aspire, including a video walkthrough, check out the [Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/) blog post.
+
+Now, let's learn about deployment options when using Aspire.
 
 **Next**: [Module #9: Deployment](../Lesson-09-Deployment/README.md)

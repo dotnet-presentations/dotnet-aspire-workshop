@@ -1,16 +1,16 @@
-# .NET Aspire Integrations
+# Aspire Integrations
 
-.NET Aspire integrations are a curated suite of NuGet packages specifically selected to facilitate the integration of cloud-native applications with prominent services and platforms, e.g. Redis, PostgreSQL, etc. Each integration furnishes essential cloud-native functionalities through either automatic provisioning or standardized configuration patterns.
+Aspire integrations are a curated suite of NuGet packages specifically selected to facilitate the integration of cloud-native applications with prominent services and platforms, e.g. Redis, PostgreSQL, etc. Each integration furnishes essential cloud-native functionalities through either automatic provisioning or standardized configuration patterns.
 
-.NET Aspire integrations come in two distinct flavors: **hosting integrations**, and **client integrations**. Hosting integrations are used to model and configure various resources in a .NET Aspire app, while client integrations are used to map configuration to various client libraries.
+Aspire integrations come in two distinct flavors: **hosting integrations**, and **client integrations**. Hosting integrations are used to model and configure various resources in a Aspire app, while client integrations are used to map configuration to various client libraries.
 
-There is an ever growing list [.NET Aspire integrations](https://learn.microsoft.com/dotnet/aspire/fundamentals/integrations-overview?tabs=dotnet-cli#available-integrations) created and shipped by Microsoft and the community. .NET Aspire is flexible and anyone can create their own package to integrate with their own services.
+There is an ever growing list [Aspire integrations](https://learn.microsoft.com/dotnet/aspire/fundamentals/integrations-overview?tabs=dotnet-cli#available-integrations) created and shipped by Microsoft and the community. Aspire is flexible and anyone can create their own package to integrate with their own services.
 
 Let's improve our application by adding an integration to it. We will add a integration that will help us to connect to a Redis cache to improve our API performance.
 
 ## Add Redis Integration to App Host
 
-To add the Redis hosting integration to our App Host, we need to install the `Aspire.Hosting.Redis` NuGet package. This package provides the necessary pieces to configure the service in the App Host. Redis is provided through a container image in this workshop, and when we start the .NET Aspire App Host, it will automatically download the Redis container image and start the Redis server.
+To add the Redis hosting integration to our App Host, we need to install the `Aspire.Hosting.Redis` NuGet package. This package provides the necessary pieces to configure the service in the App Host. Redis is provided through a container image in this workshop, and when we start the Aspire App Host, it will automatically download the Redis container image and start the Redis server.
 
 With the NuGet package installed, we can add Redis to our App Host:
 
@@ -111,7 +111,7 @@ We will add the _Output caching_ Redis client integration to our `Api` project. 
 
 ## Custom Redis Containers
 
-.NET Aspire integrations are flexible and customizable. By default, the Redis integration uses a Redis container image from Docker Hub. However, you can use your own Redis container image by providing the image name and tag after the `AddRedis` method. For example, if you have a custom Redis container image such as [Garnet](https://github.com/microsoft/garnet), you can provide the image registry, name, and tag in the App Host as follows:
+Aspire integrations are flexible and customizable. By default, the Redis integration uses a Redis container image from Docker Hub. However, you can use your own Redis container image by providing the image name and tag after the `AddRedis` method. For example, if you have a custom Redis container image such as [Garnet](https://github.com/microsoft/garnet), you can provide the image registry, name, and tag in the App Host as follows:
 
 ```csharp
 var cache = builder.AddRedis("cache")
@@ -134,7 +134,7 @@ var cache = builder.AddRedis("cache")
 
 In this section, we added a Redis hosting integration to the App Host and Redis output caching client integration in the API. We saw how the response was cached in the Redis cache and how the second and subsequent requests were much faster than the first one. We also saw how to use Redis Insight to manage the Redis cache.
 
-There are many more Aspire integrations available that you can use to integrate with your services. You can find the list of available integrations [in the .NET Aspire documentation](https://learn.microsoft.com/dotnet/aspire/fundamentals/integrations-overview?tabs=dotnet-cli#available-integrations).
+There are many more Aspire integrations available that you can use to integrate with your services. You can find the list of available integrations [in the Aspire documentation](https://learn.microsoft.com/dotnet/aspire/fundamentals/integrations-overview?tabs=dotnet-cli#available-integrations).
 
 A natural next step would be to integrate a database or leverage Azure Redis Cache as a hosted solution. Integrations for these and more are [available on NuGet](https://www.nuget.org/packages?q=owner%3Aaspire+tags%3Aintegration).
 

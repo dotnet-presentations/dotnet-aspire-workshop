@@ -6,12 +6,12 @@ In this module, we will integrate a PostgreSQL database with our application. We
 
 ## Setting Up PostgreSQL
 
-.NET Aspire provides built-in support for PostgreSQL through the `Aspire.Hosting.PostgreSQL` package. To set up PostgreSQL:
+Aspire provides built-in support for PostgreSQL through the `Aspire.Hosting.PostgreSQL` package. To set up PostgreSQL:
 
 1. Install the required NuGet package in your AppHost project:
 
 ```xml
-<PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.4.2" />
+<PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.0.0" />
 ```
 
 1. Update the AppHost's Program.cs to add PostgreSQL:
@@ -81,7 +81,7 @@ With `ContainerLifetime.Persistent`, the PostgreSQL container will continue runn
 1. Install the required NuGet packages in your web application:
 
 ```xml
-<PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.4.2" />
+<PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.2" />
 ```
 
 1. Create your DbContext class:
@@ -110,7 +110,7 @@ public class MyWeatherContext : DbContext
 builder.AddNpgsqlDbContext<MyWeatherContext>(connectionName: "weatherdb");
 ```
 
-Note that .NET Aspire handles the connection string configuration automatically. The connection name "weatherdb" matches the database name we created in the AppHost project.
+Note that Aspire handles the connection string configuration automatically. The connection name "weatherdb" matches the database name we created in the AppHost project.
 
 1. Set up database initialization:
 
@@ -130,8 +130,6 @@ For development environments, we use `EnsureCreatedAsync()` to automatically cre
 ## Updating the Web App
 
 Now we'll update the web application to support favoriting weather zones and filtering them. Let's make these changes step by step:
-
-> QuickGrid Version Note: Ensure the `MyWeatherHub` project references the latest stable 9.0.x version of `Microsoft.AspNetCore.Components.QuickGrid` (currently `9.0.7` in the complete solution) to pick up bug fixes and accessibility improvements.
 
 1. Make sure to add these Entity Framework using statements at the top of `Home.razor` if they're not already present:
 
@@ -275,15 +273,15 @@ If you want to reset and start fresh:
 
 ## Other Data Options
 
-In addition to PostgreSQL, .NET Aspire provides first-class support for several other database systems:
+In addition to PostgreSQL, Aspire provides first-class support for several other database systems:
 
 ### [Azure SQL/SQL Server](https://learn.microsoft.com/en-us/dotnet/aspire/database/sql-server-entity-framework-integration)
 
-SQL Server integration in .NET Aspire includes automatic container provisioning for development, connection string management, and health checks. It supports both local SQL Server containers and Azure SQL Database in production. The integration handles connection resiliency automatically and includes telemetry for monitoring database operations.
+SQL Server integration in Aspire includes automatic container provisioning for development, connection string management, and health checks. It supports both local SQL Server containers and Azure SQL Database in production. The integration handles connection resiliency automatically and includes telemetry for monitoring database operations.
 
 ### [MySQL](https://learn.microsoft.com/en-us/dotnet/aspire/database/mysql-entity-framework-integration)
 
-The MySQL integration for .NET Aspire provides similar capabilities to PostgreSQL, including containerized development environments and production-ready configurations. It includes built-in connection retries and health monitoring, making it suitable for both development and production scenarios.
+The MySQL integration for Aspire provides similar capabilities to PostgreSQL, including containerized development environments and production-ready configurations. It includes built-in connection retries and health monitoring, making it suitable for both development and production scenarios.
 
 ### [MongoDB](https://learn.microsoft.com/en-us/dotnet/aspire/database/mongodb-integration)
 
@@ -295,7 +293,7 @@ While SQLite doesn't require containerization, Aspire provides consistent config
 
 ## Community Toolkit Database Features
 
-The .NET Aspire Community Toolkit extends database capabilities with additional tooling:
+The Aspire Community Toolkit extends database capabilities with additional tooling:
 
 ### [SQL Database Projects](https://learn.microsoft.com/en-us/dotnet/aspire/community-toolkit/hosting-sql-database-projects)
 
@@ -313,10 +311,10 @@ Data API Builder (DAB) automatically generates REST and GraphQL endpoints from y
 
 ## Conclusion
 
-In this module, we added PostgreSQL database support to our application using .NET Aspire's database integration features. We used Entity Framework Core for data access and configured our application to work with both local development and cloud-hosted databases.
+In this module, we added PostgreSQL database support to our application using Aspire's database integration features. We used Entity Framework Core for data access and configured our application to work with both local development and cloud-hosted databases.
 
 The natural next step would be to add tests to verify the database integration works correctly.
 
-Head over to [Module #8: Integration Testing](../Lesson-08-Integration-Testing/README.md) to learn how to write integration tests for your .NET Aspire application.
+Head over to [Module #8: Integration Testing](../Lesson-08-Integration-Testing/README.md) to learn how to write integration tests for your Aspire application.
 
 **Next**: [Module #8: Integration Testing](../Lesson-08-Integration-Testing/README.md)

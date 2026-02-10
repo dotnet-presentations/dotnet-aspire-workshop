@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this module, we'll implement comprehensive observability features in our weather application using .NET Aspire's built-in OpenTelemetry support. We'll cover three main aspects:
+In this module, we'll implement comprehensive observability features in our weather application using Aspire's built-in OpenTelemetry support. We'll cover three main aspects:
 
 1. **Structured Logging**: Implementing context-rich logging that makes it easier to trace and debug requests through the system
 2. **Custom Metrics**: Creating and tracking application-specific metrics like request counts, durations, and cache performance
@@ -14,12 +14,12 @@ You'll learn how to:
 - Implement structured logging with scopes and semantic context
 - Add custom metrics for tracking application behavior
 - Use distributed tracing to follow requests through the system
-- Test and observe the telemetry data in the .NET Aspire dashboard
+- Test and observe the telemetry data in the Aspire dashboard
 - Integrate with external observability platforms
 
-## OpenTelemetry in .NET Aspire ServiceDefaults
+## OpenTelemetry in Aspire ServiceDefaults
 
-.NET Aspire's ServiceDefaults project automatically configures OpenTelemetry for your application. When you call `builder.AddServiceDefaults()`, it:
+Aspire's ServiceDefaults project automatically configures OpenTelemetry for your application. When you call `builder.AddServiceDefaults()`, it:
 
 1. Configures structured logging with OpenTelemetry
 2. Sets up distributed tracing with common instrumentation:
@@ -28,7 +28,7 @@ You'll learn how to:
    - Runtime metrics
    - Service discovery
 3. Configures metrics collection and export
-4. Enables integration with the .NET Aspire dashboard
+4. Enables integration with the Aspire dashboard
 
 This means you don't need to manually configure the basic OpenTelemetry infrastructure. You can focus on adding your application-specific telemetry.
 
@@ -124,9 +124,13 @@ public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
         var zoneIdSegment = Uri.EscapeDataString(zoneId);
         var forecasts = await httpClient.GetFromJsonAsync<ForecastResponse>($"zones/forecast/{zoneIdSegment}/forecast", options);
         stopwatch.Stop();
-        
+
         // Record the request duration
-        NwsManagerDiagnostics.forecastRequestDuration.Record(stopwatch.Elapsed.TotalSeconds);
+        var tags = new KeyValuePair<string, object?>[]
+        {
+          new KeyValuePair<string, object?>("zone.id", zoneId)
+        };
+        NwsManagerDiagnostics.forecastRequestDuration.Record(stopwatch.Elapsed.TotalSeconds, tags);
         activity?.SetTag("request.success", true);
 
         var result = forecasts
@@ -258,7 +262,7 @@ The enhanced implementation demonstrates both cache hit and miss scenarios:
 
 ## Testing the Implementation
 
-1. Run the application using the .NET Aspire dashboard
+1. Run the application using the Aspire dashboard
 2. Open the "Structured" tab in the dashboard
 3. Click on several different cities in the weather app
 4. Observe the telemetry data:
@@ -290,7 +294,7 @@ The enhanced implementation demonstrates both cache hit and miss scenarios:
 
 ## Telemetry Integrations
 
-.NET Aspire's OpenTelemetry infrastructure makes it easy to integrate with various observability platforms. Here are some popular options:
+Aspire's OpenTelemetry infrastructure makes it easy to integrate with various observability platforms. Here are some popular options:
 
 ### Cloud Provider Solutions
 

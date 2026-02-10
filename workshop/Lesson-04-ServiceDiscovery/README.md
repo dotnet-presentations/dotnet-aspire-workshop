@@ -1,6 +1,6 @@
 # Service Discovery
 
-.NET Aspire includes functionality for configuring service discovery at development and testing time. This allows resources to refer to other resources by their name and have the concrete address details resolved at runtime. Service discovery functionality works by providing configuration in the format expected by the configuration-based endpoint resolver from the .NET Aspire App Host project to the individual service projects added to the application model.
+Aspire includes functionality for configuring service discovery at development and testing time. This allows resources to refer to other resources by their name and have the concrete address details resolved at runtime. Service discovery functionality works by providing configuration in the format expected by the configuration-based endpoint resolver from the Aspire App Host project to the individual service projects added to the application model.
 
 ## Service Discovery Configuration
 
@@ -11,7 +11,7 @@ Currently, the `MyWeatherHub` is using static configuration in its *appsettings.
 - Multiple configuration settings would need to be defined for http and https settings.
 - As we add more services, the configuration would become more complex.
 
-To address these issues, we will use the service discovery functionality provided by the .NET Aspire App Host project. This will allow the `MyWeatherHub` service to discover the `Api` service at runtime.
+To address these issues, we will use the service discovery functionality provided by the Aspire App Host project. This will allow the `MyWeatherHub` service to discover the `Api` service at runtime.
 
 1. Open the `Program.cs` file in the `AppHost` project.
 1. Earlier we added orchestration to include several projects by using the `builder.AddProject` method. This returned an `IResourceBuilder<TResource>` that can be used to reference other resources. Let's reference the `Api` project in the `MyWeatherHub` project by updating the code:
@@ -34,10 +34,10 @@ When we added `ServiceDefaults` to the projects we automatically enrolled them i
 Some services expose multiple, named endpoints. By default, the scheme portion of the URI is used to refer to the name of the endpoint being resolved, e.g. the URI `https://basket` will resolve an endpoint named `https` on the `basket` service. By default in Aspire, project resources declare their endpoints according to the contents of their *launchSettings.json* file, so most projects will by default receive `https` and `http` named endpoints. The scheme portion of the referring URI can include multiple names separated by a `+` character and in preference order, e.g. `https+http://basket` will attempt to resolve the `https` named endpoint, and if not found it will resolve the `http` endpoint, of the `basket` service.
 
 > [!NOTE]
-> This workshop uses implicit service discovery with the default `http` and `https` named endpoints. .NET Aspire also supports explicitly declaring and resolving additional named endpoints (via code, configuration, and Kubernetes) for advanced scenarios. See the [Named Endpoints section of the Service Discovery docs](https://learn.microsoft.com/dotnet/aspire/service-discovery/overview#named-endpoints)
+> This workshop uses implicit service discovery with the default `http` and `https` named endpoints. Aspire also supports explicitly declaring and resolving additional named endpoints (via code, configuration, and Kubernetes) for advanced scenarios. See the [Named Endpoints section of the Service Discovery docs](https://learn.microsoft.com/dotnet/aspire/service-discovery/overview#named-endpoints)
  for details.
 
-Now, let's update the `MyWeatherHub` project to use service discovery to connect to the `Api` service. This can be accomplished by updating the existing `WeatherEndpoint` configuration settings in the `appsettings.json`. This is convenient when enabling .NET Aspire in an existing deployed application as you can continue to use your existing configuration settings.
+Now, let's update the `MyWeatherHub` project to use service discovery to connect to the `Api` service. This can be accomplished by updating the existing `WeatherEndpoint` configuration settings in the `appsettings.json`. This is convenient when enabling Aspire in an existing deployed application as you can continue to use your existing configuration settings.
 
 1. Open the `appsettings.json` file in the `MyWeatherHub` project.
 
@@ -66,7 +66,7 @@ Alternatively, we can update the url to not use the `WeatherEndpoint` configurat
 1. Run the application by pressing `F5` or selecting the `Start Debugging` option.
 1. Open the `MyWeatherApp` by selecting the endpoint in the dashboard.
 1. Notice that the `MyWeatherHub` app still works and is now using service discovery to connect to the `Api` service.
-1. In the dashboard click on the `Details` for the `MyWeatherHub` project. This will bring up all of the settings that .NET Aspire configured when running the app from the App Host.
+1. In the dashboard click on the `Details` for the `MyWeatherHub` project. This will bring up all of the settings that Aspire configured when running the app from the App Host.
 1. Click on the eye icon to reveal the values and scroll to the bottom where you will see `services__api__http__0` and `services__api__https__0` configured with the correct values of the `Api` service.`
 
     ![Service discovery settings in the dashboard](../media/dashboard-servicediscovery.png)
@@ -118,7 +118,7 @@ Now that we've defined the external weather API service in our AppHost, we need 
     services.AddHttpClient<Api.NwsManager>(client =>
     {
         client.BaseAddress = new Uri("https://weather-api");
-        client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - .NET Aspire Demo");
+        client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - Aspire Demo");
     });
 
     ...
@@ -133,10 +133,10 @@ The service discovery system will now resolve `https://weather-api` to the actua
 
 ## Conclusion
 
-This was just the start of what we can do with service discovery and .NET Aspire. As our application grows and we add more services, we can continue to use service discovery to connect services at runtime. This will allow us to easily scale our application and make it more resilient to changes in the environment.
+This was just the start of what we can do with service discovery and Aspire. As our application grows and we add more services, we can continue to use service discovery to connect services at runtime. This will allow us to easily scale our application and make it more resilient to changes in the environment.
 
 ## Learn More
 
-You can learn more about advanced usage and configuration of service discovery in the [.NET Aspire Service Discovery](https://learn.microsoft.com/dotnet/aspire/service-discovery/overview) documentation.
+You can learn more about advanced usage and configuration of service discovery in the [Aspire Service Discovery](https://learn.microsoft.com/dotnet/aspire/service-discovery/overview) documentation.
 
 **Next**: [Module #5: Integrations](../Lesson-05-Integrations/README.md)

@@ -1,8 +1,8 @@
-# Custom Commands in .NET Aspire
+# Custom Commands in Aspire
 
 ## Introduction
 
-Want to add superpowers to your .NET Aspire dashboard? Custom commands are here to save the day! In this module, we'll explore how to create interactive commands that let you manage your application resources directly from the Aspire dashboard - no more switching between terminals, browsers, and tools.
+Want to add superpowers to your Aspire dashboard? Custom commands are here to save the day! In this module, we'll explore how to create interactive commands that let you manage your application resources directly from the Aspire dashboard - no more switching between terminals, browsers, and tools.
 
 We'll cover:
 
@@ -16,7 +16,7 @@ Think of custom commands as buttons with brains - they know when to be available
 
 ## What Are Custom Commands?
 
-Custom commands in .NET Aspire are interactive actions you can perform on resources directly from the dashboard. They provide a unified way to:
+Custom commands in Aspire are interactive actions you can perform on resources directly from the dashboard. They provide a unified way to:
 
 - **Manage Resources**: Clear caches, restart services, trigger maintenance tasks
 - **Execute Operations**: Call specific API endpoints, run database migrations, invalidate caches
@@ -27,7 +27,7 @@ The best part? All commands are discoverable in the dashboard UI and can include
 
 ## Types of Custom Commands
 
-.NET Aspire supports several types of custom commands:
+Aspire supports several types of custom commands:
 
 | Command Type | Use Case | Example |
 |--------------|----------|---------|
@@ -341,7 +341,7 @@ var api = builder.AddProject<Projects.Api>("api")
 
 ### Icons and Visual Design
 
-.NET Aspire uses [Fluent UI icons](https://www.fluentui-blazor.net/Icon) for command buttons. Here are some popular choices:  
+Aspire uses [Fluent UI icons](https://www.fluentui-blazor.net/Icon) for command buttons. Here are some popular choices:  
 
 | Icon Name | Use Case | Visual Style |
 |-----------|----------|--------------|
@@ -376,7 +376,7 @@ Description = "This command will clear all cached data in the Redis database."
 
 Aspire provides the `ResourceCommandService` API for executing commands programmatically. This enables scenarios like composite commands that coordinate multiple operations or unit testing of commands.
 
-> **Note:** The `ResourceCommandService` API was introduced in .NET Aspire 9.4.
+> **Note:** The `ResourceCommandService` API was introduced in Aspire 9.4.
 ```csharp
 // Add a composite command that coordinates multiple operations
 var api = builder.AddProject<Projects.Api>("api")
@@ -578,7 +578,7 @@ Disable commands when they shouldn't be available (e.g., when a service is offli
 
 ## Conclusion
 
-Custom commands transform the .NET Aspire dashboard from a passive monitoring tool into an active development environment. They provide:
+Custom commands transform the Aspire dashboard from a passive monitoring tool into an active development environment. They provide:
 
 - **Developer Productivity**: Common operations at your fingertips
 - **Consistency**: Standardized way to interact with resources

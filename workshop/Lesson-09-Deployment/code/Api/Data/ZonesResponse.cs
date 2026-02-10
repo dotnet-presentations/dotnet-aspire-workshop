@@ -14,7 +14,7 @@ public class ZonesResponse
         public Properties? Properties { get; set; }
 
         public static explicit operator Zone(Feature feature)
-            => new(feature?.Properties?.Key ?? string.Empty, feature?.Properties?.Name ?? string.Empty, feature?.Properties?.State ?? string.Empty);
+            => new (feature?.Properties?.Key ?? string.Empty, feature?.Properties?.Name ?? string.Empty, feature?.Properties?.State ?? string.Empty);
 
     }
 

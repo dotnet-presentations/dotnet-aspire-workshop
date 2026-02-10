@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyWeatherHub;
+
 public class MyWeatherContext : DbContext
 {
     public MyWeatherContext(DbContextOptions<MyWeatherContext> options)

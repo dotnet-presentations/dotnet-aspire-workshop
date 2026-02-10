@@ -1,32 +1,34 @@
-﻿# .NET Aspire Workshop
+﻿# Aspire Workshop
 
-Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), a cloud ready stack for building observable, production ready, distributed applications.​ .NET Aspire can be added to any application regardless of the size and scale to help you build better applications faster.​
+Come learn all about [Aspire](https://aspire.dev/), a cloud ready stack for building observable, production ready, distributed applications.​ Aspire can be added to any application regardless of the size and scale to help you build better applications faster.​
 
-This workshop uses **.NET Aspire 9.4** and is designed for **.NET 9** (**.NET 8** is also supported).
+This workshop uses **Aspire 13** and is designed for **.NET 10** (**.NET 8** and **.NET 9** are also supported).
 
-.NET Aspire streamlines app development with:
+Aspire streamlines app development with:
 
 - **Orchestration**: Use C# and familiar APIs to model your distributed application without a line of YAML. Easily add popular databases, messaging systems, and cloud services, connect them to your projects, and run locally with a single click.
 - **Service Discovery**: Automatic injection of the right connection strings or network configurations and service discovery information to simplify the developer experience.
 - **Integrations**: Built-in integrations for common cloud services like databases, queues, and storage. Configured for logging, health checks, telemetry, and more.
-- **Dashboard**: See live OpenTelemetry data with no configuration required. Launched by default on run, .NET Aspire's developer dashboard shows logs, environment variables, distributed traces, metrics and more to quickly verify app behavior.
+- **Dashboard**: See live OpenTelemetry data with no configuration required. Launched by default on run, Aspire's developer dashboard shows logs, environment variables, distributed traces, metrics and more to quickly verify app behavior.
 - **Deployment**: Easily produce a manifest of all the configuration your application resources require to run in production. Optionally, quickly and easily deploy to Azure Container Apps or Kubernetes using Aspire-aware tools.
-- **So Much More**: .NET Aspire is packed full of features that developers will love and help you be more productive.
+- **So Much More**: Aspire is packed full of features that developers will love and help you be more productive.
 
-Learn more about .NET Aspire with the following resources:
+Learn more about Aspire with the following resources:
 
 - [Documentation](https://learn.microsoft.com/dotnet/aspire)
 - [Microsoft Learn Training Path](https://learn.microsoft.com/training/paths/dotnet-aspire/)
-- [.NET Aspire Videos](https://aka.ms/aspire/videos)
+- [Aspire Videos](https://aka.ms/aspire/videos)
 - [eShop Reference Sample App](https://github.com/dotnet/eshop)
-- [.NET Aspire Samples](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
-- [.NET Aspire FAQ](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
+- [Aspire Samples](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
+- [Aspire FAQ](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
 
 ## Localization
 
 This workshop materials are available in the following languages:
 
 - [English](./README.md)
+
+_these may be out of date due to the quick versioning of Aspire_
 - [简体中文](./README.zh-cn.md)
 - [한국어](./README.ko.md)
 - [日本語](./README.jp.md)
@@ -34,7 +36,7 @@ This workshop materials are available in the following languages:
 - [Français](./README.fr.md)
 - [Português (PT-BR)](./README.pt-br.md)
 
-You can also watch the Let's Learn .NET Aspire live stream events for the following languages:
+You can also watch the Let's Learn Aspire live stream events for the following languages:
 
 - [English](https://www.youtube.com/watch?v=8i3FaHChh20)
 - [한국어](https://www.youtube.com/watch?v=rTpNgMaVM6g)
@@ -46,16 +48,16 @@ You can also watch the Let's Learn .NET Aspire live stream events for the follow
 
 ## Workshop
 
-This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letslearndotnet) series. This workshop is designed to help you learn about .NET Aspire and how to use it to build cloud ready applications.
+This Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letslearndotnet) series. This workshop is designed to help you learn about Aspire and how to use it to build cloud ready applications.
 
 ### Prerequisites
 
 Before starting this workshop, ensure you have:
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) (recommended) or [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [.NET 10 SDK](https://get.dot.net/10) (not required) for some feature previews you may want to try
-- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/) with the C# extension
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) (recommended) or [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Visual Studio 2026](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/) with the C# extension
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for containerized resources)
+	- [Podman](https://podman.io/) will work also
 
 ### Workshop Modules
 

@@ -26,7 +26,7 @@ var itTools = builder.AddContainer("it-tools", "corentinth/it-tools")
 	.WithExternalHttpEndpoints();
 
 // Add GitHub Models integration
-var githubModel = builder.AddGitHubModel("chat-model", GitHubModel.OpenAI.OpenAIGPT4oMini);
+var githubModel = builder.AddGitHubModel("chat-model", GitHubModel.OpenAI.OpenAIGpt41Mini);
 
 var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub")
 								 .WithReference(api)
