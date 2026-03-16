@@ -33,6 +33,8 @@ Aspire provides a set of smart defaults for services that are commonly used in .
    dotnet new aspire-servicedefaults -n ServiceDefaults
    ```
 
+   > **Aspire CLI Tip**: You can also use `aspire add` from within your project to interactively add service defaults and other integrations. The CLI will guide you through selecting the right packages.
+
 ## Configure Service Defaults
 
 Before we dive into the mechanics, here’s why we do each of the next steps:
@@ -47,7 +49,7 @@ Before we dive into the mechanics, here’s why we do each of the next steps:
    - Right-click on the `MyWeatherHub` project and select `Add` > `Reference`.
      - Check the `ServiceDefaults` project and click `OK`.
 
-   > Pro Tip: In Visual Studio 2022, you can drag and drop the project onto another project to add a reference.
+   > Pro Tip: In Visual Studio 2026, you can drag and drop the project onto another project to add a reference.
 
 1. In both the `Api` and `MyWeatherHub` projects, update their `Program.cs` files, adding the following line immediately after their `var builder = WebApplication.CreateBuilder(args);` line:
 

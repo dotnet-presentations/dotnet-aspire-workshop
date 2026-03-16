@@ -46,9 +46,9 @@ Let's build a fun little weather application that combines Azure Functions with 
 
 ### Setting Up Our Project
 
-#### Using Visual Studio 2022
+#### Using Visual Studio 2026
 
-1. Fire up Visual Studio 2022 and click **Create a new project**.
+1. Fire up Visual Studio 2026 and click **Create a new project**.
 2. In the search box, type "aspire" and pick the **Aspire Starter Application** template.
 3. Click **Next**.
 4. Fill in the project details:
@@ -68,12 +68,14 @@ Your solution now contains:
 
 #### Using Command Line
 
-1. Open your favorite terminal and run:
+1. Open your favorite terminal and use the Aspire CLI to create a new project:
 
    ```bash
-   dotnet new aspire-starter -n AzureIntegrationDemo
+   aspire new aspire-starter -n AzureIntegrationDemo
    cd AzureIntegrationDemo
    ```
+
+   > **Note**: You can also use `dotnet new aspire-starter -n AzureIntegrationDemo` if you prefer the dotnet CLI directly.
 
 2. This creates the same set of projects as the Visual Studio approach.
 

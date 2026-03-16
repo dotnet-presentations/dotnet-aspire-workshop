@@ -79,9 +79,9 @@ Add the necessary NuGet packages to your MyWeatherHub project:
 1. Add the following package references:
 
 ```xml
-<PackageReference Include="Aspire.Azure.AI.Inference" Version="9.4.2" />
-<PackageReference Include="Microsoft.Extensions.AI" Version="9.8.0" />
-<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.8.0-preview.1.25412.6" />
+<PackageReference Include="Aspire.Azure.AI.Inference" Version="13.1.0" />
+<PackageReference Include="Microsoft.Extensions.AI" Version="9.9.0" />
+<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.9.0" />
 ```
 
 ### Step 4: Configure AI Services in MyWeatherHub
@@ -316,6 +316,90 @@ Now that you have GitHub Models integrated:
 1. **Add more AI features** - Consider adding weather recommendations or alerts
 1. **Implement caching** - Cache AI responses to improve performance
 1. **Add user preferences** - Let users choose between manual and AI background selection
+
+## 🤖 Agentic Development with Aspire
+
+In this module, you added AI as a *feature* of your app. But Aspire 13.1 also makes AI your *development partner*. While GitHub Models powers your weather backgrounds, the Aspire **agentic development** workflow lets AI assistants operate on your entire running system.
+
+### From Copilot to Co-Developer
+
+Traditional AI coding assistants suggest code. Aspire-connected agents go further:
+
+| Capability | Traditional AI | Aspire-Connected Agent |
+|-----------|---------------|----------------------|
+| Code suggestions | ✅ | ✅ |
+| Read source files | ✅ | ✅ |
+| Query live resource states | ❌ | ✅ |
+| Read real-time logs & traces | ❌ | ✅ |
+| Run dashboard commands | ❌ | ✅ |
+| Discover integrations & endpoints | ❌ | ✅ |
+
+### How It Works
+
+When you run `aspire mcp init` (covered in [Module #6](../Lesson-06-Telemetry/README.md)), your AI assistant connects to the Aspire MCP server. From there, it can reason about your *running* application — not just your source code.
+
+### Real-World Agentic Scenarios
+
+Here are practical examples using your Weather Hub application:
+
+#### Scenario 1: Debugging a Failing Forecast
+
+You ask your AI agent: *"The Philadelphia forecast is failing — why?"*
+
+The agent:
+1. Queries the Aspire dashboard for the `api` resource status
+2. Reads recent structured logs filtered by "Philadelphia"
+3. Finds the `NwsManagerDiagnostics.failedRequestCounter` spike
+4. Checks the distributed trace and sees a timeout on the external weather API call
+5. Reports back: *"The NWS API is timing out for zone PAZ071. The retry policy is firing but the upstream service is slow. Consider increasing the timeout or adding a circuit breaker."*
+
+#### Scenario 2: Performance Investigation
+
+You ask: *"How is my Redis cache performing?"*
+
+The agent:
+1. Checks the `cache_hits_total` and `cache_misses_total` metrics
+2. Queries Redis Insight via the dashboard endpoint
+3. Reports: *"Cache hit rate is 73%. The zones endpoint has a 100% hit rate after the first request, but forecast requests show frequent misses because the 15-minute TTL is expiring."*
+
+#### Scenario 3: System-Wide Health Check
+
+You ask: *"Is everything healthy?"*
+
+The agent:
+1. Lists all resources and their health status from the dashboard
+2. Checks the `/health` endpoints for both `api` and `myweatherhub`
+3. Verifies the PostgreSQL and Redis containers are running
+4. Reports: *"All 4 resources are healthy. PostgreSQL has been up for 2 hours. Redis has 847 keys. The API has served 234 requests with a 4.2% error rate (intentional test errors)."*
+
+### Setting Up Agentic Development
+
+If you haven't already set up MCP in Module 6:
+
+```bash
+# Initialize MCP for your AI tools
+aspire mcp init
+
+# Start your application
+aspire run
+```
+
+Then open your AI assistant and start asking questions about your running system!
+
+### The Bigger Picture
+
+The combination of:
+- **GitHub Models** (this module) — AI as an application *feature*
+- **Aspire MCP** ([Module #6](../Lesson-06-Telemetry/README.md)) — AI as a development *tool*
+- **Custom Commands** ([Module #12](../Lesson-12-Custom-Commands/README.md)) — Scriptable dashboard operations the agent can invoke
+
+...creates a powerful feedback loop where your AI assistant understands both your code *and* your running infrastructure.
+
+### Learn More
+
+- [Aspire Agentic Development Blog Post](https://devblogs.microsoft.com/aspire/aspire-13-1-holiday-gift/)
+- [MCP for AI Coding Agents Deep Dive](https://dev.to/chris_ayers/aspire-cli-part-3-mcp-for-ai-coding-agents-5d8j)
+- [Aspire Roadmap — Agent Features](https://github.com/dotnet/aspire/discussions/13608)
 
 ## Congratulations! 🎉
 

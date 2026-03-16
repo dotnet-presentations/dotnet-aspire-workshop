@@ -8,10 +8,16 @@ In this module, we will integrate a PostgreSQL database with our application. We
 
 Aspire provides built-in support for PostgreSQL through the `Aspire.Hosting.PostgreSQL` package. To set up PostgreSQL:
 
-1. Install the required NuGet package in your AppHost project:
+1. Install the required NuGet package in your AppHost project. The easiest way is using the Aspire CLI:
+
+```bash
+aspire add postgresql
+```
+
+Alternatively, add the package reference manually:
 
 ```xml
-<PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.0.0" />
+<PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.1.0" />
 ```
 
 1. Update the AppHost's Program.cs to add PostgreSQL:
@@ -81,7 +87,7 @@ With `ContainerLifetime.Persistent`, the PostgreSQL container will continue runn
 1. Install the required NuGet packages in your web application:
 
 ```xml
-<PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.2" />
+<PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="13.1.0" />
 ```
 
 1. Create your DbContext class:

@@ -84,6 +84,14 @@ Before continuing, consider some common terminology used in Aspire:
     ```
 
 1. Run the App Host using the `Run and Debug` panel in Visual Studio Code or Visual Studio.
+
+> **Aspire CLI Alternative**: You can also run the AppHost from anywhere in your repo using the Aspire CLI:
+>
+> ```bash
+> aspire run
+> ```
+>
+> The CLI automatically finds your AppHost project and starts the application. This is the recommended way to launch your Aspire application from the command line.
 1. The Aspire Dashboard will open in your default browser and display the resources and dependencies of your application.
 
     ![Aspire Dashboard](../media/dashboard.png)
@@ -168,7 +176,7 @@ dotnet new aspire-apphost-singlefile -n Weather -o .
 This will create an `apphost.cs` along with several supporting configuration files.  This C# file contains some new features introduced in .NET 10:
 
 ```csharp
-#:sdk Aspire.AppHost.Sdk@13.0.0
+#:sdk Aspire.AppHost.Sdk@13.1.0
 
 var builder = DistributedApplication.CreateBuilder(args);
 
@@ -178,7 +186,7 @@ builder.Build().Run();
 The `#:sdk` line directs the .NET runtime to use the Aspire SDK to manage this application.  We can add references to the projects in this solution with the `#:project ` directive and finish our AppHost with this content:
 
 ```csharp
-#:sdk Aspire.AppHost.Sdk@13.0.0
+#:sdk Aspire.AppHost.Sdk@13.1.0
 #:project Api
 #:project MyWeatherHub
 

@@ -355,4 +355,59 @@ To send telemetry to Azure Application Insights:
 
 For other integrations, consult their respective documentation for .NET OpenTelemetry setup instructions.
 
+## AI-Powered Observability with Aspire MCP
+
+Now that your application produces rich telemetry data, imagine letting an AI coding agent query those logs, traces, and metrics in real time — right from your editor. That's exactly what the **Aspire MCP (Model Context Protocol)** server enables.
+
+### What is Aspire MCP?
+
+The Aspire dashboard exposes an MCP server that AI coding assistants can connect to. Once connected, your AI agent can:
+
+- **Query live resource states** — see which services are running, healthy, or failing
+- **Stream console logs** — ask "why is my API returning 500s?" and the agent reads the logs for you
+- **Inspect distributed traces** — the agent can follow a request across service boundaries, just like you do in the Traces tab
+- **Run resource commands** — restart a service or clear a cache without leaving your editor
+
+### Setting Up MCP
+
+The Aspire CLI makes setup effortless:
+
+```bash
+aspire mcp init
+```
+
+This command:
+
+1. **Detects your AI tools** — VS Code, GitHub Copilot, Claude Code, or others
+2. **Generates configuration files** — e.g., `.vscode/mcp.json` for VS Code
+3. **Optionally creates an `AGENTS.md`** — project-specific instructions to help the AI agent understand your codebase
+
+That's it! No API keys to manage, no endpoints to configure. The AI agent launches `aspire mcp start` as a subprocess and connects automatically via stdio.
+
+### Try It Out
+
+1. Make sure your Aspire application is running (`aspire run`)
+2. Run `aspire mcp init` and follow the prompts
+3. Open your AI assistant and ask a question like:
+   - *"What resources are running in my Aspire app?"*
+   - *"Show me the recent error logs from the API"*
+   - *"What's the p95 latency for forecast requests?"*
+
+The agent reads the same telemetry you've been building throughout this module — your custom `NwsManagerMetrics`, your `ActivitySource` traces, and your structured logs — but now through a conversational interface.
+
+### Supported AI Assistants
+
+| Assistant | Configuration |
+|-----------|--------------|
+| **VS Code** (Copilot Chat) | `.vscode/mcp.json` (auto-generated) |
+| **GitHub Copilot CLI** | `~/.copilot/mcp-config.json` |
+| **Claude Code** | `.claude/mcp.json` |
+| **OpenCode** | Detected automatically |
+
+### Learn More
+
+- [Configure the MCP Server](https://aspire.dev/get-started/configure-mcp/)
+- [MCP CLI Command Reference](https://aspire.dev/reference/cli/commands/aspire-mcp-init/)
+- [Manual Dashboard MCP Configuration](https://aspire.dev/dashboard/mcp-server/)
+
 **Next**: [Module #7: Database Integration](../Lesson-07-Database/README.md)
