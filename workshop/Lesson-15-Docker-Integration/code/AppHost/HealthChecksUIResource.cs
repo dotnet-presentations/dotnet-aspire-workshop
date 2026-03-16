@@ -1,4 +1,4 @@
-﻿using Aspire.Hosting.Lifecycle;
+using Aspire.Hosting.Lifecycle;
 using System.Diagnostics;
 
 namespace Aspire.Hosting;
@@ -88,25 +88,13 @@ internal class HealthChecksUILifecycleHook(DistributedApplicationExecutionContex
 					Debug.Assert(healthChecksEndpoint.Exists, "The health check endpoint should exist after adding it.");
 				}
 
-				// Set environment variable to configure the URLs the health check endpoint is accessible from
+				// Set environment variable to configure the URLs the health check endpoint is accessible from.
+				// In Aspire 13+, expression-based resolution handles network context (container vs host)
+				// automatically, so manual container host URL construction is no longer needed.
 				project.WithEnvironment(context =>
 				{
 					var probePath = monitoredProject.ProbePath.TrimStart('/');
 					var healthChecksEndpointsExpression = ReferenceExpression.Create($"{healthChecksEndpoint}/{probePath}");
-
-					if (context.ExecutionContext.IsRunMode)
-					{
-						// Running during dev inner-loop
-						var containerHost = healthChecksUIResource.GetEndpoint("http").ContainerHost;
-						var fromContainerUriBuilder = new UriBuilder(healthChecksEndpoint.Url)
-						{
-							Host = containerHost,
-							Path = monitoredProject.ProbePath
-						};
-
-						healthChecksEndpointsExpression = ReferenceExpression.Create($"{healthChecksEndpointsExpression};{fromContainerUriBuilder.ToString()}");
-					}
-
 					context.EnvironmentVariables.Add(HEALTHCHECKSUI_URLS, healthChecksEndpointsExpression);
 				});
 			}
