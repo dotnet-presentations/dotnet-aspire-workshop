@@ -23,17 +23,9 @@ For the best experience, we recommend using Visual Studio 2026 with the ASP.NET 
 
 > Note: When running on Mac with Apple Silicon (M series processor), Rosetta 2 for grpc-tools.
 
-## Install Latest Aspire Templates
-
-Run the following command to install the latest Aspire templates.
-
-```cli
-dotnet new install Aspire.ProjectTemplates --force
-```
-
 ## Install the Aspire CLI
 
-Let's install the Aspire CLI, which provides a streamlined developer experience. You can install it using one of these methods:
+The Aspire CLI is the primary tool for working with Aspire projects. It provides a streamlined developer experience for creating, running, and managing your Aspire applications. Install it using one of these methods:
 
 ### Quick Install (Recommended)
 
@@ -51,13 +43,31 @@ curl -sSL https://aspire.dev/install.sh | bash
 dotnet tool install -g Aspire.Cli
 ```
 
+### Verify and Update
+
+After installing, verify and update to the latest version:
+
+```bash
+aspire --version
+aspire update --self
+```
+
 The Aspire CLI provides useful commands like:
 
-- `aspire new` - Create new Aspire projects
+- `aspire new` - Create new Aspire projects from templates
 - `aspire run` - Find and run the AppHost from anywhere in your repo
-- `aspire add` - Add hosting integration packages
+- `aspire add` - Add hosting integration packages interactively
 - `aspire config` - Configure Aspire settings
-- `aspire publish` - Generate deployment artifacts
+- `aspire update` - Update Aspire packages in your project
+- `aspire do` - Execute deployment pipeline steps (build, push, deploy)
+
+## Install Aspire Templates (Optional)
+
+The Aspire CLI handles templates automatically when you use `aspire new`. However, if you prefer using `dotnet new` directly, install the templates:
+
+```cli
+dotnet new install Aspire.ProjectTemplates --force
+```
 
 ## Test Installation
 

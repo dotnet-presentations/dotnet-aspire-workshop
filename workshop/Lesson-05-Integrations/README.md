@@ -12,6 +12,14 @@ Let's improve our application by adding an integration to it. We will add a inte
 
 To add the Redis hosting integration to our App Host, we need to install the `Aspire.Hosting.Redis` NuGet package. This package provides the necessary pieces to configure the service in the App Host. Redis is provided through a container image in this workshop, and when we start the Aspire App Host, it will automatically download the Redis container image and start the Redis server.
 
+The easiest way to add the Redis integration is using the Aspire CLI:
+
+```bash
+aspire add redis
+```
+
+This command interactively adds the `Aspire.Hosting.Redis` package to your AppHost project. Alternatively, you can install the NuGet package manually through your IDE's package manager.
+
 With the NuGet package installed, we can add Redis to our App Host:
 
 1. Open the `Program.cs` file in the `AppHost` project.

@@ -30,27 +30,37 @@ In this example, we'll assume you're deploying the MyWeatherHub app from the pre
 
 The process for installing `azd` varies based on your operating system, but it is widely available via `winget`, `brew`, `apt`, or directly via `curl`. To install `azd`, see [Install Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd).
 
-### Experimental Feature: aspire deploy Command
+### Aspire CLI: `aspire do` Pipeline Commands
 
-> [!CAUTION]
+Aspire 13 introduces the `aspire do` command, which provides a powerful deployment pipeline system with discrete, parallelizable steps. This replaces and extends the earlier experimental `aspire deploy` command.
+
+Available pipeline subcommands:
+
+```bash
+aspire do build      # Build containers
+aspire do push       # Push containers to registry
+aspire do deploy     # Deploy to target environment
+aspire do diagnostics # Visualize your pipeline
+```
+
+Pipeline steps can be customized and dependency-tracked in code. Aspire automatically parallelizes independent steps, speeding up deployments. To use the full pipeline:
+
+```bash
+aspire do
+```
+
+This runs all configured pipeline steps in dependency order. You can also customize your pipeline in the AppHost:
+
+```csharp
+builder.Pipeline.AddStep("my-step", requiredBy: "deploy", async (context) =>
+{
+    // Custom deployment logic
+});
+```
+
+> [!NOTE]
 >
-> This feature is under construction and is not stable.  This information is shared for informational purposes, and we recommend you keep an eye on the [.NET Blog](https://devblogs.microsoft.com/dotnet) for updates to the Aspire CLI that will include updates to this feature.
-
-Aspire 9.4 introduces the `aspire deploy` command (preview/feature flag) that extends publishing capabilities to actively deploy to target environments. This command provides enhanced deployment workflows with custom pre/post-deploy logic.
-
-To enable this feature:
-
-```bash
-aspire config set features.deployCommandEnabled true
-```
-
-Then you can use:
-
-```bash
-aspire deploy
-```
-
-This command provides enhanced progress reporting, better error messaging, and supports custom deployment hooks for complex deployment scenarios.
+> The `aspire do` pipeline system is evolving rapidly. Check the [Aspire Blog](https://devblogs.microsoft.com/aspire) for the latest updates on deployment features.
 
 ### Initialize the template
 
