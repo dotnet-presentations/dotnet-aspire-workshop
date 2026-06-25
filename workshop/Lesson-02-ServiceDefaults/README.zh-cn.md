@@ -2,7 +2,7 @@
 
 ## 介绍
 
-.NET Aspire 为 .NET 应用程序中常用的服务提供了一组智能默认值。这些默认值旨在帮助您快速入门，并在不同类型的应用程序中提供一致的体验。其中包括：
+Aspire 为 .NET 应用程序中常用的服务提供了一组智能默认值。这些默认值旨在帮助您快速入门，并在不同类型的应用程序中提供一致的体验。其中包括：
 
 - 遥测 Telemetry: Metrics, Tracing, Logging
 - 弹性 Resiliency
@@ -15,7 +15,7 @@
 
 1. 在当前解决方案中添加名为 `ServiceDefaults` 的新项目:
    - 在解决方案上右键，在右键菜单中选择 `Add` > `New Project`.
-   - 选择 `.NET Aspire Service Defaults` 项目模板.
+   - 选择 `Aspire Service Defaults` 项目模板.
    - 命名项目为 `ServiceDefaults`.
    - 点击 `Next` > `Create`.
 

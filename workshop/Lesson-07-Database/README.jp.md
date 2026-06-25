@@ -6,7 +6,7 @@
 
 ## PostgreSQLの設定
 
-.NET Aspireは、`Aspire.Hosting.PostgreSQL`パッケージを通じてPostgreSQLの組み込みサポートを提供します。PostgreSQLを設定するには：
+Aspireは、`Aspire.Hosting.PostgreSQL`パッケージを通じてPostgreSQLの組み込みサポートを提供します。PostgreSQLを設定するには：
 
 1. AppHostプロジェクトに必要なNuGetパッケージをインストールします：
 
@@ -66,7 +66,7 @@ var weatherDb = postgres.AddDatabase("weatherdb");
 
 > **注意**: 永続コンテナは主に開発シナリオで有用です。本番環境のデプロイでは、通常、永続性を自動的に処理するマネージドデータベースサービスを使用します。
 >
-> **高度なコンテナ機能**: .NET Aspireは、より良い起動調整のための`WithExplicitStart()`や、初期化スクリプトをマウントするための`WithContainerFiles()`など、高度なコンテナ設定もサポートします。これらの機能は、複雑な開発シナリオで必要な場合に、コンテナの動作を細かく制御します。これらの高度な機能について詳しくは、公式ドキュメントの[ボリュームを使用したデータの永続化](https://learn.microsoft.com/dotnet/aspire/fundamentals/persist-data-volumes)と[コンテナリソースのライフサイクル](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview#container-resource-lifecycle)を参照してください。
+> **高度なコンテナ機能**: Aspireは、より良い起動調整のための`WithExplicitStart()`や、初期化スクリプトをマウントするための`WithContainerFiles()`など、高度なコンテナ設定もサポートします。これらの機能は、複雑な開発シナリオで必要な場合に、コンテナの動作を細かく制御します。これらの高度な機能について詳しくは、公式ドキュメントの[ボリュームを使用したデータの永続化](https://learn.microsoft.com/dotnet/aspire/fundamentals/persist-data-volumes)と[コンテナリソースのライフサイクル](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview#container-resource-lifecycle)を参照してください。
 
 ## EF CoreとPostgreSQLの統合
 
@@ -102,7 +102,7 @@ public class MyWeatherContext : DbContext
 builder.AddNpgsqlDbContext<MyWeatherContext>(connectionName: "weatherdb");
 ```
 
-.NET Aspireが接続文字列の設定を自動的に処理することに注意してください。接続名「weatherdb」は、AppHostプロジェクトで作成したデータベース名と一致します。
+Aspireが接続文字列の設定を自動的に処理することに注意してください。接続名「weatherdb」は、AppHostプロジェクトで作成したデータベース名と一致します。
 
 1. データベース初期化を設定します：
 
@@ -265,15 +265,15 @@ IQueryable<Zone> zones
 
 ## その他のデータオプション
 
-PostgreSQLに加えて、.NET Aspireは他のいくつかのデータベースシステムに対してファーストクラスのサポートを提供します：
+PostgreSQLに加えて、Aspireは他のいくつかのデータベースシステムに対してファーストクラスのサポートを提供します：
 
 ### [Azure SQL/SQL Server](https://learn.microsoft.com/en-us/dotnet/aspire/database/sql-server-entity-framework-integration)
 
-.NET AspireのSQL Server統合には、開発用の自動コンテナプロビジョニング、接続文字列管理、ヘルスチェックが含まれます。ローカルSQL Serverコンテナと本番環境のAzure SQL Databaseの両方をサポートします。統合は接続の回復力を自動的に処理し、データベース操作を監視するためのテレメトリを含みます。
+AspireのSQL Server統合には、開発用の自動コンテナプロビジョニング、接続文字列管理、ヘルスチェックが含まれます。ローカルSQL Serverコンテナと本番環境のAzure SQL Databaseの両方をサポートします。統合は接続の回復力を自動的に処理し、データベース操作を監視するためのテレメトリを含みます。
 
 ### [MySQL](https://learn.microsoft.com/en-us/dotnet/aspire/database/mysql-entity-framework-integration)
 
-.NET AspireのMySQL統合は、コンテナ化された開発環境と本番準備構成を含む、PostgreSQLと同様の機能を提供します。組み込みの接続再試行とヘルス監視が含まれており、開発と本番の両方のシナリオに適しています。
+AspireのMySQL統合は、コンテナ化された開発環境と本番準備構成を含む、PostgreSQLと同様の機能を提供します。組み込みの接続再試行とヘルス監視が含まれており、開発と本番の両方のシナリオに適しています。
 
 ### [MongoDB](https://learn.microsoft.com/en-us/dotnet/aspire/database/mongodb-integration)
 
@@ -285,7 +285,7 @@ SQLiteはコンテナ化を必要としませんが、Aspireは一貫した設�
 
 ## コミュニティツールキットデータベース機能
 
-.NET Aspire Community Toolkitは、追加のツールでデータベース機能を拡張します：
+Aspire Community Toolkitは、追加のツールでデータベース機能を拡張します：
 
 ### [SQL Database Projects](https://learn.microsoft.com/en-us/dotnet/aspire/community-toolkit/hosting-sql-database-projects)
 
@@ -303,10 +303,10 @@ Data API Builder（DAB）は、データベーススキーマからRESTとGraphQ
 
 ## まとめ
 
-このモジュールでは、.NET Aspireのデータベース統合機能を使用して、アプリケーションにPostgreSQLデータベースサポートを追加しました。データアクセスにはEntity Framework Coreを使用し、ローカル開発とクラウドホストされたデータベースの両方で動作するようにアプリケーションを設定しました。
+このモジュールでは、Aspireのデータベース統合機能を使用して、アプリケーションにPostgreSQLデータベースサポートを追加しました。データアクセスにはEntity Framework Coreを使用し、ローカル開発とクラウドホストされたデータベースの両方で動作するようにアプリケーションを設定しました。
 
 次の自然なステップは、データベース統合が正しく動作することを確認するテストを追加することです。
 
-[モジュール #8: 統合テスト](../Lesson-08-Integration-Testing/README.md)に進んで、.NET Aspireアプリケーションの統合テストの書き方を学びましょう。
+[モジュール #8: 統合テスト](../Lesson-08-Integration-Testing/README.md)に進んで、Aspireアプリケーションの統合テストの書き方を学びましょう。
 
 **次へ**: [モジュール #8: 統合テスト](../Lesson-08-Integration-Testing/README.md)

@@ -1,6 +1,6 @@
 # 服务发现 Service Discovery
 
-.NET Aspire 包括在开发和测试阶段配置服务发现的功能。该特性允许按其名称引用其他资源，并在运行时解析具体的地址详细信息。服务发现功能的工作原理是，以基于配置的端点来解析程序所需的格式提供配置，所支持范围从 .NET Aspire App Host 项目到添加到应用程序模型的各个服务项目。
+Aspire 包括在开发和测试阶段配置服务发现的功能。该特性允许按其名称引用其他资源，并在运行时解析具体的地址详细信息。服务发现功能的工作原理是，以基于配置的端点来解析程序所需的格式提供配置，所支持范围从 Aspire App Host 项目到添加到应用程序模型的各个服务项目。
 
 ## 服务发现配置 Service Discovery Configuration
 
@@ -11,7 +11,7 @@
 - 需要针对 http 和 https 协议设置定义多个配置
 - 随着我们增加更多的服务，配置将变得更加复杂
 
-为了解决这些问题，我们将使用 .NET Aspire App Host 项目提供的服务发现功能。这将支持 `MyWeatherHub` 服务在运行时发现 `Api` 服务。
+为了解决这些问题，我们将使用 Aspire App Host 项目提供的服务发现功能。这将支持 `MyWeatherHub` 服务在运行时发现 `Api` 服务。
 
 1. 打开 `AppHost` 项目中的 `Program.cs` 文件
 2. 在前面为了支持编排，我们已经使用 `builder.AddProject` 方法包含了多个项目，它返回一个 `IResourceBuilder<TResource>` 结果，可以被用来引用其它资源。让我们更新代码来使得 `MyWeatherHub` 项目引用 `Api` 项目:
@@ -45,7 +45,7 @@ builder.Services.AddHttpClient<BasketServiceDashboardClient>(
 
 在上面的示例中， `BasketServiceClient` 将为 `basket` 服务使用 `https` 和 `http` 端点, 而对于 `BasketServiceDashboardClient` 来说，它将为 `basket` 服务使用 `dashboard` 端点, 而不管是通过 HTTPS 还是 HTTP schemes, 取决于哪一个可用。
 
-现在，让我们更新 `MyWeatherHub` 项目来使用服务发现连接到 `Api` 服务。这可以通过更新现有的位于 `appsettings.json` 配置文件中的 `WeatherEndpoint` 配置来实现。在现有已部署的应用程序中启用 .NET Aspire 非常方便，因为您可以继续使用现有的配置设置。
+现在，让我们更新 `MyWeatherHub` 项目来使用服务发现连接到 `Api` 服务。这可以通过更新现有的位于 `appsettings.json` 配置文件中的 `WeatherEndpoint` 配置来实现。在现有已部署的应用程序中启用 Aspire 非常方便，因为您可以继续使用现有的配置设置。
 
 1. 打开 `MyWeatherHub` 项目中的 `appsettings.json` 配置文件。
 2. 更新 `WeatherEndpoint` 配置设置以使用服务发现:
@@ -71,17 +71,17 @@ builder.Services.AddHttpClient<BasketServiceDashboardClient>(
 1. 通过 `F5` 快捷键或者选择 `Start Debugging`  运行应用程序。
 2. 在仪表板中通过选择端点来打开 `MyWeatherApp` .
 3. 注意到 `MyWeatherHub` 应用同以前一样工作，现在它使用服务发现连接到 `Api` 服务.
-4. 在仪表板中点击 `MyWeatherHub` 项目的 `Details`. 这将调出 .NET Aspire 在从 App Host 运行应用程序时配置的所有设置。
+4. 在仪表板中点击 `MyWeatherHub` 项目的 `Details`. 这将调出 Aspire 在从 App Host 运行应用程序时配置的所有设置。
 5. 点击其中的眼睛图标来查看配置值，卷绕到底部，你将看到对于 `Api` 服务的 `services__api__http__0` 和 `services__api__https__0` 配置了正确的值。
 
     ![Service discovery settings in the dashboard](../media/dashboard-servicediscovery.png)
 
 ## 结论
 
-这只是我们可以使用服务发现和 .NET Aspire 完成的开始。随着我们的应用程序增长和添加更多服务，我们可以继续使用服务发现在运行时连接服务。这将使我们能够轻松扩展我们的应用程序，并使其对环境变化更具弹性。
+这只是我们可以使用服务发现和 Aspire 完成的开始。随着我们的应用程序增长和添加更多服务，我们可以继续使用服务发现在运行时连接服务。这将使我们能够轻松扩展我们的应用程序，并使其对环境变化更具弹性。
 
 ## 进一步学习
 
-您可以通过 [.NET Aspire Service Discovery](https://learn.microsoft.com/dotnet/aspire/service-discovery/overview) 文档进一步学习服务发现的高级用法和配置。
+您可以通过 [Aspire Service Discovery](https://learn.microsoft.com/dotnet/aspire/service-discovery/overview) 文档进一步学习服务发现的高级用法和配置。
 
 **下一节**: [模块 #5: Integrations](../Lesson-05-Integrations/README.md)

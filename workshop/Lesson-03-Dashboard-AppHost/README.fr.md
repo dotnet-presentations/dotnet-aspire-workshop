@@ -1,8 +1,8 @@
-# Tableau de bord et orchestration avec l'hôte de l'application .NET Aspire
+# Tableau de bord et orchestration avec l'hôte de l'application Aspire
 
-.NET Aspire fournit des API pour exprimer les ressources et les dépendances au sein de votre application distribuée. En plus de ces API, il existe des outils qui permettent certains scénarios convaincants. L'orchestrateur est destiné à des fins de développement local.
+Aspire fournit des API pour exprimer les ressources et les dépendances au sein de votre application distribuée. En plus de ces API, il existe des outils qui permettent certains scénarios convaincants. L'orchestrateur est destiné à des fins de développement local.
 
-Avant de continuer, considérez quelques termes courants utilisés dans .NET Aspire :
+Avant de continuer, considérez quelques termes courants utilisés dans Aspire :
 
 * *Modèle d'application (App model)* : un ensemble de ressources qui composent votre application distribuée (DistributedApplication). Pour une définition plus formelle, consultez Définir le modèle d’application.
 * *Projet hôte/Orchestreur d'application* : projet .NET qui orchestre le modèle d'application, nommé avec le suffixe *.AppHost (par convention).
@@ -16,7 +16,7 @@ Avant de continuer, considérez quelques termes courants utilisés dans .NET Asp
 1. Ajoutez un nouveau projet à la solution appelé `AppHost`:
 
 * Faites un clic droit sur la solution et sélectionnez `Add` > `New project`.
-* Sélectionnez le modèle de projet `.NET Aspire App Host`.
+* Sélectionnez le modèle de projet `Aspire App Host`.
 * Nommez le projet `AppHost`.
 * Cliquez sur `Next` > `Create`.
 
@@ -75,20 +75,20 @@ Avant de continuer, considérez quelques termes courants utilisés dans .NET Asp
  ```
 
 1. Exécutez App Host à l'aide du panneau `Exécuter et déboguer` dans Visual Studio Code ou Visual Studio.
-1. Le tableau de bord .NET Aspire s'ouvrira dans votre navigateur par défaut et affichera les ressources et dépendances de votre application.
+1. Le tableau de bord Aspire s'ouvrira dans votre navigateur par défaut et affichera les ressources et dépendances de votre application.
 
-  ![Tableau de bord .NET Aspire](.../media/dashboard.png)
+  ![Tableau de bord Aspire](.../media/dashboard.png)
 
 1. Ouvrez le tableau de bord météo en cliquant sur l'un des points de terminaison de `MyWeatherHub` qui sera [https://localhost:7274](https://localhost:7274).
 1. Notez que les projets `Api` et `MyWeatherHub` s'exécutent dans le même processus et peuvent communiquer entre eux de la même manière qu'avant en utilisant les paramètres de configuration.
 1. Cliquez sur le bouton `Afficher les journaux` pour voir les journaux des projets `Api` et `MyWeatherHub`.
 1. Sélectionnez l'onglet `Traces` et sélectionnez `Vue` sur une trace où l'API est appelée.
 
-  ![Tableau de bord .NET Aspire](.../media/dashboard-trace.png)]
+  ![Tableau de bord Aspire](.../media/dashboard-trace.png)]
 
 1. Explorez l'onglet `Métriques` pour voir les métriques des projets `Api` et `MyWeatherHub`.
 
-  ![Tableau de bord .NET Aspire](.../media/dashboard-metrics.png)
+  ![Tableau de bord Aspire](.../media/dashboard-metrics.png)
 
 ## Créer une erreur
 
@@ -97,6 +97,6 @@ Avant de continuer, considérez quelques termes courants utilisés dans .NET Asp
 1. Sur le site Web `MyWeatherApp`, cliquez sur plusieurs villes différentes pour générer des erreurs. Habituellement, 5 villes différentes génèrent une erreur.
 1. Après avoir généré les erreurs, l'onglet `Structuré` se mettra automatiquement à jour sur le tableau de bord et remarquera que les erreurs sont affichées.
 
-  ![Tableau de bord .NET Aspire](.../media/dashboard-error.png)
+  ![Tableau de bord Aspire](.../media/dashboard-error.png)
 
 1. Cliquez sur `Trace` ou `Détails` pour voir le message d'erreur et la trace de la pile.

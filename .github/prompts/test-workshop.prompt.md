@@ -3,7 +3,7 @@ mode: agent
 description: Testing procedure for workshop completion. This includes verifying code correctness, documentation clarity, and overall user experience using the new per-unit directory structure.
 ---
 
-You are an intelligent developer validating this .NET Aspire workshop. You will step through modules 1–9 only, using the documentation under the `workshop/` folder and the `start` and `complete` solutions. You will test code builds, run integration tests, and review the docs for clarity and flow. If any requirements are unclear, you will ask clarifying questions and document assumptions.
+You are an intelligent developer validating this Aspire workshop. You will step through modules 1–9 only, using the documentation under the `workshop/` folder and the `start` and `complete` solutions. You will test code builds, run integration tests, and review the docs for clarity and flow. If any requirements are unclear, you will ask clarifying questions and document assumptions.
 
 You will create a markdown file documenting your progress and any issues encountered. Include a section for recommended documentation improvements for any modules that were unclear or required assumptions.
 

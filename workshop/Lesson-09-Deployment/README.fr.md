@@ -1,16 +1,16 @@
-# Déployer une application .NET Aspire sur Azure Container Apps
+# Déployer une application Aspire sur Azure Container Apps
 
-.NET Aspire est optimisé pour les applications destinées à s'exécuter dans des environnements conteneurisés. [Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) est un environnement entièrement géré qui vous permet d'exécuter des microservices et des applications conteneurisées sur une plateforme sans serveur. Cet article vous guidera dans la création d'une nouvelle solution .NET Aspire et son déploiement sur Microsoft Azure Container Apps en utilisant Visual Studio et l'Azure Developer CLI (`azd`).
+Aspire est optimisé pour les applications destinées à s'exécuter dans des environnements conteneurisés. [Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) est un environnement entièrement géré qui vous permet d'exécuter des microservices et des applications conteneurisées sur une plateforme sans serveur. Cet article vous guidera dans la création d'une nouvelle solution Aspire et son déploiement sur Microsoft Azure Container Apps en utilisant Visual Studio et l'Azure Developer CLI (`azd`).
 
-Dans cet exemple, nous supposerons que vous déployez l'application MyWeatherHub des sections précédentes. Vous pouvez utiliser le code que vous avez construit, ou vous pouvez utiliser le code dans le répertoire **complete**. Cependant, les étapes générales sont les mêmes pour toute application .NET Aspire.
+Dans cet exemple, nous supposerons que vous déployez l'application MyWeatherHub des sections précédentes. Vous pouvez utiliser le code que vous avez construit, ou vous pouvez utiliser le code dans le répertoire **complete**. Cependant, les étapes générales sont les mêmes pour toute application Aspire.
 
 ## Déployer l'application avec Visual Studio
 
 1. Dans l'Explorateur de solutions, cliquez avec le bouton droit sur le projet **AppHost** et sélectionnez **Publier** pour ouvrir la boîte de dialogue **Publier**.
 
-    > Publier .NET Aspire nécessite la version actuelle de la CLI `azd`. Cela devrait être installé avec la charge de travail .NET Aspire, mais si vous recevez une notification indiquant que la CLI n'est pas installée ou à jour, vous pouvez suivre les instructions dans la partie suivante de ce tutoriel pour l'installer.
+    > Publier Aspire nécessite la version actuelle de la CLI `azd`. Cela devrait être installé avec la charge de travail Aspire, mais si vous recevez une notification indiquant que la CLI n'est pas installée ou à jour, vous pouvez suivre les instructions dans la partie suivante de ce tutoriel pour l'installer.
 
-1. Sélectionnez **Azure Container Apps pour .NET Aspire** comme cible de publication.
+1. Sélectionnez **Azure Container Apps pour Aspire** comme cible de publication.
 
     ![Une capture d'écran du flux de travail de la boîte de dialogue de publication.](../media/vs-deploy.png)
 
@@ -55,7 +55,7 @@ Cette commande fournit des rapports de progression améliorés, de meilleurs mes
 > - Assurez-vous d'être connecté : exécutez `azd login` et sélectionnez l'abonnement Azure correct.
 > - Exécutez les commandes suivantes depuis le dossier qui contient votre AppHost (pour ce dépôt, typiquement le dossier `complete` si vous déployez l'échantillon terminé).
 
-1. Ouvrez une nouvelle fenêtre de terminal et naviguez (`cd`) vers la racine de votre projet .NET Aspire.
+1. Ouvrez une nouvelle fenêtre de terminal et naviguez (`cd`) vers la racine de votre projet Aspire.
 1. Exécutez la commande `azd init` pour initialiser votre projet avec `azd`, qui inspectera la structure de répertoire locale et déterminera le type d'application.
 
     ```console
@@ -80,7 +80,7 @@ Cette commande fournit des rapports de progression améliorés, de meilleurs mes
       Sélectionner un modèle
     ```
 
-1. Après avoir scanné le répertoire, `azd` vous demande de confirmer qu'il a trouvé le bon projet .NET Aspire _AppHost_. Sélectionnez l'option **Confirmer et continuer l'initialisation de mon application**.
+1. Après avoir scanné le répertoire, `azd` vous demande de confirmer qu'il a trouvé le bon projet Aspire _AppHost_. Sélectionnez l'option **Confirmer et continuer l'initialisation de mon application**.
 
     ```console
     Services détectés :
@@ -95,7 +95,7 @@ Cette commande fournit des rapports de progression améliorés, de meilleurs mes
       Annuler et quitter
     ```
 
-1. `azd` présente chacun des projets de la solution .NET Aspire et vous demande d'identifier lesquels déployer avec l'ingress HTTP ouvert publiquement à tout le trafic internet. Sélectionnez seulement `myweatherhub` (en utilisant les touches ↓ et Espace), puisque vous voulez que l'API (`api`) soit privée à l'environnement Azure Container Apps et non disponible publiquement.
+1. `azd` présente chacun des projets de la solution Aspire et vous demande d'identifier lesquels déployer avec l'ingress HTTP ouvert publiquement à tout le trafic internet. Sélectionnez seulement `myweatherhub` (en utilisant les touches ↓ et Espace), puisque vous voulez que l'API (`api`) soit privée à l'environnement Azure Container Apps et non disponible publiquement.
 
     ```console
     ? Sélectionnez une option Confirmer et continuer l'initialisation de mon application
@@ -119,7 +119,7 @@ Cette commande fournit des rapports de progression améliorés, de meilleurs mes
 
 `azd` génère un certain nombre de fichiers et les place dans le répertoire de travail. Ces fichiers sont :
 
-- _azure.yaml_ : Décrit les services de l'application, tels que le projet .NET Aspire AppHost, et les mappe aux ressources Azure.
+- _azure.yaml_ : Décrit les services de l'application, tels que le projet Aspire AppHost, et les mappe aux ressources Azure.
 - _.azure/config.json_ : Fichier de configuration qui informe `azd` de quel est l'environnement actif actuel.
 - _.azure/aspireazddev/.env_ : Contient les remplacements spécifiques à l'environnement.
 - _.azure/aspireazddev/config.json_ : Fichier de configuration qui informe `azd` quels services doivent avoir un point de terminaison public dans cet environnement.

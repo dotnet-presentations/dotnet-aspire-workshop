@@ -1,6 +1,6 @@
-# .NET Aspire Workshop
+# Aspire Workshop
 
-A comprehensive workshop for building cloud-native applications with .NET Aspire, featuring a weather application with Blazor frontend, ASP.NET Core API, Redis caching, PostgreSQL database, and AI integration.
+A comprehensive workshop for building cloud-native applications with Aspire, featuring a weather application with Blazor frontend, ASP.NET Core API, Redis caching, PostgreSQL database, and AI integration.
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
@@ -11,8 +11,8 @@ Always reference these instructions first and fallback to search or bash command
 - Install .NET 9 SDK: `curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version latest --channel 9.0`
 - Set PATH: `export PATH="/home/runner/.dotnet:$PATH"`
 - Install Docker Desktop or Podman for container resources
-- Install .NET Aspire CLI: `dotnet tool install -g Aspire.Cli`
-- Install .NET Aspire templates: `dotnet new install Aspire.ProjectTemplates::9.5.0 --force`
+- Install Aspire CLI: `dotnet tool install -g Aspire.Cli`
+- Install Aspire templates: `dotnet new install Aspire.ProjectTemplates::9.5.0 --force`
 
 ### Build Commands
 
@@ -64,7 +64,7 @@ Always manually validate changes with these complete scenarios:
   - `MyWeatherHub/` - Blazor Server web application
   - `Api/` - ASP.NET Core Web API for weather data
 - **complete/** - Completed workshop solution with Aspire orchestration
-  - `AppHost/` - .NET Aspire orchestration project (main entry point)
+  - `AppHost/` - Aspire orchestration project (main entry point)
   - `ServiceDefaults/` - Shared service configuration
   - `IntegrationTests/` - Aspire integration tests
   - `MyWeatherHub/` - Enhanced Blazor app with database integration
@@ -140,4 +140,4 @@ The `workshop/` folder contains 15 modules covering:
 - **Build errors on .NET 8**: Install .NET 9 SDK as shown in prerequisites
 - **Containers not starting**: Check Docker Desktop is running and has sufficient resources
 
-The workshop teaches cloud-native development patterns using .NET Aspire's orchestration, service discovery, telemetry, and integration capabilities in a practical weather application scenario.
+The workshop teaches cloud-native development patterns using Aspire's orchestration, service discovery, telemetry, and integration capabilities in a practical weather application scenario.

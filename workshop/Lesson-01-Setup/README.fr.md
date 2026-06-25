@@ -6,7 +6,7 @@ Cet atelier utilisera les outils suivants:
 - [Docker Desktop](https://docs.docker.com/engine/install/) ou [Podman](https://podman.io/getting-started/installation)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) ou [Visual Studio Code](https://code.visualstudio.com/) avec [C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
 
-Pour une expérience optimale, nous vous recommandons d'utiliser Visual Studio 2022 avec le workload .NET Aspire. Toutefois, vous pouvez utiliser Visual Studio Code avec le C# Dev Kit et le workload .NET Aspire. Vous trouverez ci-dessous des guides de configuration pour chaque plate-forme.
+Pour une expérience optimale, nous vous recommandons d'utiliser Visual Studio 2022 avec le workload Aspire. Toutefois, vous pouvez utiliser Visual Studio Code avec le C# Dev Kit et le workload Aspire. Vous trouverez ci-dessous des guides de configuration pour chaque plate-forme.
 
 > **Nouveau dans .NET Aspire 9.4** : Support complet pour .NET 10 Preview ! Vous pouvez maintenant créer des projets Aspire ciblant .NET 10 en utilisant `dotnet new aspire --framework net10.0`
 
@@ -24,15 +24,15 @@ Pour une expérience optimale, nous vous recommandons d'utiliser Visual Studio 2
 
 > Remarque: Lors de l'exécution sur Mac avec Apple Silicon (processeur série M), Rosetta 2 pour grpc-tools.
 
-## Installer les derniers modèles .NET Aspire
+## Installer les derniers modèles Aspire
 
-Exécutez la commande suivante pour installer les modèles .NET Aspire les plus récents.
+Exécutez la commande suivante pour installer les modèles Aspire les plus récents.
 
 ```cli
 dotnet new install Aspire.ProjectTemplates --force
 ```
 
-## Installer l'interface de ligne de commande .NET Aspire (Optionnel)
+## Installer l'interface de ligne de commande Aspire (Optionnel)
 
 .NET Aspire 9.4 introduit l'interface de ligne de commande Aspire généralement disponible, offrant une expérience de développement rationalisée. Vous pouvez l'installer en utilisant l'une de ces méthodes :
 
@@ -62,7 +62,7 @@ L'interface de ligne de commande Aspire fournit des commandes utiles comme :
 
 ## Tester l’installation
 
-Pour tester votre installation, consultez [Build your first .NET Aspire project](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) pour plus d'informations.
+Pour tester votre installation, consultez [Build your first Aspire project](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) pour plus d'informations.
 
 ## Ouvrir la solution de démarrage de l'atelier
 

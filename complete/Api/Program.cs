@@ -23,7 +23,7 @@ builder.Services.AddHealthChecks()
 	.AddUrlGroup(new Uri("https://api.weather.gov/"), "NWS Weather API", HealthStatus.Unhealthy,
 		configureClient: (services, client) =>
 		{
-			client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - .NET Aspire Demo");
+			client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - Aspire Demo");
 		});
 
 

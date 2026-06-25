@@ -1,4 +1,4 @@
-# .NET Aspireでの統合テスト
+# Aspireでの統合テスト
 
 ## はじめに
 
@@ -8,7 +8,7 @@
 
 単体テストは、個々のコンポーネントやコードの単位を分離してテストすることに焦点を当てています。各単位が単独で正しく機能することを確保します。対照的に、統合テストはアプリケーションの異なるコンポーネントが期待通りに連携して動作することを検証します。API、データベース、Webアプリケーションなど、システムの様々な部分間の相互作用をテストします。
 
-.NET Aspireを使用した分散アプリケーションのコンテキストでは、異なるサービスとコンポーネントが正しく通信し、連携して機能することを確保するために統合テストが不可欠です。
+Aspireを使用した分散アプリケーションのコンテキストでは、異なるサービスとコンポーネントが正しく通信し、連携して機能することを確保するために統合テストが不可欠です。
 
 ## 統合テストプロジェクトの作成
 
@@ -51,7 +51,7 @@
 
 このプロジェクトファイルは、テストプロジェクトとしては非常に標準的です。主要な要素は以下の通りです：
 
-- [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGetパッケージへの`PackageReference`。これは.NET Aspireアプリケーションをテストするために必要な型とAPIを提供します。
+- [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGetパッケージへの`PackageReference`。これはAspireアプリケーションをテストするために必要な型とAPIを提供します。
 - AppHostプロジェクトへの`ProjectReference`。これにより、テストプロジェクトがターゲット分散アプリケーション定義にアクセスできます。
 - `EnableMSTestRunner`と`OutputType`の設定。これらはテストプロジェクトがネイティブMSTestランナーで実行されるように構成します。
 
@@ -193,7 +193,7 @@ public class EnvVarTests
 - `DistributedApplicationOperation.Publish`引数を使用して`GetEnvironmentVariableValuesAsync()`を呼び出し、リソースに公開される環境変数を取得します。
 - 最後に、WebフロントエンドがAPIサービスのURLに解決される環境変数を持っていることをアサートし、サービス発見が正しく構成されていることを確認します。
 
-このテストは、アプリケーションのサービスが環境変数を通じて正しく接続されていることを検証するため特に価値があります。これは.NET Aspireが分散アプリケーションでサービス発見を処理する方法です。
+このテストは、アプリケーションのサービスが環境変数を通じて正しく接続されていることを検証するため特に価値があります。これはAspireが分散アプリケーションでサービス発見を処理する方法です。
 
 > 注：完成版のソリューションに空の`WeatherBackgroundTests.cs`ファイルがある場合、これは将来のバックグラウンドジョブテスト用のプレースホルダーであり、このワークショップでは無視できます。
 
@@ -258,8 +258,8 @@ Playwrightの詳細については、[公式ドキュメント](https://playwrig
 1. Webアプリケーション機能（UIが正しくレンダリングされることをテスト）
 1. サービス発見メカニズム（サービスが互いを見つけて通信できることをテスト）
 
-.NET Aspireでのテストについて、ビデオウォークスルーを含む詳しい情報については、ブログ投稿[Getting started with testing and .NET Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/)をご覧ください。
+Aspireでのテストについて、ビデオウォークスルーを含む詳しい情報については、ブログ投稿[Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/)をご覧ください。
 
-それでは、.NET Aspireを使用する際のデプロイメントオプションについて学びましょう。
+それでは、Aspireを使用する際のデプロイメントオプションについて学びましょう。
 
 **次へ**：[モジュール#9：デプロイメント](../Lesson-09-Deployment/README.md)

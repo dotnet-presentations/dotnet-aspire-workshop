@@ -6,7 +6,7 @@ Este workshop utilizará as seguintes ferramentas:
 - [Docker Desktop](https://docs.docker.com/engine/install/) ou [Podman](https://podman.io/getting-started/installation)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) ou [Visual Studio Code](https://code.visualstudio.com/) com [C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
 
-Para uma experiência melhor, recomendamos usar o Visual Studio 2022 com o workload .NET Aspire. No entanto, você pode usar o Visual Studio Code com o C# Dev Kit e o workload .NET Aspire. A seguir estão os passos para configuração de cada plataforma.
+Para uma experiência melhor, recomendamos usar o Visual Studio 2022 com o workload Aspire. No entanto, você pode usar o Visual Studio Code com o C# Dev Kit e o workload Aspire. A seguir estão os passos para configuração de cada plataforma.
 
 > **Novo no .NET Aspire 9.4**: Suporte completo para .NET 10 Preview! Agora você pode criar projetos Aspire direcionados ao .NET 10 usando `dotnet new aspire --framework net10.0`
 
@@ -24,15 +24,15 @@ Para uma experiência melhor, recomendamos usar o Visual Studio 2022 com o workl
 
 > Nota: Ao executar no Mac com processador Apple Silicon (série M), Rosetta 2 para grpc-tools.
 
-## Instalar os Templates .NET Aspire Mais Recentes
+## Instalar os Templates Aspire Mais Recentes
 
-Execute o seguinte comando para instalar os templates mais recentes do .NET Aspire.
+Execute o seguinte comando para instalar os templates mais recentes do Aspire.
 
 ```cli
 dotnet new install Aspire.ProjectTemplates --force
 ```
 
-## Instalar a CLI do .NET Aspire (Opcional)
+## Instalar a CLI do Aspire (Opcional)
 
 O .NET Aspire 9.4 introduz a CLI do Aspire geralmente disponível, proporcionando uma experiência de desenvolvedor simplificada. Você pode instalá-la usando um destes métodos:
 
@@ -62,7 +62,7 @@ A CLI do Aspire oferece comandos úteis como:
 
 ## Teste de Instalação
 
-Para testar sua instalação, consulte [Construa seu primeiro projeto .NET Aspire](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) para mais informações.
+Para testar sua instalação, consulte [Construa seu primeiro projeto Aspire](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) para mais informações.
 
 ## Abrir a Solução de Início do Workshop
 

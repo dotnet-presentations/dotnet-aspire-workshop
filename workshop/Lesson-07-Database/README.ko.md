@@ -6,7 +6,7 @@
 
 ## PostgreSQL 설정
 
-.NET Aspire는 `Aspire.Hosting.PostgreSQL` 패키지를 통해 PostgreSQL에 대한 기본 지원을 제공합니다. PostgreSQL을 설정하려면:
+Aspire는 `Aspire.Hosting.PostgreSQL` 패키지를 통해 PostgreSQL에 대한 기본 지원을 제공합니다. PostgreSQL을 설정하려면:
 
 1. AppHost 프로젝트에 필요한 NuGet 패키지를 설치합니다:
 
@@ -66,7 +66,7 @@ var weatherDb = postgres.AddDatabase("weatherdb");
 
 > **참고**: 지속적 컨테이너는 주로 개발 시나리오에 유용합니다. 프로덕션 배포에서는 일반적으로 지속성을 자동으로 처리하는 관리형 데이터베이스 서비스를 사용합니다.
 >
-> **고급 컨테이너 기능**: .NET Aspire는 더 나은 시작 조정을 위한 `WithExplicitStart()`와 초기화 스크립트 마운트를 위한 `WithContainerFiles()`와 같은 고급 컨테이너 구성도 지원합니다. 이러한 기능은 복잡한 개발 시나리오에 필요할 때 컨테이너 동작에 대한 세밀한 제어를 제공합니다. 이러한 고급 기능에 대해 자세히 알아보려면 공식 문서의 [볼륨을 사용한 데이터 지속성](https://learn.microsoft.com/dotnet/aspire/fundamentals/persist-data-volumes) 및 [컨테이너 리소스 수명 주기](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview#container-resource-lifecycle)를 참조하세요.
+> **고급 컨테이너 기능**: Aspire는 더 나은 시작 조정을 위한 `WithExplicitStart()`와 초기화 스크립트 마운트를 위한 `WithContainerFiles()`와 같은 고급 컨테이너 구성도 지원합니다. 이러한 기능은 복잡한 개발 시나리오에 필요할 때 컨테이너 동작에 대한 세밀한 제어를 제공합니다. 이러한 고급 기능에 대해 자세히 알아보려면 공식 문서의 [볼륨을 사용한 데이터 지속성](https://learn.microsoft.com/dotnet/aspire/fundamentals/persist-data-volumes) 및 [컨테이너 리소스 수명 주기](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview#container-resource-lifecycle)를 참조하세요.
 
 ## EF Core와 PostgreSQL 통합
 
@@ -102,7 +102,7 @@ public class MyWeatherContext : DbContext
 builder.AddNpgsqlDbContext<MyWeatherContext>(connectionName: "weatherdb");
 ```
 
-.NET Aspire가 연결 문자열 구성을 자동으로 처리한다는 점에 주목하세요. 연결 이름 "weatherdb"는 AppHost 프로젝트에서 생성한 데이터베이스 이름과 일치합니다.
+Aspire가 연결 문자열 구성을 자동으로 처리한다는 점에 주목하세요. 연결 이름 "weatherdb"는 AppHost 프로젝트에서 생성한 데이터베이스 이름과 일치합니다.
 
 1. 데이터베이스 초기화를 설정합니다:
 
@@ -265,15 +265,15 @@ IQueryable<Zone> zones
 
 ## 기타 데이터 옵션
 
-PostgreSQL 외에도 .NET Aspire는 여러 다른 데이터베이스 시스템에 대한 최고 수준의 지원을 제공합니다:
+PostgreSQL 외에도 Aspire는 여러 다른 데이터베이스 시스템에 대한 최고 수준의 지원을 제공합니다:
 
 ### [Azure SQL/SQL Server](https://learn.microsoft.com/en-us/dotnet/aspire/database/sql-server-entity-framework-integration)
 
-.NET Aspire의 SQL Server 통합에는 개발을 위한 자동 컨테이너 프로비저닝, 연결 문자열 관리 및 상태 확인이 포함됩니다. 로컬 SQL Server 컨테이너와 프로덕션의 Azure SQL Database를 모두 지원합니다. 통합은 연결 복원력을 자동으로 처리하고 데이터베이스 작업 모니터링을 위한 원격 측정을 포함합니다.
+Aspire의 SQL Server 통합에는 개발을 위한 자동 컨테이너 프로비저닝, 연결 문자열 관리 및 상태 확인이 포함됩니다. 로컬 SQL Server 컨테이너와 프로덕션의 Azure SQL Database를 모두 지원합니다. 통합은 연결 복원력을 자동으로 처리하고 데이터베이스 작업 모니터링을 위한 원격 측정을 포함합니다.
 
 ### [MySQL](https://learn.microsoft.com/en-us/dotnet/aspire/database/mysql-entity-framework-integration)
 
-.NET Aspire의 MySQL 통합은 컨테이너화된 개발 환경과 프로덕션 준비 구성을 포함하여 PostgreSQL과 유사한 기능을 제공합니다. 기본 제공 연결 재시도 및 상태 모니터링을 포함하여 개발 및 프로덕션 시나리오 모두에 적합합니다.
+Aspire의 MySQL 통합은 컨테이너화된 개발 환경과 프로덕션 준비 구성을 포함하여 PostgreSQL과 유사한 기능을 제공합니다. 기본 제공 연결 재시도 및 상태 모니터링을 포함하여 개발 및 프로덕션 시나리오 모두에 적합합니다.
 
 ### [MongoDB](https://learn.microsoft.com/en-us/dotnet/aspire/database/mongodb-integration)
 
@@ -285,7 +285,7 @@ SQLite는 컨테이너화가 필요하지 않지만 Aspire는 일관된 구성 �
 
 ## 커뮤니티 툴킷 데이터베이스 기능
 
-.NET Aspire Community Toolkit은 추가 도구로 데이터베이스 기능을 확장합니다:
+Aspire Community Toolkit은 추가 도구로 데이터베이스 기능을 확장합니다:
 
 ### [SQL Database Projects](https://learn.microsoft.com/en-us/dotnet/aspire/community-toolkit/hosting-sql-database-projects)
 
@@ -303,10 +303,10 @@ Data API Builder(DAB)는 데이터베이스 스키마에서 REST 및 GraphQL 엔
 
 ## 결론
 
-이 모듈에서는 .NET Aspire의 데이터베이스 통합 기능을 사용하여 애플리케이션에 PostgreSQL 데이터베이스 지원을 추가했습니다. 데이터 액세스에는 Entity Framework Core를 사용했고 로컬 개발 및 클라우드 호스팅 데이터베이스 모두에서 작동하도록 애플리케이션을 구성했습니다.
+이 모듈에서는 Aspire의 데이터베이스 통합 기능을 사용하여 애플리케이션에 PostgreSQL 데이터베이스 지원을 추가했습니다. 데이터 액세스에는 Entity Framework Core를 사용했고 로컬 개발 및 클라우드 호스팅 데이터베이스 모두에서 작동하도록 애플리케이션을 구성했습니다.
 
 다음 자연스러운 단계는 데이터베이스 통합이 올바르게 작동하는지 확인하는 테스트를 추가하는 것입니다.
 
-[모듈 #8: 통합 테스트](../Lesson-08-Integration-Testing/README.md)로 이동하여 .NET Aspire 애플리케이션의 통합 테스트 작성 방법을 알아보세요.
+[모듈 #8: 통합 테스트](../Lesson-08-Integration-Testing/README.md)로 이동하여 Aspire 애플리케이션의 통합 테스트 작성 방법을 알아보세요.
 
 **다음**: [모듈 #8: 통합 테스트](../Lesson-08-Integration-Testing/README.md)
