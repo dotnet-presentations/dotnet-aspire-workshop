@@ -6,7 +6,7 @@ En este módulo, integraremos una base de datos PostgreSQL con nuestra aplicaci�
 
 ## Configuración de PostgreSQL
 
-.NET Aspire proporciona soporte integrado para PostgreSQL a través del paquete `Aspire.Hosting.PostgreSQL`. Para configurar PostgreSQL:
+Aspire proporciona soporte integrado para PostgreSQL a través del paquete `Aspire.Hosting.PostgreSQL`. Para configurar PostgreSQL:
 
 1. Instale el paquete NuGet requerido en su proyecto AppHost:
 

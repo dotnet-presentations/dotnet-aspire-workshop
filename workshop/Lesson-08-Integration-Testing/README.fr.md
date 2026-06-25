@@ -1,4 +1,4 @@
-# Tests d'Intégration avec .NET Aspire
+# Tests d'Intégration avec Aspire
 
 ## Introduction
 
@@ -8,7 +8,7 @@ Dans ce module, nous couvrirons les tests d'intégration en utilisant `Aspire.Ho
 
 Les tests unitaires se concentrent sur le test de composants individuels ou d'unités de code de manière isolée. Ils s'assurent que chaque unité fonctionne correctement de manière autonome. En contraste, les tests d'intégration vérifient que différents composants de l'application fonctionnent ensemble comme attendu. Ils testent les interactions entre diverses parties du système, telles que les APIs, les bases de données et les applications web.
 
-Dans le contexte des applications distribuées avec .NET Aspire, les tests d'intégration sont essentiels pour s'assurer que les différents services et composants communiquent et fonctionnent correctement ensemble.
+Dans le contexte des applications distribuées avec Aspire, les tests d'intégration sont essentiels pour s'assurer que les différents services et composants communiquent et fonctionnent correctement ensemble.
 
 ## Création du Projet de Tests d'Intégration
 
@@ -51,7 +51,7 @@ Dans le contexte des applications distribuées avec .NET Aspire, les tests d'int
 
 Ce fichier projet est assez standard pour un projet de test. Les éléments clés sont :
 
-- Une `PackageReference` au package NuGet [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing), qui fournit les types et APIs nécessaires pour tester les applications .NET Aspire.
+- Une `PackageReference` au package NuGet [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing), qui fournit les types et APIs nécessaires pour tester les applications Aspire.
 - Une `ProjectReference` au projet AppHost, qui donne au projet de test l'accès à la définition de l'application distribuée cible.
 - Les paramètres `EnableMSTestRunner` et `OutputType` pour configurer le projet de test à s'exécuter avec le runner MSTest natif.
 
@@ -193,7 +193,7 @@ Ce test se concentre sur la vérification de la configuration de découverte de 
 - Il appelle `GetEnvironmentVariableValuesAsync()` avec l'argument `DistributedApplicationOperation.Publish` pour obtenir les variables d'environnement qui seraient publiées à la ressource.
 - Finalement, il affirme que le frontend web a une variable d'environnement qui se résout à l'URL du service API, confirmant que la découverte de service est correctement configurée.
 
-Ce test est particulièrement précieux car il vérifie que les services de votre application sont correctement connectés via les variables d'environnement, ce qui est la façon dont .NET Aspire gère la découverte de service dans les applications distribuées.
+Ce test est particulièrement précieux car il vérifie que les services de votre application sont correctement connectés via les variables d'environnement, ce qui est la façon dont Aspire gère la découverte de service dans les applications distribuées.
 
 > Note : Si vous voyez un fichier `WeatherBackgroundTests.cs` dans la solution complète qui est vide, c'est un placeholder pour de futurs tests de tâches en arrière-plan et peut être ignoré pour cet atelier.
 
@@ -258,8 +258,8 @@ Nos tests ont vérifié trois aspects critiques de l'application distribuée :
 1. La fonctionnalité de l'application web (testant que l'UI se rend correctement)
 1. Le mécanisme de découverte de service (testant que les services peuvent se trouver et communiquer entre eux)
 
-Pour une plongée plus approfondie dans les tests avec .NET Aspire, incluant une vidéo explicative, consultez l'article de blog [Getting started with testing and .NET Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/).
+Pour une plongée plus approfondie dans les tests avec Aspire, incluant une vidéo explicative, consultez l'article de blog [Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/).
 
-Maintenant, apprenons sur les options de déploiement lors de l'utilisation de .NET Aspire.
+Maintenant, apprenons sur les options de déploiement lors de l'utilisation de Aspire.
 
 **Suivant** : [Module #9 : Déploiement](../Lesson-09-Deployment/README.md)

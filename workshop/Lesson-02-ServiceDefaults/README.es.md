@@ -2,7 +2,7 @@
 
 ## Introducción
 
-.NET Aspire proporciona un conjunto de valores predeterminados inteligentes para los servicios que se utilizan comúnmente en las aplicaciones .NET. Estos valores predeterminados están diseñados para ayudarte a comenzar rápidamente y proporcionar una experiencia consistente en diferentes tipos de aplicaciones. Esto incluye:
+Aspire proporciona un conjunto de valores predeterminados inteligentes para los servicios que se utilizan comúnmente en las aplicaciones .NET. Estos valores predeterminados están diseñados para ayudarte a comenzar rápidamente y proporcionar una experiencia consistente en diferentes tipos de aplicaciones. Esto incluye:
 
 - Telemetría: Métricas, trazas, registro
 - Resiliencia
@@ -16,7 +16,7 @@
 1. Agrega un nuevo proyecto a la solución llamado `ServiceDefaults`:
 
 - Haz clic derecho en la solución y selecciona `Agregar` > `Nuevo proyecto`.
-- Selecciona la plantilla de proyecto `.NET Aspire Service Defaults`.
+- Selecciona la plantilla de proyecto `Aspire Service Defaults`.
 - Nombra el proyecto `ServiceDefaults`.
 - Haz clic en `Siguiente` > `Crear`.
 

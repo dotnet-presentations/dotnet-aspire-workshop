@@ -8,7 +8,7 @@
 - [Docker Desktop](https://docs.docker.com/engine/install/) 또는 [Podman](https://podman.io/getting-started/installation)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) 또는 [Visual Studio Code](https://code.visualstudio.com/)와 [C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
 
-최고의 경험을 위해서는 .NET Aspire 워크로드가 포함된 Visual Studio 2022를 사용하는 것을 권장합니다. 하지만, C# Dev Kit과 .NET Aspire 워크로드가 포함된 Visual Studio Code를 사용할 수도 있습니다. 각 플랫폼에 대한 설정 가이드는 아래에 있습니다.
+최고의 경험을 위해서는 Aspire 워크로드가 포함된 Visual Studio 2022를 사용하는 것을 권장합니다. 하지만, C# Dev Kit과 Aspire 워크로드가 포함된 Visual Studio Code를 사용할 수도 있습니다. 각 플랫폼에 대한 설정 가이드는 아래에 있습니다.
 
 > **.NET Aspire 9.4의 새로운 기능**: .NET 10 Preview 완전 지원! 이제 `dotnet new aspire --framework net10.0`을 사용하여 .NET 10을 대상으로 하는 Aspire 프로젝트를 만들 수 있습니다
 
@@ -26,15 +26,15 @@
 
 > 참고: Apple Silicon (M 시리즈 프로세서)을 사용하는 Mac에서 실행할 때는 grpc-tools를 위해 Rosetta 2가 필요합니다.
 
-## 최신 .NET Aspire 템플릿 설치
+## 최신 Aspire 템플릿 설치
 
-다음 명령을 실행하여 최신 .NET Aspire 템플릿을 설치합니다.
+다음 명령을 실행하여 최신 Aspire 템플릿을 설치합니다.
 
 ```cli
 dotnet new install Aspire.ProjectTemplates --force
 ```
 
-## .NET Aspire CLI 설치 (선택사항)
+## Aspire CLI 설치 (선택사항)
 
 .NET Aspire 9.4는 일반적으로 사용 가능한 Aspire CLI를 도입하여 간소화된 개발자 경험을 제공합니다. 다음 방법 중 하나를 사용하여 설치할 수 있습니다:
 
@@ -64,7 +64,7 @@ Aspire CLI는 다음과 같은 유용한 명령을 제공합니다:
 
 ## 설치 테스트
 
-설치를 테스트해 보려면, [첫 .NET Aspire 프로젝트 빌드하기](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app)에서 자세한 정보를 참조하세요.
+설치를 테스트해 보려면, [첫 Aspire 프로젝트 빌드하기](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app)에서 자세한 정보를 참조하세요.
 
 ## 워크숍 시작 솔루션 열기
 

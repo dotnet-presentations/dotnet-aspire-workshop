@@ -6,7 +6,7 @@
 - [Docker Desktop](https://docs.docker.com/engine/install/) 或者 [Podman](https://podman.io/getting-started/installation)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) 或者 [Visual Studio Code](https://code.visualstudio.com/) 和 [C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
 
-为了获得最佳体验，我们推荐使用将 Visual Studio 2022 与 .NET Aspire 工作负载一起使用。但是，您也可以将 Visual Studio Code 与 C# Dev Kit 和 .NET Aspire 工作负载一起使用。以下是每个平台的设置指南。
+为了获得最佳体验，我们推荐使用将 Visual Studio 2022 与 Aspire 工作负载一起使用。但是，您也可以将 Visual Studio Code 与 C# Dev Kit 和 Aspire 工作负载一起使用。以下是每个平台的设置指南。
 
 > **.NET Aspire 9.4 中的新功能**：完全支持 .NET 10 Preview！您现在可以使用 `dotnet new aspire --framework net10.0` 创建针对 .NET 10 的 Aspire 项目
 
@@ -16,7 +16,7 @@
   - 所有此版本的发行版都可以，包括 [免费 Visual Studio 社区版](https://visualstudio.microsoft.com/free-developer-offers/)
   - 选择 `ASP.NET and web development` 工作负载.
 
-> 注意: .NET Aspire 8.0 要求额外安装 .NET Aspire 工作负载. [对于 .NET 9, 该工作负载不再需要](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/upgrade-to-aspire-9?pivots=visual-studio) ，它可以被卸载掉。
+> 注意: .NET Aspire 8.0 要求额外安装 Aspire 工作负载. [对于 .NET 9, 该工作负载不再需要](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/upgrade-to-aspire-9?pivots=visual-studio) ，它可以被卸载掉。
 
 ## Mac, Linux, & Windows 平台下不使用 Visual Studio
 
@@ -26,15 +26,15 @@
 
 > 注意: 在装有 Apple Silicon（M 系列处理器）的 Mac 上运行时，还需要 Rosetta 2 for grpc-tools。
 
-## 安装最新的 .NET Aspire 模板
+## 安装最新的 Aspire 模板
 
-运行以下命令安装最新的 .NET Aspire 模板。
+运行以下命令安装最新的 Aspire 模板。
 
 ```cli
 dotnet new install Aspire.ProjectTemplates --force
 ```
 
-## 安装 .NET Aspire CLI (可选)
+## 安装 Aspire CLI (可选)
 
 .NET Aspire 9.4 引入了正式可用的 Aspire CLI，提供精简的开发者体验。您可以使用以下方法之一进行安装：
 
@@ -64,7 +64,7 @@ Aspire CLI 提供有用的命令，如：
 
 ## 测试安装
 
-为了测试安装, 请查阅 [构建您的第一个 .NET Aspire 项目](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) 以获得更详尽信息.
+为了测试安装, 请查阅 [构建您的第一个 Aspire 项目](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) 以获得更详尽信息.
 
 ## 打开研讨会的起始解决方案
 

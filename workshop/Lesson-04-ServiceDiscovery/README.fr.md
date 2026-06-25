@@ -1,6 +1,6 @@
 # Découverte de services
 
-.NET Aspire inclut des fonctionnalités permettant de configurer la découverte de services au moment du développement et des tests. La fonctionnalité de découverte de services fonctionne en fournissant une configuration au format attendu par le résolveur de point de terminaison basé sur la configuration du projet .NET Aspire AppHost aux projets de service individuels ajoutés au modèle d'application.
+Aspire inclut des fonctionnalités permettant de configurer la découverte de services au moment du développement et des tests. La fonctionnalité de découverte de services fonctionne en fournissant une configuration au format attendu par le résolveur de point de terminaison basé sur la configuration du projet Aspire AppHost aux projets de service individuels ajoutés au modèle d'application.
 
 ## Configuration de la découverte de services
 
@@ -11,7 +11,7 @@ Actuellement, `MyWeatherHub` utilise une configuration statique pour se connecte
 - Plusieurs paramètres de configuration devront être définis pour les paramètres http et https.
 - À mesure que nous ajoutons plus de services, la configuration deviendrait plus complexe.
 
-Pour résoudre ces problèmes, nous utiliserons la fonctionnalité de découverte de services fournie par le projet .NET Aspire AppHost. Cela permettra au service `MyWeatherHub` de découvrir le service `Api` au moment de l'exécution.
+Pour résoudre ces problèmes, nous utiliserons la fonctionnalité de découverte de services fournie par le projet Aspire AppHost. Cela permettra au service `MyWeatherHub` de découvrir le service `Api` au moment de l'exécution.
 
 1. Ouvrez le fichier `Program.cs` dans le projet `AppHost`.
 1. Auparavant, nous avons ajouté l'orchestration pour inclure plusieurs projets en utilisant la méthode `builder.AddProject`. Cela a renvoyé un `IResourceBuild` qui peut être utilisé pour référencer des projets. Référençons le projet `Api` dans le projet `MyWeatherHub` en mettant à jour le code :
@@ -43,7 +43,7 @@ builder.Services.AddHttpClient<BasketServiceDashboardClient>(
 
 Dans l'exemple ci-dessus, `BasketServiceClient` utilisera le point de terminaison par défaut du service `basket`, tandis que `BasketServiceDashboardClient` utilisera le point de terminaison `dashboard` du service `basket`. Maintenant, mettons à jour le projet `MyWeatherHub` pour utiliser la découverte de services pour nous connecter au service `Api`.
 
-Cela peut être accompli en mettant à jour les paramètres de configuration `WeatherEndpoint` existants dans `appsettings.json`. Ceci est pratique lorsque vous activez .NET Aspire dans une application déployée existante, car vous pouvez continuer à utiliser vos paramètres de configuration existants.
+Cela peut être accompli en mettant à jour les paramètres de configuration `WeatherEndpoint` existants dans `appsettings.json`. Ceci est pratique lorsque vous activez Aspire dans une application déployée existante, car vous pouvez continuer à utiliser vos paramètres de configuration existants.
 
 1. Ouvrez le fichier `appsettings.json` dans le projet `MyWeatherHub`.
 
@@ -70,11 +70,11 @@ En option, nous pouvons mettre à jour l'URL pour ne pas utiliser les paramètre
 1. Exécutez l'application en appuyant sur `F5` ou en sélectionnant l'option `Start Debugging`.
 1. Ouvrez `MyWeatheApp` en sélectionnant le point de terminaison dans le tableau de bord.
 1. Notez que l'application `MyWeatherHub` fonctionne toujours et utilise désormais la découverte de services pour se connecter au service `Api`.
-1. Dans le tableau de bord, cliquez sur `Details` pour le projet `MyWeatherHub`. Cela fera apparaître tous les paramètres configurés par .NET Aspire lors de l'exécution de l'application à partir de l'hôte de l'application.
+1. Dans le tableau de bord, cliquez sur `Details` pour le projet `MyWeatherHub`. Cela fera apparaître tous les paramètres configurés par Aspire lors de l'exécution de l'application à partir de l'hôte de l'application.
 1. Cliquez sur l'icône en forme d'œil pour révéler les valeurs et faites défiler vers le bas où vous verrez `services__api_http_0` et `services__api_https_0` configurés avec les valeurs correctes du service `Api`.
 
   ![Paramètres de découverte de services dans le tableau de bord](../media/dashboard-servicediscovery.png)
 
 ## Conclusion
 
-Ce n'était que le début de ce que nous pouvons faire avec la découverte de services et .NET Aspire. À mesure que notre application se développe et que nous ajoutons davantage de services, nous pouvons continuer à utiliser la découverte de services pour connecter les services au moment de l'exécution. Cela nous permettra de faciliter
+Ce n'était que le début de ce que nous pouvons faire avec la découverte de services et Aspire. À mesure que notre application se développe et que nous ajoutons davantage de services, nous pouvons continuer à utiliser la découverte de services pour connecter les services au moment de l'exécution. Cela nous permettra de faciliter

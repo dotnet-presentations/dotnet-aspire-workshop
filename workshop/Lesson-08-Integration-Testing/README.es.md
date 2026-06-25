@@ -1,4 +1,4 @@
-# Pruebas de Integración con .NET Aspire
+# Pruebas de Integración con Aspire
 
 ## Introducción
 
@@ -8,7 +8,7 @@ En este módulo, cubriremos las pruebas de integración usando `Aspire.Hosting.T
 
 Las pruebas unitarias se enfocan en probar componentes individuales o unidades de código de forma aislada. Aseguran que cada unidad funcione correctamente por sí sola. En contraste, las pruebas de integración verifican que diferentes componentes de la aplicación funcionen juntos como se espera. Prueban las interacciones entre varias partes del sistema, como APIs, bases de datos y aplicaciones web.
 
-En el contexto de aplicaciones distribuidas con .NET Aspire, las pruebas de integración son esenciales para asegurar que los diferentes servicios y componentes se comuniquen y funcionen correctamente juntos.
+En el contexto de aplicaciones distribuidas con Aspire, las pruebas de integración son esenciales para asegurar que los diferentes servicios y componentes se comuniquen y funcionen correctamente juntos.
 
 ## Creando el Proyecto de Pruebas de Integración
 
@@ -51,7 +51,7 @@ En el contexto de aplicaciones distribuidas con .NET Aspire, las pruebas de inte
 
 Este archivo de proyecto es bastante estándar para un proyecto de pruebas. Los elementos clave son:
 
-- Un `PackageReference` al paquete NuGet [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing), que proporciona los tipos y APIs necesarios para probar aplicaciones .NET Aspire.
+- Un `PackageReference` al paquete NuGet [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing), que proporciona los tipos y APIs necesarios para probar aplicaciones Aspire.
 - Un `ProjectReference` al proyecto AppHost, que le da al proyecto de pruebas acceso a la definición de la aplicación distribuida objetivo.
 - Las configuraciones `EnableMSTestRunner` y `OutputType` para configurar el proyecto de pruebas para ejecutarse con el ejecutor nativo de MSTest.
 
@@ -193,7 +193,7 @@ Esta prueba se enfoca en verificar la configuración de descubrimiento de servic
 - Llama a `GetEnvironmentVariableValuesAsync()` con el argumento `DistributedApplicationOperation.Publish` para obtener las variables de entorno que se publicarían al recurso.
 - Finalmente, afirma que el frontend web tiene una variable de entorno que se resuelve a la URL del servicio API, confirmando que el descubrimiento de servicios está configurado correctamente.
 
-Esta prueba es particularmente valiosa porque verifica que los servicios de tu aplicación están correctamente conectados a través de variables de entorno, que es como .NET Aspire maneja el descubrimiento de servicios en aplicaciones distribuidas.
+Esta prueba es particularmente valiosa porque verifica que los servicios de tu aplicación están correctamente conectados a través de variables de entorno, que es como Aspire maneja el descubrimiento de servicios en aplicaciones distribuidas.
 
 > Nota: Si ves un archivo `WeatherBackgroundTests.cs` en la solución completa que está vacío, es un marcador de posición para futuras pruebas de trabajos en segundo plano y puede ser ignorado para este taller.
 
@@ -258,8 +258,8 @@ Nuestras pruebas verificaron tres aspectos críticos de la aplicación distribui
 1. La funcionalidad de la aplicación web (probando que la UI se renderice correctamente)
 1. El mecanismo de descubrimiento de servicios (probando que los servicios puedan encontrarse y comunicarse entre sí)
 
-Para una inmersión más profunda en las pruebas con .NET Aspire, incluyendo un video tutorial, consulta la publicación del blog [Getting started with testing and .NET Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/).
+Para una inmersión más profunda en las pruebas con Aspire, incluyendo un video tutorial, consulta la publicación del blog [Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/).
 
-Ahora, aprendamos sobre las opciones de despliegue al usar .NET Aspire.
+Ahora, aprendamos sobre las opciones de despliegue al usar Aspire.
 
 **Siguiente**: [Módulo #9: Despliegue](../Lesson-09-Deployment/README.md)

@@ -68,7 +68,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 // BaseAddress points to the modeled external service name (configured in AppHost)
                 client.BaseAddress = new Uri("https://weather-api");
-                client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - .NET Aspire Demo");
+                client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - Aspire Demo");
             });
 
             services.AddMemoryCache();

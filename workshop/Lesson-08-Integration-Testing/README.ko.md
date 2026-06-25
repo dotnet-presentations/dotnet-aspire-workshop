@@ -1,4 +1,4 @@
-# .NET Aspire를 이용한 통합 테스트
+# Aspire를 이용한 통합 테스트
 
 ## 소개
 
@@ -8,7 +8,7 @@
 
 단위 테스트는 개별 구성 요소나 코드 단위를 격리된 상태에서 테스트하는 데 중점을 둡니다. 각 단위가 개별적으로 올바르게 기능하는지 확인합니다. 반대로 통합 테스트는 애플리케이션의 서로 다른 구성 요소들이 예상대로 함께 작동하는지 검증합니다. API, 데이터베이스, 웹 애플리케이션과 같은 시스템의 다양한 부분 간의 상호 작용을 테스트합니다.
 
-.NET Aspire를 사용한 분산 애플리케이션의 맥락에서 통합 테스트는 서로 다른 서비스와 구성 요소가 올바르게 통신하고 함께 기능하는지 확인하는 데 필수적입니다.
+Aspire를 사용한 분산 애플리케이션의 맥락에서 통합 테스트는 서로 다른 서비스와 구성 요소가 올바르게 통신하고 함께 기능하는지 확인하는 데 필수적입니다.
 
 ## 통합 테스트 프로젝트 생성
 
@@ -51,7 +51,7 @@
 
 이 프로젝트 파일은 테스트 프로젝트로서는 상당히 표준적입니다. 주요 요소들은 다음과 같습니다:
 
-- [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGet 패키지에 대한 `PackageReference`로, .NET Aspire 애플리케이션을 테스트하는 데 필요한 타입과 API를 제공합니다.
+- [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGet 패키지에 대한 `PackageReference`로, Aspire 애플리케이션을 테스트하는 데 필요한 타입과 API를 제공합니다.
 - AppHost 프로젝트에 대한 `ProjectReference`로, 테스트 프로젝트가 대상 분산 애플리케이션 정의에 액세스할 수 있게 합니다.
 - 테스트 프로젝트가 네이티브 MSTest 러너로 실행되도록 구성하는 `EnableMSTestRunner`와 `OutputType` 설정.
 
@@ -193,7 +193,7 @@ public class EnvVarTests
 - `DistributedApplicationOperation.Publish` 인수와 함께 `GetEnvironmentVariableValuesAsync()`를 호출하여 리소스에 게시될 환경 변수를 가져옵니다.
 - 마지막으로 웹 프론트엔드가 API 서비스의 URL로 해결되는 환경 변수를 가지고 있는지 어설션하여 서비스 검색이 올바르게 구성되었음을 확인합니다.
 
-이 테스트는 애플리케이션의 서비스가 환경 변수를 통해 올바르게 연결되어 있는지 검증하므로 특히 가치가 있습니다. 이는 .NET Aspire가 분산 애플리케이션에서 서비스 검색을 처리하는 방법입니다.
+이 테스트는 애플리케이션의 서비스가 환경 변수를 통해 올바르게 연결되어 있는지 검증하므로 특히 가치가 있습니다. 이는 Aspire가 분산 애플리케이션에서 서비스 검색을 처리하는 방법입니다.
 
 > 참고: 완성된 솔루션에서 비어있는 `WeatherBackgroundTests.cs` 파일을 보게 된다면, 이는 향후 백그라운드 작업 테스트를 위한 플레이스홀더이며 이 워크샵에서는 무시할 수 있습니다.
 
@@ -258,8 +258,8 @@ Playwright에 대한 자세한 정보는 [공식 문서](https://playwright.dev/
 1. 웹 애플리케이션 기능 (UI가 올바르게 렌더링되는지 테스트)
 1. 서비스 검색 메커니즘 (서비스가 서로를 찾고 통신할 수 있는지 테스트)
 
-비디오 안내를 포함하여 .NET Aspire로 테스트하는 것에 대한 더 깊은 이해를 위해서는 블로그 포스트 [Getting started with testing and .NET Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/)를 확인하세요.
+비디오 안내를 포함하여 Aspire로 테스트하는 것에 대한 더 깊은 이해를 위해서는 블로그 포스트 [Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/)를 확인하세요.
 
-이제 .NET Aspire를 사용할 때의 배포 옵션에 대해 알아보겠습니다.
+이제 Aspire를 사용할 때의 배포 옵션에 대해 알아보겠습니다.
 
 **다음**: [모듈 #9: 배포](../Lesson-09-Deployment/README.md)

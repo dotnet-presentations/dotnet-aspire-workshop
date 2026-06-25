@@ -1,8 +1,8 @@
-# 使用 .NET Aspire App Host 的仪表板和编排
+# 使用 Aspire App Host 的仪表板和编排
 
-.NET Aspire 提供了用于对分布式应用程序中的资源和依赖项进行建模的 API。除了这些 API 之外，还有一些工具可以支持一些重要的场景。Orchestrator 用于本地开发目的。
+Aspire 提供了用于对分布式应用程序中的资源和依赖项进行建模的 API。除了这些 API 之外，还有一些工具可以支持一些重要的场景。Orchestrator 用于本地开发目的。
 
-在继续之前，请考虑 .NET Aspire 中使用的一些常用术语：
+在继续之前，请考虑 Aspire 中使用的一些常用术语：
 
 - *App model*: 构建您的分布式应用的资源的集合 ([DistributedApplication](https://learn.microsoft.com/dotnet/api/aspire.hosting.distributedapplication)). 有关更正式的定义，请参阅 [Define the app model](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview?tabs=docker#define-the-app-model).
 - *App host/编排项目*: 该 .NET 项目用来定义和编排 *app model*, 使用 **.AppHost* 后缀 (约定).
@@ -15,7 +15,7 @@
 
 1. 在解决方案中添加名为 `AppHost` 的新项目:
    - 在解决方案上右键，在弹出菜单上选择 `Add` > `New Project`.
-   - 选择 `.NET Aspire App Host` 项目模板.
+   - 选择 `Aspire App Host` 项目模板.
    - 将项目命名为 `AppHost`.
    - 点击 `Next` > `Create`.
 
@@ -73,20 +73,20 @@
     ```
 
 3. 通过 Visual Studio Code 或 Visual Studio 的 `Run and Debug` 面板来运训 App Host .
-4. 此时， .NET Aspire 的仪表板将会在你的默认浏览器中打开，其中显示你的应用中的资源和依赖。
+4. 此时， Aspire 的仪表板将会在你的默认浏览器中打开，其中显示你的应用中的资源和依赖。
 
-    ![.NET Aspire Dashboard](../media/dashboard.png)
+    ![Aspire Dashboard](../media/dashboard.png)
 
 5. 通过点击 `MyWeatherHub` 项目的端点来打开气象页面，它的地址应该是 [https://localhost:7274](https://localhost:7274).
 6. 请注意，`Api` 和 `MyWeatherHub` 两个项目都处于运行状态，并且像使用配置设置之前一样相互通信。
 7. 返回到 Aspire 仪表板, 点击 `View Logs` 按钮查看来自 `Api` 和 `MyWeatherHub` 项目的控制台日志。
 8. 选择 `Traces` 页签，然后选择某个 API 调用生成的 trace 上的 `View` 。
 
-    ![.NET Aspire Dashboard](../media/dashboard-trace.png)
+    ![Aspire Dashboard](../media/dashboard-trace.png)
 
 9. 探索 `Metrics` 页签来查看来自 `Api` 和 `MyWeatherHub` 项目的指标。
 
-    ![.NET Aspire Dashboard](../media/dashboard-metrics.png)
+    ![Aspire Dashboard](../media/dashboard-metrics.png)
 
 ## 创建一个错误
 
@@ -95,7 +95,7 @@
 3. 在 `MyWeatherApp` 站点上，在多个不同的城市上点击来生成错误。通常，点击 5 个不同的城市将会生成至少一个错误。
 4. 在生成错误之后， `Structured` 页签将会自动更新并显示出错误信息。
 
-    ![.NET Aspire Dashboard](../media/dashboard-error.png)
+    ![Aspire Dashboard](../media/dashboard-error.png)
 
 5. 点击 `Trace` 或者 `Details` 链接来查看错误信息和调用堆栈。
 

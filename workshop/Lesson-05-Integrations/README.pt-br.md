@@ -1,10 +1,10 @@
-# Integrações .NET Aspire
+# Integrações Aspire
 
-Os componentes .NET Aspire são um conjunto selecionado de pacotes NuGet especificamente escolhidos para facilitar a integração de aplicações nativas da nuvem com serviços e plataformas proeminentes, incluindo, mas não se limitando a, Redis e PostgreSQL. Cada componente fornece funcionalidades essenciais nativas da nuvem por meio de provisionamento automático ou padrões de configuração padronizados. Os componentes .NET Aspire podem ser usados sem um projeto de host de aplicativo (orquestrador), mas são projetados para funcionar melhor com o host de aplicativos .NET Aspire.
+Os componentes Aspire são um conjunto selecionado de pacotes NuGet especificamente escolhidos para facilitar a integração de aplicações nativas da nuvem com serviços e plataformas proeminentes, incluindo, mas não se limitando a, Redis e PostgreSQL. Cada componente fornece funcionalidades essenciais nativas da nuvem por meio de provisionamento automático ou padrões de configuração padronizados. Os componentes Aspire podem ser usados sem um projeto de host de aplicativo (orquestrador), mas são projetados para funcionar melhor com o host de aplicativos Aspire.
 
-Os componentes .NET Aspire não devem ser confundidos com os pacotes de hospedagem .NET Aspire, pois servem a propósitos diferentes. Os pacotes de hospedagem são usados para modelar e configurar vários recursos em um aplicativo .NET Aspire, enquanto os componentes são usados para mapear a configuração para várias bibliotecas de clientes.
+Os componentes Aspire não devem ser confundidos com os pacotes de hospedagem Aspire, pois servem a propósitos diferentes. Os pacotes de hospedagem são usados para modelar e configurar vários recursos em um aplicativo Aspire, enquanto os componentes são usados para mapear a configuração para várias bibliotecas de clientes.
 
-Existe uma lista sempre crescente de [Componentes .NET Aspire](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components) criados e distribuídos pela Microsoft e pela comunidade. .NET Aspire é flexível e qualquer um pode criar seu próprio componente para integrar com seus próprios serviços.
+Existe uma lista sempre crescente de [Componentes Aspire](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components) criados e distribuídos pela Microsoft e pela comunidade. Aspire é flexível e qualquer um pode criar seu próprio componente para integrar com seus próprios serviços.
 
 Vamos melhorar nossa aplicação adicionando um componente a ela. Vamos adicionar um componente que nos ajudará a conectar a um cache Redis para melhorar o desempenho da nossa API.
 
@@ -17,7 +17,7 @@ Existem dois tipos de cache que poderíamos integrar à nossa aplicação, inclu
 
 Vamos integrar o componente _Output caching_ ao nosso host de aplicativo. Este componente nos ajudará a armazenar em cache a resposta da nossa API no cache Redis.
 
-Para adicionar o componente Redis ao nosso host de aplicativo, precisamos instalar o pacote NuGet `Aspire.Hosting.Redis`. Este pacote fornece os componentes necessários para configurar o serviço no Host de Aplicativo. O Redis é fornecido por meio de uma imagem de contêiner neste workshop, e quando iniciamos o Host de Aplicativo .NET Aspire, ele automaticamente baixa a imagem do contêiner Redis e inicia o servidor Redis.
+Para adicionar o componente Redis ao nosso host de aplicativo, precisamos instalar o pacote NuGet `Aspire.Hosting.Redis`. Este pacote fornece os componentes necessários para configurar o serviço no Host de Aplicativo. O Redis é fornecido por meio de uma imagem de contêiner neste workshop, e quando iniciamos o Host de Aplicativo Aspire, ele automaticamente baixa a imagem do contêiner Redis e inicia o servidor Redis.
 
 Com o NuGet instalado, podemos configurá-lo.
 
@@ -100,7 +100,7 @@ Não fizemos nenhuma alteração nos projetos `Api` ou `MyWeatherHub`, mas podem
 
 ## Contêineres Redis Personalizados
 
-Os componentes .NET Aspire são flexíveis e personalizáveis. Por padrão, o componente Redis usa uma imagem de contêiner Redis do Docker Hub. No entanto, você pode usar sua própria imagem de contêiner Redis fornecendo o nome da imagem e a tag após o método `AddRedis`. Por exemplo, se você tem uma imagem de contêiner Redis personalizada, como [Garnet](https://github.com/microsoft/garnet), você pode fornecer o nome da imagem e a tag no Host de Aplicativo da seguinte forma:
+Os componentes Aspire são flexíveis e personalizáveis. Por padrão, o componente Redis usa uma imagem de contêiner Redis do Docker Hub. No entanto, você pode usar sua própria imagem de contêiner Redis fornecendo o nome da imagem e a tag após o método `AddRedis`. Por exemplo, se você tem uma imagem de contêiner Redis personalizada, como [Garnet](https://github.com/microsoft/garnet), você pode fornecer o nome da imagem e a tag no Host de Aplicativo da seguinte forma:
 
 ```csharp
 var cache = builder.AddRedis("cache")
@@ -121,6 +121,6 @@ var cache = builder.AddRedis("cache")
 
 Nesta seção, adicionamos um componente Redis ao Host de Aplicativo e integramos o cache de saída na API. Vimos como a resposta foi armazenada em cache no cache Redis e como a segunda solicitação foi muito mais rápida que a primeira. Também vimos como usar o Redis Commander para gerenciar o cache Redis.
 
-Existem muitos mais componentes disponíveis que você pode usar para integrar com seus serviços. Você pode encontrar a lista de componentes disponíveis na documentação do .NET Aspire.
+Existem muitos mais componentes disponíveis que você pode usar para integrar com seus serviços. Você pode encontrar a lista de componentes disponíveis na documentação do Aspire.
 
 Um próximo passo natural seria integrar um banco de dados ou aproveitar o Azure Redis Cache como uma solução hospedada. Componentes para estes e mais estão disponíveis no NuGet.

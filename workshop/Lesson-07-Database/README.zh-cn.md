@@ -6,7 +6,7 @@
 
 ## 设置PostgreSQL
 
-.NET Aspire通过`Aspire.Hosting.PostgreSQL`包提供对PostgreSQL的内置支持。要设置PostgreSQL：
+Aspire通过`Aspire.Hosting.PostgreSQL`包提供对PostgreSQL的内置支持。要设置PostgreSQL：
 
 1. 在AppHost项目中安装所需的NuGet包：
 
@@ -66,7 +66,7 @@ var weatherDb = postgres.AddDatabase("weatherdb");
 
 > **注意**：持久容器主要适用于开发场景。在生产部署中，您通常会使用自动处理持久性的托管数据库服务。
 >
-> **高级容器功能**：.NET Aspire还支持高级容器配置，如用于更好启动协调的`WithExplicitStart()`，以及用于挂载初始化脚本的`WithContainerFiles()`。当复杂开发场景需要时，这些功能提供对容器行为的细粒度控制。要了解这些高级功能的更多信息，请参阅官方文档中的[使用卷持久化数据](https://learn.microsoft.com/dotnet/aspire/fundamentals/persist-data-volumes)和[容器资源生命周期](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview#container-resource-lifecycle)。
+> **高级容器功能**：Aspire还支持高级容器配置，如用于更好启动协调的`WithExplicitStart()`，以及用于挂载初始化脚本的`WithContainerFiles()`。当复杂开发场景需要时，这些功能提供对容器行为的细粒度控制。要了解这些高级功能的更多信息，请参阅官方文档中的[使用卷持久化数据](https://learn.microsoft.com/dotnet/aspire/fundamentals/persist-data-volumes)和[容器资源生命周期](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview#container-resource-lifecycle)。
 
 ## 将EF Core与PostgreSQL集成
 
@@ -102,7 +102,7 @@ public class MyWeatherContext : DbContext
 builder.AddNpgsqlDbContext<MyWeatherContext>(connectionName: "weatherdb");
 ```
 
-请注意，.NET Aspire自动处理连接字符串配置。连接名称"weatherdb"与我们在AppHost项目中创建的数据库名称匹配。
+请注意，Aspire自动处理连接字符串配置。连接名称"weatherdb"与我们在AppHost项目中创建的数据库名称匹配。
 
 1. 设置数据库初始化：
 
@@ -265,15 +265,15 @@ IQueryable<Zone> zones
 
 ## 其他数据选项
 
-除了PostgreSQL，.NET Aspire还为其他几个数据库系统提供一流支持：
+除了PostgreSQL，Aspire还为其他几个数据库系统提供一流支持：
 
 ### [Azure SQL/SQL Server](https://learn.microsoft.com/en-us/dotnet/aspire/database/sql-server-entity-framework-integration)
 
-.NET Aspire中的SQL Server集成包括开发的自动容器配置、连接字符串管理和健康检查。它支持本地SQL Server容器和生产中的Azure SQL数据库。集成自动处理连接弹性，并包括用于监控数据库操作的遥测。
+Aspire中的SQL Server集成包括开发的自动容器配置、连接字符串管理和健康检查。它支持本地SQL Server容器和生产中的Azure SQL数据库。集成自动处理连接弹性，并包括用于监控数据库操作的遥测。
 
 ### [MySQL](https://learn.microsoft.com/en-us/dotnet/aspire/database/mysql-entity-framework-integration)
 
-.NET Aspire的MySQL集成提供与PostgreSQL类似的功能，包括容器化开发环境和生产就绪配置。它包括内置连接重试和健康监控，使其适合开发和生产场景。
+Aspire的MySQL集成提供与PostgreSQL类似的功能，包括容器化开发环境和生产就绪配置。它包括内置连接重试和健康监控，使其适合开发和生产场景。
 
 ### [MongoDB](https://learn.microsoft.com/en-us/dotnet/aspire/database/mongodb-integration)
 
@@ -285,7 +285,7 @@ IQueryable<Zone> zones
 
 ## 社区工具包数据库功能
 
-.NET Aspire社区工具包通过附加工具扩展数据库功能：
+Aspire社区工具包通过附加工具扩展数据库功能：
 
 ### [SQL数据库项目](https://learn.microsoft.com/en-us/dotnet/aspire/community-toolkit/hosting-sql-database-projects)
 
@@ -303,10 +303,10 @@ SQL数据库项目集成使您能够将数据库架构作为源代码的一部�
 
 ## 结论
 
-在本模块中，我们使用.NET Aspire的数据库集成功能向应用程序添加了PostgreSQL数据库支持。我们使用Entity Framework Core进行数据访问，并配置了应用程序以同时适用于本地开发和云托管数据库。
+在本模块中，我们使用Aspire的数据库集成功能向应用程序添加了PostgreSQL数据库支持。我们使用Entity Framework Core进行数据访问，并配置了应用程序以同时适用于本地开发和云托管数据库。
 
 下一个自然步骤是添加测试以验证数据库集成是否正常工作。
 
-前往[模块#8：集成测试](../Lesson-08-Integration-Testing/README.md)学习如何为您的.NET Aspire应用程序编写集成测试。
+前往[模块#8：集成测试](../Lesson-08-Integration-Testing/README.md)学习如何为您的Aspire应用程序编写集成测试。
 
 **下一步**：[模块#8：集成测试](../Lesson-08-Integration-Testing/README.md)

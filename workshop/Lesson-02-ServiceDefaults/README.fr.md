@@ -2,7 +2,7 @@
 
 ## Introduction
 
-.NET Aspire fournit un ensemble de valeurs par défaut pour les services couramment utilisés dans les applications .NET. Ces valeurs par défaut sont conçues pour vous aider à démarrer rapidement et à offrir une expérience cohérente sur différents types d'applications. Ceci comprend:
+Aspire fournit un ensemble de valeurs par défaut pour les services couramment utilisés dans les applications .NET. Ces valeurs par défaut sont conçues pour vous aider à démarrer rapidement et à offrir une expérience cohérente sur différents types d'applications. Ceci comprend:
 
 - Télémétrie : métriques, traçage, journalisation
 - Résilience
@@ -16,7 +16,7 @@
 1. Ajoutez un nouveau projet à la solution appelé `ServiceDefaults`:
 
 - Faites un clic droit sur la solution et sélectionnez `Add` > `New Project`.
-- Sélectionnez le modèle de projet `.NET Aspire Service Defaults`.
+- Sélectionnez le modèle de projet `Aspire Service Defaults`.
 - Nommé le projet `ServiceDefaults`.
 - Cliquez `Next` > `Create`.
 

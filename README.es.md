@@ -1,26 +1,26 @@
-﻿# Aprendamos .NET Aspire
+﻿# Aprendamos Aspire
 
-Ven y aprende todo sobre [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), una pila de tecnología lista para la nube para construir aplicaciones distribuidas, observables y listas para producción. .NET Aspire se puede agregar a cualquier aplicación, independientemente de su tamaño y escala, para ayudarte a construir aplicaciones mejores y más rápidas.
+Ven y aprende todo sobre [Aspire](https://learn.microsoft.com/dotnet/aspire/), una pila de tecnología lista para la nube para construir aplicaciones distribuidas, observables y listas para producción. Aspire se puede agregar a cualquier aplicación, independientemente de su tamaño y escala, para ayudarte a construir aplicaciones mejores y más rápidas.
 
 Este taller utiliza **.NET Aspire 9.4** y está diseñado para **.NET 9** (**.NET 8** también es compatible).
 
-.NET Aspire simplifica el desarrollo de aplicaciones con:
+Aspire simplifica el desarrollo de aplicaciones con:
 
 - **Orquestación**: Orquestación incorporada con un motor de flujo de trabajo simple pero potente. Utiliza C# y API familiares sin necesidad de YAML. Agrega fácilmente servicios en la nube populares, conecta a tus proyectos y ejecútalos localmente con un solo clic.
 - **Descubrimiento de servicios**: Inyección automática de las cadenas de conexión correctas o configuraciones de red y la información de descubrimiento de servicios para simplificar la experiencia del desarrollador.
 - **Componentes**: Componentes incorporados para servicios en la nube comunes como bases de datos, colas y almacenamiento. Integrados con registro, comprobaciones de salud, telemetría y más.
-- **Panel de control**: Visualiza datos en vivo de OpenTelemetry sin necesidad de configuración. El panel de control para desarrolladores de .NET Aspire muestra registros, variables de entorno, trazas distribuidas, métricas y más para verificar rápidamente el comportamiento de la aplicación.
+- **Panel de control**: Visualiza datos en vivo de OpenTelemetry sin necesidad de configuración. El panel de control para desarrolladores de Aspire muestra registros, variables de entorno, trazas distribuidas, métricas y más para verificar rápidamente el comportamiento de la aplicación.
 - **Despliegue**: Gestiona la inyección de las cadenas de conexión correctas o configuraciones de red y la información de descubrimiento de servicios para simplificar la experiencia del desarrollador.
-- **Y mucho más**: .NET Aspire está repleto de características que a los desarrolladores les encantarán y que te ayudarán a ser más productivo.
+- **Y mucho más**: Aspire está repleto de características que a los desarrolladores les encantarán y que te ayudarán a ser más productivo.
 
-Obtén más información sobre .NET Aspire con los siguientes recursos:
+Obtén más información sobre Aspire con los siguientes recursos:
 
 - [Documentación](https://learn.microsoft.com/dotnet/aspire)
 - [Ruta de aprendizaje de Microsoft Learn](https://learn.microsoft.com/training/paths/dotnet-aspire/)
-- [Videos de .NET Aspire](https://aka.ms/aspire/videos)
+- [Videos de Aspire](https://aka.ms/aspire/videos)
 - [Aplicación de muestra de referencia eShop](https://github.com/dotnet/eshop)
-- [Ejemplos de .NET Aspire](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
-- [Preguntas frecuentes de .NET Aspire](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
+- [Ejemplos de Aspire](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
+- [Preguntas frecuentes de Aspire](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
 
 ## Localización
 
@@ -34,7 +34,7 @@ Estos materiales del taller están disponibles en los siguientes idiomas:
 - [Français](./README.fr.md)
 - [Português (PT-BR)](./README.pt-br.md)
 
-También puedes ver los eventos en vivo de Let's Learn .NET Aspire para los siguientes idiomas:
+También puedes ver los eventos en vivo de Let's Learn Aspire para los siguientes idiomas:
 
 - [Inglés](https://www.youtube.com/watch?v=8i3FaHChh20)
 - [한국어](https://www.youtube.com/watch?v=rTpNgMaVM6g)
@@ -46,7 +46,7 @@ También puedes ver los eventos en vivo de Let's Learn .NET Aspire para los sigu
 
 ## Taller
 
-Este taller de .NET Aspire forma parte de la serie [Aprendamos .NET](https://aka.ms/letslearndotnet). Este taller está diseñado para ayudarte a aprender sobre .NET Aspire y cómo utilizarlo para construir aplicaciones listas para la nube.
+Este taller de Aspire forma parte de la serie [Aprendamos .NET](https://aka.ms/letslearndotnet). Este taller está diseñado para ayudarte a aprender sobre Aspire y cómo utilizarlo para construir aplicaciones listas para la nube.
 
 ### Prerequisitos
 

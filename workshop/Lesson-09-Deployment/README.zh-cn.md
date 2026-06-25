@@ -1,16 +1,16 @@
-# 将 .NET Aspire 应用部署到 Azure Container Apps
+# 将 Aspire 应用部署到 Azure Container Apps
 
-.NET Aspire 针对在容器化环境中运行的应用程序进行了优化。[Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) 是一个完全托管的环境，使您能够在无服务器平台上运行微服务和容器化应用程序。本文将指导您创建新的 .NET Aspire 解决方案，并使用 Visual Studio 和 Azure Developer CLI (`azd`) 将其部署到 Microsoft Azure Container Apps。
+Aspire 针对在容器化环境中运行的应用程序进行了优化。[Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) 是一个完全托管的环境，使您能够在无服务器平台上运行微服务和容器化应用程序。本文将指导您创建新的 Aspire 解决方案，并使用 Visual Studio 和 Azure Developer CLI (`azd`) 将其部署到 Microsoft Azure Container Apps。
 
-在此示例中，我们假设您正在部署前面部分中的 MyWeatherHub 应用程序。您可以使用您构建的代码，也可以使用 **complete** 目录中的代码。但是，对于任何 .NET Aspire 应用程序，一般步骤都是相同的。
+在此示例中，我们假设您正在部署前面部分中的 MyWeatherHub 应用程序。您可以使用您构建的代码，也可以使用 **complete** 目录中的代码。但是，对于任何 Aspire 应用程序，一般步骤都是相同的。
 
 ## 使用 Visual Studio 部署应用
 
 1. 在解决方案资源管理器中，右键单击 **AppHost** 项目并选择 **发布** 以打开 **发布** 对话框。
 
-    > 发布 .NET Aspire 需要当前版本的 `azd` CLI。这应该与 .NET Aspire 工作负载一起安装，但如果您收到 CLI 未安装或不是最新版本的通知，可以按照本教程下一部分的说明进行安装。
+    > 发布 Aspire 需要当前版本的 `azd` CLI。这应该与 Aspire 工作负载一起安装，但如果您收到 CLI 未安装或不是最新版本的通知，可以按照本教程下一部分的说明进行安装。
 
-1. 选择 **Azure Container Apps for .NET Aspire** 作为发布目标。
+1. 选择 **Azure Container Apps for Aspire** 作为发布目标。
 
     ![发布对话框工作流的屏幕截图。](../media/vs-deploy.png)
 
@@ -55,7 +55,7 @@ aspire deploy
 > - 确保您已登录：运行 `azd login` 并选择正确的 Azure 订阅。
 > - 从包含 AppHost 的文件夹运行以下命令（对于此存储库，如果您要部署完成的示例，通常是 `complete` 文件夹）。
 
-1. 打开新的终端窗口并 `cd` 到您的 .NET Aspire 项目的根目录。
+1. 打开新的终端窗口并 `cd` 到您的 Aspire 项目的根目录。
 1. 执行 `azd init` 命令以使用 `azd` 初始化您的项目，这将检查本地目录结构并确定应用类型。
 
     ```console
@@ -80,7 +80,7 @@ aspire deploy
       选择模板
     ```
 
-1. 扫描目录后，`azd` 提示您确认它找到了正确的 .NET Aspire _AppHost_ 项目。选择 **确认并继续初始化我的应用** 选项。
+1. 扫描目录后，`azd` 提示您确认它找到了正确的 Aspire _AppHost_ 项目。选择 **确认并继续初始化我的应用** 选项。
 
     ```console
     检测到的服务：
@@ -95,7 +95,7 @@ aspire deploy
       取消并退出
     ```
 
-1. `azd` 显示 .NET Aspire 解决方案中的每个项目，并提示您识别要部署的项目，这些项目的 HTTP 入口向所有互联网流量公开。仅选择 `myweatherhub`（使用 ↓ 和空格键），因为您希望 API (`api`) 对 Azure Container Apps 环境保持私有且不公开可用。
+1. `azd` 显示 Aspire 解决方案中的每个项目，并提示您识别要部署的项目，这些项目的 HTTP 入口向所有互联网流量公开。仅选择 `myweatherhub`（使用 ↓ 和空格键），因为您希望 API (`api`) 对 Azure Container Apps 环境保持私有且不公开可用。
 
     ```console
     ? 选择一个选项 确认并继续初始化我的应用
@@ -119,7 +119,7 @@ aspire deploy
 
 `azd` 生成多个文件并将它们放入工作目录。这些文件是：
 
-- _azure.yaml_：描述应用的服务，如 .NET Aspire AppHost 项目，并将它们映射到 Azure 资源。
+- _azure.yaml_：描述应用的服务，如 Aspire AppHost 项目，并将它们映射到 Azure 资源。
 - _.azure/config.json_：配置文件，告知 `azd` 当前活动环境是什么。
 - _.azure/aspireazddev/.env_：包含特定于环境的覆盖。
 - _.azure/aspireazddev/config.json_：配置文件，告知 `azd` 在此环境中哪些服务应该有公共终结点。

@@ -1,26 +1,26 @@
-# Apprenons .NET Aspire
+# Apprenons Aspire
 
-Venez apprendre tout à propos de [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), une pile prête pour le cloud pour créer des applications distribuées observables, prêtes pour la production.​ .NET Aspire peut être ajouté à n'importe quelle application, quelles que soient sa taille et sa portée, pour vous aider à créer de meilleures applications plus rapidement.​
+Venez apprendre tout à propos de [Aspire](https://learn.microsoft.com/dotnet/aspire/), une pile prête pour le cloud pour créer des applications distribuées observables, prêtes pour la production.​ Aspire peut être ajouté à n'importe quelle application, quelles que soient sa taille et sa portée, pour vous aider à créer de meilleures applications plus rapidement.​
 
 Cet atelier utilise **.NET Aspire 9.4** et est conçu pour **.NET 9** (**.NET 8** est également pris en charge).
 
-.NET Aspire simplifie le développement d'applications avec :
+Aspire simplifie le développement d'applications avec :
 
 - **Orchestration** : Orchestration intégrée avec un moteur de workflow simple mais puissant. Utilisez C# et des API familières sans une seule ligne de YAML. Ajoutez facilement des services cloud populaires, connectez-les à vos projets et exécutez-les localement en un seul clic.
 - **Découverte de services** : Injection automatique des chaînes de connexion ou des configurations réseau appropriées et des informations de découverte de services pour simplifier l'expérience du développeur.
 - **Composants** : Composants intégrés pour les services cloud courants tels que les bases de données, les files d'attente et le stockage. Intégré à la journalisation, aux contrôles de santé, à la télémétrie, etc.
-- **Tableau de bord** : Consultez les données OpenTelemetry en direct sans aucune configuration requise. Lancé par défaut lors de l'exécution, le tableau de bord du développeur de .NET Aspire affiche les journaux, les variables d'environnement, les traces distribuées, les métriques et bien plus encore pour vérifier rapidement le comportement de l'application.
+- **Tableau de bord** : Consultez les données OpenTelemetry en direct sans aucune configuration requise. Lancé par défaut lors de l'exécution, le tableau de bord du développeur de Aspire affiche les journaux, les variables d'environnement, les traces distribuées, les métriques et bien plus encore pour vérifier rapidement le comportement de l'application.
 - **Déploiement** : Gère l'injection des bonnes chaînes de connexion ou configurations réseau et des informations de découverte de services pour simplifier l'expérience du développeur.
-- **Bien plus encore** : .NET Aspire regorge de fonctionnalités que les développeurs adoreront et vous aideront à être plus productif.
+- **Bien plus encore** : Aspire regorge de fonctionnalités que les développeurs adoreront et vous aideront à être plus productif.
 
-Apprenez-en davantage sur .NET Aspire avec les ressources suivantes :
+Apprenez-en davantage sur Aspire avec les ressources suivantes :
 
 - [Documentation](https://learn.microsoft.com/dotnet/aspire)
 - [Parcours de formation Microsoft Learn](https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/)
-- [Vidéos .NET Aspire](https://aka.ms/aspire/videos)
+- [Vidéos Aspire](https://aka.ms/aspire/videos)
 - [Exemple d'application de boutique en ligne](https://github.com/dotnet/eshop)
-- [Plusieurs exemple .NET Aspire](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
-- [FAQ .NET Aspire](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
+- [Plusieurs exemple Aspire](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
+- [FAQ Aspire](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
 
 ## Localisation
 
@@ -33,7 +33,7 @@ Le matériel de cet atelier est disponible dans les langues suivantes :
 - [Français](./README.fr.md)
 - [Português (PT-BR)](./README.pt-br.md)
 
-Vous pouvez également regarder les événements de en direct (ou sur demande si l'évènement est passé) **Let's Learn .NET Aspire** pour les langues suivantes :
+Vous pouvez également regarder les événements de en direct (ou sur demande si l'évènement est passé) **Let's Learn Aspire** pour les langues suivantes :
 
 - [anglais](https://www.youtube.com/watch?v=8i3FaHChh20)
 - [한국어](https://www.youtube.com/watch?v=rTpNgMaVM6g)
@@ -45,7 +45,7 @@ Vous pouvez également regarder les événements de en direct (ou sur demande si
 
 ## Atelier (Workshop)
 
-Cet atelier .NET Aspire fait partie de la série [Let's Learn .NET](https://aka.ms/letslearndotnet). Cet atelier est conçu pour vous aider à en savoir plus sur .NET Aspire et comment l'utiliser pour créer des applications prêtes pour le cloud.
+Cet atelier Aspire fait partie de la série [Let's Learn .NET](https://aka.ms/letslearndotnet). Cet atelier est conçu pour vous aider à en savoir plus sur Aspire et comment l'utiliser pour créer des applications prêtes pour le cloud.
 
 ### Prérequis
 

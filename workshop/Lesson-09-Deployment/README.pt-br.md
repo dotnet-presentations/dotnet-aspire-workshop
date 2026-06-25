@@ -1,16 +1,16 @@
-# Implante um aplicativo .NET Aspire no Azure Container Apps
+# Implante um aplicativo Aspire no Azure Container Apps
 
-O .NET Aspire é otimizado para aplicativos destinados a serem executados em ambientes contêinerizados. O [Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) é um ambiente totalmente gerenciado que permite executar microsserviços e aplicativos contêinerizados em uma plataforma sem servidor. Este artigo irá guiá-lo na criação de uma nova solução .NET Aspire e na implantação dela no Microsoft Azure Container Apps usando o Visual Studio e o Azure Developer CLI (`azd`).
+O Aspire é otimizado para aplicativos destinados a serem executados em ambientes contêinerizados. O [Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) é um ambiente totalmente gerenciado que permite executar microsserviços e aplicativos contêinerizados em uma plataforma sem servidor. Este artigo irá guiá-lo na criação de uma nova solução Aspire e na implantação dela no Microsoft Azure Container Apps usando o Visual Studio e o Azure Developer CLI (`azd`).
 
-Neste exemplo, assumiremos que você está implantando o aplicativo MyWeatherHub das seções anteriores. Você pode usar o código que construiu, ou pode usar o código no diretório **complete**. No entanto, os passos gerais são os mesmos para qualquer aplicativo .NET Aspire.
+Neste exemplo, assumiremos que você está implantando o aplicativo MyWeatherHub das seções anteriores. Você pode usar o código que construiu, ou pode usar o código no diretório **complete**. No entanto, os passos gerais são os mesmos para qualquer aplicativo Aspire.
 
 ## Implante o aplicativo com o Visual Studio
 
 1. No Gerenciador de Soluções, clique com o botão direito do mouse no projeto **AppHost** e selecione **Publicar** para abrir a caixa de diálogo **Publicar**.
 
-    > Publicar .NET Aspire requer a versão atual da CLI `azd`. Isso deve ser instalado com a carga de trabalho do .NET Aspire, mas se você receber uma notificação de que a CLI não está instalada ou atualizada, pode seguir as instruções na próxima parte deste tutorial para instalá-la.
+    > Publicar Aspire requer a versão atual da CLI `azd`. Isso deve ser instalado com a carga de trabalho do Aspire, mas se você receber uma notificação de que a CLI não está instalada ou atualizada, pode seguir as instruções na próxima parte deste tutorial para instalá-la.
 
-1. Selecione **Azure Container Apps for .NET Aspire** como o destino de publicação.
+1. Selecione **Azure Container Apps for Aspire** como o destino de publicação.
 
     ![Uma captura de tela do fluxo de trabalho da caixa de diálogo de publicação.](../media/vs-deploy.png)
 
@@ -55,7 +55,7 @@ Este comando fornece relatórios de progresso aprimorados, melhores mensagens de
 > - Certifique-se de estar logado: execute `azd login` e selecione a assinatura Azure correta.
 > - Execute os comandos seguintes da pasta que contém seu AppHost (para este repositório, tipicamente a pasta `complete` se você estiver implantando o exemplo concluído).
 
-1. Abra uma nova janela de terminal e `cd` para a raiz do seu projeto .NET Aspire.
+1. Abra uma nova janela de terminal e `cd` para a raiz do seu projeto Aspire.
 1. Execute o comando `azd init` para inicializar seu projeto com `azd`, que inspecionará a estrutura de diretório local e determinará o tipo de aplicativo.
 
     ```console
@@ -80,7 +80,7 @@ Este comando fornece relatórios de progresso aprimorados, melhores mensagens de
       Selecionar um template
     ```
 
-1. Após escanear o diretório, `azd` solicita que você confirme que encontrou o projeto .NET Aspire _AppHost_ correto. Selecione a opção **Confirmar e continuar inicializando meu aplicativo**.
+1. Após escanear o diretório, `azd` solicita que você confirme que encontrou o projeto Aspire _AppHost_ correto. Selecione a opção **Confirmar e continuar inicializando meu aplicativo**.
 
     ```console
     Serviços detectados:
@@ -95,7 +95,7 @@ Este comando fornece relatórios de progresso aprimorados, melhores mensagens de
       Cancelar e sair
     ```
 
-1. `azd` apresenta cada um dos projetos na solução .NET Aspire e solicita que você identifique quais implantar com ingresso HTTP aberto publicamente para todo o tráfego da internet. Selecione apenas `myweatherhub` (usando as teclas ↓ e Espaço), já que você quer que a API (`api`) seja privada para o ambiente Azure Container Apps e não disponível publicamente.
+1. `azd` apresenta cada um dos projetos na solução Aspire e solicita que você identifique quais implantar com ingresso HTTP aberto publicamente para todo o tráfego da internet. Selecione apenas `myweatherhub` (usando as teclas ↓ e Espaço), já que você quer que a API (`api`) seja privada para o ambiente Azure Container Apps e não disponível publicamente.
 
     ```console
     ? Selecione uma opção Confirmar e continuar inicializando meu aplicativo
@@ -119,7 +119,7 @@ Este comando fornece relatórios de progresso aprimorados, melhores mensagens de
 
 `azd` gera vários arquivos e os coloca no diretório de trabalho. Esses arquivos são:
 
-- _azure.yaml_: Descreve os serviços do aplicativo, como o projeto .NET Aspire AppHost, e os mapeia para recursos Azure.
+- _azure.yaml_: Descreve os serviços do aplicativo, como o projeto Aspire AppHost, e os mapeia para recursos Azure.
 - _.azure/config.json_: Arquivo de configuração que informa ao `azd` qual é o ambiente ativo atual.
 - _.azure/aspireazddev/.env_: Contém substituições específicas do ambiente.
 - _.azure/aspireazddev/config.json_: Arquivo de configuração que informa ao `azd` quais serviços devem ter um endpoint público neste ambiente.

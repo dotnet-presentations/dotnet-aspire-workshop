@@ -1,4 +1,4 @@
-# Testes de Integração com .NET Aspire
+# Testes de Integração com Aspire
 
 ## Introdução
 
@@ -8,7 +8,7 @@ Neste módulo, abordaremos testes de integração usando `Aspire.Hosting.Testing
 
 Os testes unitários focam em testar componentes individuais ou unidades de código de forma isolada. Eles garantem que cada unidade funcione corretamente por si só. Em contraste, os testes de integração verificam se diferentes componentes da aplicação funcionam juntos como esperado. Eles testam as interações entre várias partes do sistema, como APIs, bancos de dados e aplicações web.
 
-No contexto de aplicações distribuídas com .NET Aspire, os testes de integração são essenciais para garantir que os diferentes serviços e componentes se comuniquem e funcionem corretamente em conjunto.
+No contexto de aplicações distribuídas com Aspire, os testes de integração são essenciais para garantir que os diferentes serviços e componentes se comuniquem e funcionem corretamente em conjunto.
 
 ## Criando o Projeto de Testes de Integração
 
@@ -51,7 +51,7 @@ No contexto de aplicações distribuídas com .NET Aspire, os testes de integra�
 
 Este arquivo de projeto é bastante padrão para um projeto de teste. Os elementos-chave são:
 
-- Uma `PackageReference` para o pacote NuGet [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing), que fornece os tipos e APIs necessários para testar aplicações .NET Aspire.
+- Uma `PackageReference` para o pacote NuGet [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing), que fornece os tipos e APIs necessários para testar aplicações Aspire.
 - Uma `ProjectReference` para o projeto AppHost, que dá ao projeto de teste acesso à definição da aplicação distribuída alvo.
 - As configurações `EnableMSTestRunner` e `OutputType` para configurar o projeto de teste para executar com o runner nativo do MSTest.
 
@@ -193,7 +193,7 @@ Este teste foca na verificação da configuração de descoberta de serviços:
 - Ele chama `GetEnvironmentVariableValuesAsync()` com o argumento `DistributedApplicationOperation.Publish` para obter as variáveis de ambiente que seriam publicadas para o recurso.
 - Finalmente, ele afirma que o frontend web tem uma variável de ambiente que resolve para a URL do serviço da API, confirmando que a descoberta de serviços está configurada corretamente.
 
-Este teste é particularmente valioso porque verifica que os serviços da sua aplicação estão corretamente conectados através de variáveis de ambiente, que é como o .NET Aspire lida com descoberta de serviços em aplicações distribuídas.
+Este teste é particularmente valioso porque verifica que os serviços da sua aplicação estão corretamente conectados através de variáveis de ambiente, que é como o Aspire lida com descoberta de serviços em aplicações distribuídas.
 
 > Nota: Se você ver um arquivo `WeatherBackgroundTests.cs` na solução completa que está vazio, é um placeholder para futuros testes de job em background e pode ser ignorado para este workshop.
 
@@ -258,8 +258,8 @@ Nossos testes verificaram três aspectos críticos da aplicação distribuída:
 1. A funcionalidade da aplicação web (testando que a UI renderiza corretamente)
 1. O mecanismo de descoberta de serviços (testando que serviços podem se encontrar e comunicar entre si)
 
-Para um mergulho mais profundo em testes com .NET Aspire, incluindo um walkthrough em vídeo, confira o post do blog [Getting started with testing and .NET Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/).
+Para um mergulho mais profundo em testes com Aspire, incluindo um walkthrough em vídeo, confira o post do blog [Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/).
 
-Agora, vamos aprender sobre opções de deploy ao usar .NET Aspire.
+Agora, vamos aprender sobre opções de deploy ao usar Aspire.
 
 **Próximo**: [Módulo #9: Deployment](../Lesson-09-Deployment/README.md)

@@ -1,10 +1,10 @@
-# .NET Aspire 統合
+# Aspire 統合
 
-.NET Aspire コンポーネントは、Redis や PostgreSQL などの主要なサービスやプラットフォームとのクラウドネイティブアプリケーションの統合を容易にするために特別に選ばれた NuGet パッケージのキュレーションされたスイートです。各コンポーネントは、自動プロビジョニングまたは標準化された構成パターンを通じて、クラウドネイティブの基本的な機能を提供します。.NET Aspire コンポーネントはアプホスト (オーケストレータ) プロジェクトなしでも使用できますが、.NET Aspire AppHost と一緒に使用するのが最適です。
+Aspire コンポーネントは、Redis や PostgreSQL などの主要なサービスやプラットフォームとのクラウドネイティブアプリケーションの統合を容易にするために特別に選ばれた NuGet パッケージのキュレーションされたスイートです。各コンポーネントは、自動プロビジョニングまたは標準化された構成パターンを通じて、クラウドネイティブの基本的な機能を提供します。Aspire コンポーネントはアプホスト (オーケストレータ) プロジェクトなしでも使用できますが、Aspire AppHost と一緒に使用するのが最適です。
 
-.NET Aspire コンポーネントは、.NET Aspire ホスティングパッケージと混同しないでください。これらは異なる目的を持ちます。ホスティングパッケージは、.NET Aspire アプリ内のさまざまなリソースをモデリングおよび構成するために使用され、コンポーネントはさまざまなクライアントライブラリに構成をマッピングするために使用されます。
+Aspire コンポーネントは、Aspire ホスティングパッケージと混同しないでください。これらは異なる目的を持ちます。ホスティングパッケージは、Aspire アプリ内のさまざまなリソースをモデリングおよび構成するために使用され、コンポーネントはさまざまなクライアントライブラリに構成をマッピングするために使用されます。
 
-Microsoft とコミュニティによって作成および提供されている  [.NET Aspire コンポーネント](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components) のリストはますます増えています。.NET Aspire は柔軟であり、誰でも自分のサービスと統合するための独自のコンポーネントを作成できます。
+Microsoft とコミュニティによって作成および提供されている  [Aspire コンポーネント](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components) のリストはますます増えています。Aspire は柔軟であり、誰でも自分のサービスと統合するための独自のコンポーネントを作成できます。
 
 アプリケーションを改善するためにコンポーネントを追加しましょう。API のパフォーマンスを向上させるために Redis キャッシュに接続するためのコンポーネントを追加します。
 
@@ -17,7 +17,7 @@ Microsoft とコミュニティによって作成および提供されている 
 
 _出力キャッシング_ コンポーネントを App Host に統合します。このコンポーネントは、API のレスポンスを Redis キャッシュに保存するのに役立ちます。
 
-Redis コンポーネントを App Host に追加するには、`Aspire.Hosting.Redis` NuGet パッケージをインストールする必要があります。このパッケージは、AppHost でサービスを構成するために必要なコンポーネントを提供します。このワークショップでは、Redis はコンテナ イメージを介して提供されており、.NET Aspire App Host を開始すると、自動的に Redis コンテナイメージをダウンロードし、Redis サーバーを開始します。
+Redis コンポーネントを App Host に追加するには、`Aspire.Hosting.Redis` NuGet パッケージをインストールする必要があります。このパッケージは、AppHost でサービスを構成するために必要なコンポーネントを提供します。このワークショップでは、Redis はコンテナ イメージを介して提供されており、Aspire App Host を開始すると、自動的に Redis コンテナイメージをダウンロードし、Redis サーバーを開始します。
 
 NuGet をインストールしたら、それを構成できます。
 
@@ -98,7 +98,7 @@ NuGet をインストールしたら、それを構成できます。
 
 ## カスタム Redis コンテナー
 
-.NET Aspire コンポーネントは柔軟でカスタマイズ可能です。デフォルトでは、Redis コンポーネントは Docker Hub からの Redis コンテナ イメージを使用しますが、自分の Redis コンテナイメージを使用することもできます。`AddRedis` メソッドの後にイメージ名とタグを指定します。たとえば、[Garnet](https://github.com/microsoft/garnet) のようなカスタム Redis コンテナ イメージを持っている場合、次のようにイメージ名とタグを App Host に提供できます：
+Aspire コンポーネントは柔軟でカスタマイズ可能です。デフォルトでは、Redis コンポーネントは Docker Hub からの Redis コンテナ イメージを使用しますが、自分の Redis コンテナイメージを使用することもできます。`AddRedis` メソッドの後にイメージ名とタグを指定します。たとえば、[Garnet](https://github.com/microsoft/garnet) のようなカスタム Redis コンテナ イメージを持っている場合、次のようにイメージ名とタグを App Host に提供できます：
 
 ```csharp
 var cache = builder.AddRedis("cache")
@@ -119,6 +119,6 @@ var cache = builder.AddRedis("cache")
 
 このセクションでは、App Host に Redis コンポーネントを追加し、API に出力キャッシングを統合しました。レスポンスが Redis キャッシュにキャッシュされ、2 回目のリクエストが 1 回目よりも速くなったことを確認しました。また、Redis Commander を使用して Redis キャッシュを管理する方法も確認しました。
 
-統合できるコンポーネントは他にもたくさんあります。[.NET Aspire documentation](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components) で利用可能なコンポーネントのリストを見つけることができます。
+統合できるコンポーネントは他にもたくさんあります。[Aspire documentation](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components) で利用可能なコンポーネントのリストを見つけることができます。
 
 次のステップとしては、データベースの統合や Azure Redis Cache をホストされたソリューションとして利用することが考えられます。これらおよびその他のコンポーネントは NuGet で利用可能です。

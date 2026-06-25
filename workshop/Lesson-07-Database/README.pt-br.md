@@ -6,7 +6,7 @@ Neste módulo, integraremos um banco de dados PostgreSQL com nossa aplicação. 
 
 ## Configurando PostgreSQL
 
-O .NET Aspire fornece suporte integrado para PostgreSQL através do pacote `Aspire.Hosting.PostgreSQL`. Para configurar o PostgreSQL:
+O Aspire fornece suporte integrado para PostgreSQL através do pacote `Aspire.Hosting.PostgreSQL`. Para configurar o PostgreSQL:
 
 1. Instale o pacote NuGet necessário no seu projeto AppHost:
 
@@ -66,7 +66,7 @@ Com `ContainerLifetime.Persistent`, o contêiner PostgreSQL continuará executan
 
 > **Nota**: Contêineres persistentes são principalmente úteis para cenários de desenvolvimento. Em implantações de produção, você normalmente usará serviços de banco de dados gerenciados que tratam da persistência automaticamente.
 >
-> **Recursos Avançados de Contêiner**: O .NET Aspire também suporta configuração avançada de contêiner como `WithExplicitStart()` para melhor coordenação de inicialização, e `WithContainerFiles()` para montar scripts de inicialização. Esses recursos fornecem controle fino sobre o comportamento do contêiner quando necessário para cenários de desenvolvimento complexos. Para saber mais sobre esses recursos avançados, veja [Persistir dados usando volumes](https://learn.microsoft.com/dotnet/aspire/fundamentals/persist-data-volumes) e [Ciclo de vida do recurso de contêiner](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview#container-resource-lifecycle) na documentação oficial.
+> **Recursos Avançados de Contêiner**: O Aspire também suporta configuração avançada de contêiner como `WithExplicitStart()` para melhor coordenação de inicialização, e `WithContainerFiles()` para montar scripts de inicialização. Esses recursos fornecem controle fino sobre o comportamento do contêiner quando necessário para cenários de desenvolvimento complexos. Para saber mais sobre esses recursos avançados, veja [Persistir dados usando volumes](https://learn.microsoft.com/dotnet/aspire/fundamentals/persist-data-volumes) e [Ciclo de vida do recurso de contêiner](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview#container-resource-lifecycle) na documentação oficial.
 
 ## Integrando EF Core com PostgreSQL
 
@@ -102,7 +102,7 @@ public class MyWeatherContext : DbContext
 builder.AddNpgsqlDbContext<MyWeatherContext>(connectionName: "weatherdb");
 ```
 
-Note que o .NET Aspire trata da configuração da string de conexão automaticamente. O nome da conexão "weatherdb" corresponde ao nome do banco de dados que criamos no projeto AppHost.
+Note que o Aspire trata da configuração da string de conexão automaticamente. O nome da conexão "weatherdb" corresponde ao nome do banco de dados que criamos no projeto AppHost.
 
 1. Configure a inicialização do banco de dados:
 
@@ -265,15 +265,15 @@ Se você quiser redefinir e começar do zero:
 
 ## Outras Opções de Dados
 
-Além do PostgreSQL, o .NET Aspire fornece suporte de primeira classe para vários outros sistemas de banco de dados:
+Além do PostgreSQL, o Aspire fornece suporte de primeira classe para vários outros sistemas de banco de dados:
 
 ### [Azure SQL/SQL Server](https://learn.microsoft.com/en-us/dotnet/aspire/database/sql-server-entity-framework-integration)
 
-A integração do SQL Server no .NET Aspire inclui provisionamento automático de contêiner para desenvolvimento, gerenciamento de string de conexão e verificações de saúde. Suporta tanto contêineres SQL Server locais quanto Azure SQL Database em produção. A integração trata da resiliência de conexão automaticamente e inclui telemetria para monitorar operações de banco de dados.
+A integração do SQL Server no Aspire inclui provisionamento automático de contêiner para desenvolvimento, gerenciamento de string de conexão e verificações de saúde. Suporta tanto contêineres SQL Server locais quanto Azure SQL Database em produção. A integração trata da resiliência de conexão automaticamente e inclui telemetria para monitorar operações de banco de dados.
 
 ### [MySQL](https://learn.microsoft.com/en-us/dotnet/aspire/database/mysql-entity-framework-integration)
 
-A integração MySQL para .NET Aspire fornece capacidades similares ao PostgreSQL, incluindo ambientes de desenvolvimento containerizados e configurações prontas para produção. Inclui tentativas de conexão integradas e monitoramento de saúde, tornando-o adequado para cenários de desenvolvimento e produção.
+A integração MySQL para Aspire fornece capacidades similares ao PostgreSQL, incluindo ambientes de desenvolvimento containerizados e configurações prontas para produção. Inclui tentativas de conexão integradas e monitoramento de saúde, tornando-o adequado para cenários de desenvolvimento e produção.
 
 ### [MongoDB](https://learn.microsoft.com/en-us/dotnet/aspire/database/mongodb-integration)
 
@@ -285,7 +285,7 @@ Embora o SQLite não exija containerização, o Aspire fornece padrões de confi
 
 ## Recursos de Banco de Dados do Community Toolkit
 
-O .NET Aspire Community Toolkit estende as capacidades de banco de dados com ferramentas adicionais:
+O Aspire Community Toolkit estende as capacidades de banco de dados com ferramentas adicionais:
 
 ### [SQL Database Projects](https://learn.microsoft.com/en-us/dotnet/aspire/community-toolkit/hosting-sql-database-projects)
 
@@ -303,10 +303,10 @@ O Data API Builder (DAB) gera automaticamente endpoints REST e GraphQL a partir 
 
 ## Conclusão
 
-Neste módulo, adicionamos suporte de banco de dados PostgreSQL à nossa aplicação usando os recursos de integração de banco de dados do .NET Aspire. Usamos o Entity Framework Core para acesso a dados e configuramos nossa aplicação para funcionar tanto com desenvolvimento local quanto com bancos de dados hospedados na nuvem.
+Neste módulo, adicionamos suporte de banco de dados PostgreSQL à nossa aplicação usando os recursos de integração de banco de dados do Aspire. Usamos o Entity Framework Core para acesso a dados e configuramos nossa aplicação para funcionar tanto com desenvolvimento local quanto com bancos de dados hospedados na nuvem.
 
 O próximo passo natural seria adicionar testes para verificar se a integração do banco de dados funciona corretamente.
 
-Vá para [Módulo #8: Testes de Integração](../Lesson-08-Integration-Testing/README.md) para aprender como escrever testes de integração para sua aplicação .NET Aspire.
+Vá para [Módulo #8: Testes de Integração](../Lesson-08-Integration-Testing/README.md) para aprender como escrever testes de integração para sua aplicação Aspire.
 
 **Próximo**: [Módulo #8: Testes de Integração](../Lesson-08-Integration-Testing/README.md)

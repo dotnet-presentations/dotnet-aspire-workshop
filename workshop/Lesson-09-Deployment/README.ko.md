@@ -1,16 +1,16 @@
-# .NET Aspire 앱을 Azure Container Apps에 배포하기
+# Aspire 앱을 Azure Container Apps에 배포하기
 
-.NET Aspire는 컨테이너화된 환경에서 실행되도록 설계된 애플리케이션에 최적화되어 있습니다. [Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview)는 서버리스 플랫폼에서 마이크로서비스와 컨테이너화된 애플리케이션을 실행할 수 있는 완전 관리형 환경입니다. 이 문서에서는 Visual Studio와 Azure Developer CLI(`azd`)를 사용하여 새로운 .NET Aspire 솔루션을 생성하고 Microsoft Azure Container Apps에 배포하는 과정을 안내합니다.
+Aspire는 컨테이너화된 환경에서 실행되도록 설계된 애플리케이션에 최적화되어 있습니다. [Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview)는 서버리스 플랫폼에서 마이크로서비스와 컨테이너화된 애플리케이션을 실행할 수 있는 완전 관리형 환경입니다. 이 문서에서는 Visual Studio와 Azure Developer CLI(`azd`)를 사용하여 새로운 Aspire 솔루션을 생성하고 Microsoft Azure Container Apps에 배포하는 과정을 안내합니다.
 
-이 예제에서는 이전 섹션의 MyWeatherHub 앱을 배포한다고 가정합니다. 구축한 코드를 사용하거나 **complete** 디렉토리의 코드를 사용할 수 있습니다. 하지만 일반적인 단계는 모든 .NET Aspire 앱에 대해 동일합니다.
+이 예제에서는 이전 섹션의 MyWeatherHub 앱을 배포한다고 가정합니다. 구축한 코드를 사용하거나 **complete** 디렉토리의 코드를 사용할 수 있습니다. 하지만 일반적인 단계는 모든 Aspire 앱에 대해 동일합니다.
 
 ## Visual Studio로 앱 배포
 
 1. 솔루션 탐색기에서 **AppHost** 프로젝트를 마우스 오른쪽 버튼으로 클릭하고 **게시**를 선택하여 **게시** 대화 상자를 엽니다.
 
-    > .NET Aspire 게시에는 현재 버전의 `azd` CLI가 필요합니다. 이는 .NET Aspire 워크로드와 함께 설치되어야 하지만, CLI가 설치되지 않았거나 최신 상태가 아니라는 알림을 받으면 이 튜토리얼의 다음 부분에 있는 지침을 따라 설치할 수 있습니다.
+    > Aspire 게시에는 현재 버전의 `azd` CLI가 필요합니다. 이는 Aspire 워크로드와 함께 설치되어야 하지만, CLI가 설치되지 않았거나 최신 상태가 아니라는 알림을 받으면 이 튜토리얼의 다음 부분에 있는 지침을 따라 설치할 수 있습니다.
 
-1. 게시 대상으로 **Azure Container Apps for .NET Aspire**를 선택합니다.
+1. 게시 대상으로 **Azure Container Apps for Aspire**를 선택합니다.
 
     ![게시 대화 상자 워크플로의 스크린샷.](../media/vs-deploy.png)
 
@@ -55,7 +55,7 @@ aspire deploy
 > - 로그인되어 있는지 확인하세요: `azd login`을 실행하고 올바른 Azure 구독을 선택합니다.
 > - AppHost가 포함된 폴더에서 다음 명령을 실행합니다(이 리포지토리의 경우 완성된 샘플을 배포하는 경우 일반적으로 `complete` 폴더).
 
-1. 새 터미널 창을 열고 .NET Aspire 프로젝트의 루트로 `cd`합니다.
+1. 새 터미널 창을 열고 Aspire 프로젝트의 루트로 `cd`합니다.
 1. `azd init` 명령을 실행하여 `azd`로 프로젝트를 초기화합니다. 이는 로컬 디렉터리 구조를 검사하고 앱 유형을 결정합니다.
 
     ```console
@@ -80,7 +80,7 @@ aspire deploy
       템플릿 선택
     ```
 
-1. 디렉터리를 스캔한 후 `azd`는 올바른 .NET Aspire _AppHost_ 프로젝트를 찾았는지 확인하도록 요청합니다. **확인하고 내 앱 초기화 계속** 옵션을 선택합니다.
+1. 디렉터리를 스캔한 후 `azd`는 올바른 Aspire _AppHost_ 프로젝트를 찾았는지 확인하도록 요청합니다. **확인하고 내 앱 초기화 계속** 옵션을 선택합니다.
 
     ```console
     감지된 서비스:
@@ -95,7 +95,7 @@ aspire deploy
       취소하고 종료
     ```
 
-1. `azd`는 .NET Aspire 솔루션의 각 프로젝트를 표시하고 모든 인터넷 트래픽에 공개적으로 열린 HTTP 수신으로 배포할 프로젝트를 식별하도록 요청합니다. API(`api`)를 Azure Container Apps 환경에 비공개로 두고 공개적으로 사용할 수 없도록 하려면 `myweatherhub`만 선택합니다(↓ 및 스페이스 키 사용).
+1. `azd`는 Aspire 솔루션의 각 프로젝트를 표시하고 모든 인터넷 트래픽에 공개적으로 열린 HTTP 수신으로 배포할 프로젝트를 식별하도록 요청합니다. API(`api`)를 Azure Container Apps 환경에 비공개로 두고 공개적으로 사용할 수 없도록 하려면 `myweatherhub`만 선택합니다(↓ 및 스페이스 키 사용).
 
     ```console
     ? 옵션을 선택하세요 확인하고 내 앱 초기화 계속
@@ -119,7 +119,7 @@ aspire deploy
 
 `azd`는 여러 파일을 생성하여 작업 디렉터리에 배치합니다. 이 파일들은:
 
-- _azure.yaml_: .NET Aspire AppHost 프로젝트와 같은 앱의 서비스를 설명하고 Azure 리소스에 매핑합니다.
+- _azure.yaml_: Aspire AppHost 프로젝트와 같은 앱의 서비스를 설명하고 Azure 리소스에 매핑합니다.
 - _.azure/config.json_: 현재 활성 환경이 무엇인지 `azd`에 알려주는 구성 파일입니다.
 - _.azure/aspireazddev/.env_: 환경별 재정의를 포함합니다.
 - _.azure/aspireazddev/config.json_: 이 환경에서 공용 끝점을 가져야 하는 서비스를 `azd`에 알려주는 구성 파일입니다.

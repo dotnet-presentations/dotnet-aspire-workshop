@@ -1,4 +1,4 @@
-# 使用 .NET Aspire 进行集成测试
+# 使用 Aspire 进行集成测试
 
 ## 介绍
 
@@ -8,7 +8,7 @@
 
 单元测试专注于独立测试单个组件或代码单元。它确保每个单元能够独立正常工作。相比之下，集成测试验证应用程序的不同组件能够按预期协同工作。它测试系统各个部分之间的交互，如 API、数据库和 Web 应用程序。
 
-在使用 .NET Aspire 的分布式应用程序环境中，集成测试对于确保不同服务和组件能够正确通信和协同工作至关重要。
+在使用 Aspire 的分布式应用程序环境中，集成测试对于确保不同服务和组件能够正确通信和协同工作至关重要。
 
 ## 创建集成测试项目
 
@@ -51,7 +51,7 @@
 
 这个项目文件对于测试项目来说是相当标准的。关键元素包括：
 
-- 对 [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGet 包的 `PackageReference`，它提供了测试 .NET Aspire 应用程序所需的类型和 API。
+- 对 [Aspire.Hosting.Testing](https://www.nuget.org/packages/Aspire.Hosting.Testing) NuGet 包的 `PackageReference`，它提供了测试 Aspire 应用程序所需的类型和 API。
 - 对 AppHost 项目的 `ProjectReference`，这使测试项目能够访问目标分布式应用程序定义。
 - `EnableMSTestRunner` 和 `OutputType` 设置，用于配置测试项目使用原生 MSTest 运行器运行。
 
@@ -193,7 +193,7 @@ public class EnvVarTests
 - 它使用 `DistributedApplicationOperation.Publish` 参数调用 `GetEnvironmentVariableValuesAsync()` 来获取将发布到资源的环境变量。
 - 最后，它断言 Web 前端具有解析为 API 服务 URL 的环境变量，确认服务发现配置正确。
 
-这个测试特别有价值，因为它验证了应用程序的服务通过环境变量正确连接，这是 .NET Aspire 在分布式应用程序中处理服务发现的方式。
+这个测试特别有价值，因为它验证了应用程序的服务通过环境变量正确连接，这是 Aspire 在分布式应用程序中处理服务发现的方式。
 
 > 注意：如果您在完整解决方案中看到空的 `WeatherBackgroundTests.cs` 文件，它是未来后台作业测试的占位符，在本研讨会中可以忽略。
 
@@ -258,8 +258,8 @@ Playwright 可用于执行 Web 应用程序的端到端测试。它可以模拟�
 1. Web 应用程序功能（测试 UI 正确渲染）
 1. 服务发现机制（测试服务可以找到并相互通信）
 
-要深入了解使用 .NET Aspire 进行测试（包括视频演练），请查看博客文章[Getting started with testing and .NET Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/)。
+要深入了解使用 Aspire 进行测试（包括视频演练），请查看博客文章[Getting started with testing and Aspire](https://devblogs.microsoft.com/dotnet/getting-started-with-testing-and-dotnet-aspire/)。
 
-现在，让我们了解使用 .NET Aspire 时的部署选项。
+现在，让我们了解使用 Aspire 时的部署选项。
 
 **下一步**：[模块 #9：部署](../Lesson-09-Deployment/README.md)

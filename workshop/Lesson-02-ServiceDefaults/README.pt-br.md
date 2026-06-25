@@ -2,7 +2,7 @@
 
 ## Introdução
 
-.NET Aspire fornece um conjunto de padrões inteligentes para serviços que são comumente usados em aplicações .NET. Esses padrões são projetados para ajudá-lo a começar rapidamente e fornecer uma experiência consistente em diferentes tipos de aplicações. Isso inclui:
+Aspire fornece um conjunto de padrões inteligentes para serviços que são comumente usados em aplicações .NET. Esses padrões são projetados para ajudá-lo a começar rapidamente e fornecer uma experiência consistente em diferentes tipos de aplicações. Isso inclui:
 
 - Telemetria: Métricas, Rastreamento, Log
 - Resiliência
@@ -16,7 +16,7 @@
 1. Adicione um novo projeto à solução chamado `ServiceDefaults`:
 
 - Clique com o botão direito na solução e selecione `Add` > `New Project`.
-- Selecione o modelo de projeto `.NET Aspire Service Defaults`.
+- Selecione o modelo de projeto `Aspire Service Defaults`.
 - Nomeie o projeto como `ServiceDefaults`.
 - Clique em `Next` > `Create`.
 

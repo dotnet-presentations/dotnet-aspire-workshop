@@ -1,8 +1,8 @@
-# Painel de Controle & Orquestração com .NET Aspire App Host
+# Painel de Controle & Orquestração com Aspire App Host
 
-.NET Aspire fornece APIs para apresentar recursos e dependências dentro da sua aplicação distribuída. Além dessas APIs, há ferramentas que possibilitam alguns cenários interessantes. O orquestrador é destinado para fins de desenvolvimento local.
+Aspire fornece APIs para apresentar recursos e dependências dentro da sua aplicação distribuída. Além dessas APIs, há ferramentas que possibilitam alguns cenários interessantes. O orquestrador é destinado para fins de desenvolvimento local.
 
-Antes de continuar, considere alguns termos comuns usados no .NET Aspire:
+Antes de continuar, considere alguns termos comuns usados no Aspire:
 
 * *Modelo de aplicativo* (App model): Uma coleção de recursos que compõem sua aplicação distribuída (DistributedApplication). Para uma definição mais formal, veja Definir o modelo de aplicativo.
 * *Projeto do host da aplicação/Orquestrador* (App host/Orchestrator project): O projeto .NET que orquestra o modelo de aplicativo, nomeado com o sufixo *.AppHost (por convenção).
@@ -16,7 +16,7 @@ Antes de continuar, considere alguns termos comuns usados no .NET Aspire:
 1. Adicione um novo projeto à solução chamado `AppHost`:
 
     * Clique com o botão direito na solução e selecione `Add` > `New Project`.
-    * Selecione o modelo de projeto `.NET Aspire App Host`.
+    * Selecione o modelo de projeto `Aspire App Host`.
     * Nomeie o projeto como `AppHost`.
     * Clique em `Next` > `Create`.
 
@@ -73,19 +73,19 @@ Antes de continuar, considere alguns termos comuns usados no .NET Aspire:
     ```
 
 1. Execute o Host da Aplicação usando o painel `Run and Debug` no Visual Studio Code ou Visual Studio.
-1. O Painel do .NET Aspire será aberto no seu navegador padrão e exibirá os recursos e dependências da sua aplicação.
+1. O Painel do Aspire será aberto no seu navegador padrão e exibirá os recursos e dependências da sua aplicação.
 
-    ![Painel do .NET Aspire](.../media/dashboard.png)
+    ![Painel do Aspire](.../media/dashboard.png)
 1. Abra o painel da aplicação Weather clicando no Endpoint para o `MyWeatherHub` que será [https://localhost:7274](https://localhost:7274).
 1. Observe que os projetos `Api` e `MyWeatherHub` estão rodando no mesmo processo e podem se comunicar entre si da mesma forma que antes usando configurações.
 1. Clique no botão `View Logs` para ver os logs dos projetos `Api` e `MyWeatherHub`.
 1. Selecione a aba `Traces` e selecione `View` em um log trace onde a API está sendo chamada.
 
-    ![Painel do .NET Aspire](.../media/dashboard-trace.png)]
+    ![Painel do Aspire](.../media/dashboard-trace.png)]
 
 1. Explore a aba `Metrics` para ver as métricas para os projetos `Api` e `MyWeatherHub`.
 
-    ![Painel do .NET Aspire](.../media/dashboard-metrics.png)
+    ![Painel do Aspire](.../media/dashboard-metrics.png)
 
 ## Crie um erro
 
@@ -94,5 +94,5 @@ Antes de continuar, considere alguns termos comuns usados no .NET Aspire:
 1. No site `MyWeatherApp`, clique em várias cidades diferentes para gerar erros. Geralmente, 5 cidades diferentes gerarão um erro.
 1. Após gerar os erros, a aba `Structured` será atualizada automaticamente no painel e observe que os erros são exibidos.
 
-    ![Painel do .NET Aspire](.../media/dashboard-error.png)
+    ![Painel do Aspire](.../media/dashboard-error.png)
 1. Clique em `Trace` ou `Details` para ver a mensagem de erro e o log (stack trace).

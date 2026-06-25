@@ -1,12 +1,12 @@
-# Docker Integration with .NET Aspire
+# Docker Integration with Aspire
 
 ## Introduction
 
-.NET Aspire provides excellent support for integrating Docker containers directly into your application hosting model. This allows you to include third-party services, tools, and applications as part of your distributed application architecture. In this module, we'll integrate IT-Tools, a collection of handy online developer tools, into our Weather Hub application using Docker containers.
+Aspire provides excellent support for integrating Docker containers directly into your application hosting model. This allows you to include third-party services, tools, and applications as part of your distributed application architecture. In this module, we'll integrate IT-Tools, a collection of handy online developer tools, into our Weather Hub application using Docker containers.
 
 ## 🐳 What is Docker Integration in Aspire?
 
-Docker integration in .NET Aspire allows you to:
+Docker integration in Aspire allows you to:
 
 - **Add containerized services** to your application orchestration
 - **Manage container lifecycle** through the Aspire dashboard
@@ -23,7 +23,7 @@ Before we begin, here are some useful links to learn more about Docker and conta
 - **[Docker Hub](https://hub.docker.com/)** - Container image registry
 - **[IT-Tools GitHub Repository](https://github.com/CorentinTh/it-tools)** - Source code for IT-Tools
 - **[IT-Tools Live Demo](https://it-tools.tech/)** - Try IT-Tools online
-- **[.NET Aspire Container Documentation](https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/persist-data-volumes)** - Aspire's container integration guide
+- **[Aspire Container Documentation](https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/persist-data-volumes)** - Aspire's container integration guide
 
 ## 🛠️ What is IT-Tools?
 
@@ -277,7 +277,7 @@ Now that you have Docker integration working:
 
 ## Congratulations! 🎉
 
-You've successfully integrated Docker containers into your .NET Aspire application! You now understand how to:
+You've successfully integrated Docker containers into your Aspire application! You now understand how to:
 
 - Add third-party services using Docker containers
 - Configure port mappings and networking

@@ -1,16 +1,16 @@
-# Azure Container Apps への .NET Aspire アプリのデプロイ
+# Azure Container Apps への Aspire アプリのデプロイ
 
-.NET Aspire は、コンテナ化環境での実行を目的としたアプリケーション向けに最適化されています。[Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) は、サーバーレス プラットフォームでマイクロサービスやコンテナ化されたアプリケーションを実行できる完全管理型環境です。この記事では、新しい .NET Aspire ソリューションを作成し、Visual Studio と Azure Developer CLI (`azd`) を使用して Microsoft Azure Container Apps にデプロイする方法を説明します。
+Aspire は、コンテナ化環境での実行を目的としたアプリケーション向けに最適化されています。[Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) は、サーバーレス プラットフォームでマイクロサービスやコンテナ化されたアプリケーションを実行できる完全管理型環境です。この記事では、新しい Aspire ソリューションを作成し、Visual Studio と Azure Developer CLI (`azd`) を使用して Microsoft Azure Container Apps にデプロイする方法を説明します。
 
-この例では、前のセクションで作成した MyWeatherHub アプリをデプロイすることを前提としています。自分で構築したコードを使用するか、**complete** ディレクトリのコードを使用できます。ただし、一般的な手順はどの .NET Aspire アプリでも同じです。
+この例では、前のセクションで作成した MyWeatherHub アプリをデプロイすることを前提としています。自分で構築したコードを使用するか、**complete** ディレクトリのコードを使用できます。ただし、一般的な手順はどの Aspire アプリでも同じです。
 
 ## Visual Studio を使用してアプリをデプロイ
 
 1. ソリューション エクスプローラーで **AppHost** プロジェクトを右クリックし、**発行** を選択して **発行** ダイアログを開きます。
 
-    > .NET Aspire の発行には、現在のバージョンの `azd` CLI が必要です。これは .NET Aspire ワークロードと一緒にインストールされるはずですが、CLI がインストールされていない、または最新でないという通知を受け取った場合は、このチュートリアルの次の部分の手順に従ってインストールできます。
+    > Aspire の発行には、現在のバージョンの `azd` CLI が必要です。これは Aspire ワークロードと一緒にインストールされるはずですが、CLI がインストールされていない、または最新でないという通知を受け取った場合は、このチュートリアルの次の部分の手順に従ってインストールできます。
 
-1. 発行ターゲットとして **Azure Container Apps for .NET Aspire** を選択します。
+1. 発行ターゲットとして **Azure Container Apps for Aspire** を選択します。
 
     ![発行ダイアログ ワークフローのスクリーンショット。](../media/vs-deploy.png)
 
@@ -55,7 +55,7 @@ aspire deploy
 > - サインインしていることを確認してください：`azd login` を実行し、正しい Azure サブスクリプションを選択します。
 > - AppHost を含むフォルダーから次のコマンドを実行します（このリポジトリの場合、完成したサンプルをデプロイする場合は通常 `complete` フォルダー）。
 
-1. 新しいターミナル ウィンドウを開き、.NET Aspire プロジェクトのルートに `cd` します。
+1. 新しいターミナル ウィンドウを開き、Aspire プロジェクトのルートに `cd` します。
 1. `azd init` コマンドを実行してプロジェクトを `azd` で初期化します。これにより、ローカル ディレクトリ構造が検査され、アプリの種類が決定されます。
 
     ```console
@@ -80,7 +80,7 @@ aspire deploy
       テンプレートを選択
     ```
 
-1. ディレクトリをスキャンした後、`azd` は正しい .NET Aspire _AppHost_ プロジェクトが見つかったことの確認を求めます。**確認してアプリの初期化を続行** オプションを選択します。
+1. ディレクトリをスキャンした後、`azd` は正しい Aspire _AppHost_ プロジェクトが見つかったことの確認を求めます。**確認してアプリの初期化を続行** オプションを選択します。
 
     ```console
     検出されたサービス：
@@ -95,7 +95,7 @@ aspire deploy
       キャンセルして終了
     ```
 
-1. `azd` は .NET Aspire ソリューション内の各プロジェクトを表示し、すべてのインターネット トラフィックに公開的に開かれた HTTP イングレスでデプロイするものを特定するよう求めます。API (`api`) を Azure Container Apps 環境のプライベートにして、公開的に利用できないようにしたいため、`myweatherhub` のみを選択します（↓ キーとスペース キーを使用）。
+1. `azd` は Aspire ソリューション内の各プロジェクトを表示し、すべてのインターネット トラフィックに公開的に開かれた HTTP イングレスでデプロイするものを特定するよう求めます。API (`api`) を Azure Container Apps 環境のプライベートにして、公開的に利用できないようにしたいため、`myweatherhub` のみを選択します（↓ キーとスペース キーを使用）。
 
     ```console
     ? オプションを選択してください 確認してアプリの初期化を続行
@@ -119,7 +119,7 @@ aspire deploy
 
 `azd` は多数のファイルを生成し、作業ディレクトリに配置します。これらのファイルは：
 
-- _azure.yaml_：.NET Aspire AppHost プロジェクトなどのアプリのサービスを記述し、Azure リソースにマップします。
+- _azure.yaml_：Aspire AppHost プロジェクトなどのアプリのサービスを記述し、Azure リソースにマップします。
 - _.azure/config.json_：現在のアクティブな環境が何かを `azd` に通知する構成ファイル。
 - _.azure/aspireazddev/.env_：環境固有のオーバーライドを含みます。
 - _.azure/aspireazddev/config.json_：この環境でパブリック エンドポイントを持つべきサービスを `azd` に通知する構成ファイル。
